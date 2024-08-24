@@ -1,0 +1,62 @@
+from flask import Blueprint, request
+from flask_login import login_required, current_user
+from app.models import db, Location
+
+
+location_routes = Blueprint('locations', __name__)
+
+# Get all locations saved by current user
+@location_routes.route('/')
+@login_required
+def user_locations():
+    """
+    Get all current user's saved locations
+    """
+    locations = Location.query.filter_by(user_id=current_user.id).all()
+    if not locations:
+        return {'errors': {'message': 'No existing locations'}}, 404
+    return {'locations': [location.to_dict() for location in locations]}, 200
+
+
+
+# Update location
+@location_routes.route('/<int:location_id>', methods=['PUT'])
+@login_required
+def update_location(location_id):
+    """
+    Updates a user's saved location
+    """
+    theLocation = Location.query.get(location_id)
+    if not theLocation:
+        return {'errors': {'message': 'Location not found'}}, 404
+    if theLocation.user_id != current_user.id:
+        return {'errors': {'message': 'Unauthorized'}}, 401
+
+    # form = LocationEditForm()
+    # form['csrf_token'].data = request.cookies['csrf_token']
+
+    # if form.validate_on_submit():
+    #     theLocation.location=form.data['location']
+    #     db.session.add(theLocation)
+    #     db.session.commit()
+    #     return theLocation.to_dict()
+    # return form.errors, 401
+
+
+
+
+
+# Delete location
+@location_routes.route('/<int:location_id>', methods=['DELETE'])
+@login_required
+def delete_location(location_id):
+    """
+    Deletes a location by id
+    """
+    theLocation = Location.query.filter_by(id=location_id, user_id=current_user.id).first()
+    if not theLocation:
+        return {'errors': {'message': 'Location not found'}}, 404
+
+    db.session.delete(theLocation)
+    db.session.commit()
+    return {'message': "Location successfully deleted"}, 200
