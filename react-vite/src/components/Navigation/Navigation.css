@@ -101,7 +101,7 @@ nav > input {
 
 .navRight{
   display: flex;
-  width: 200px;
+  width: 100px;
   border: solid green 3px;
   border-radius: 30px;
 }
