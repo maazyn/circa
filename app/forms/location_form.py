@@ -8,7 +8,7 @@ class LocationForm(FlaskForm):
     # googleId = StringField('Latitude', validators=[DataRequired())
     lat = FloatField('Latitude', validators=[DataRequired(), Length(max=50)])
     lng = FloatField('Longitude', validators=[Length(max=50)])
-    type = StringField('Type', validators=[DataRequired(), Length(max=50)]])
+    type = StringField('Type', validators=[DataRequired(), Length(max=50)])
     continent = StringField('Continent', validators=[Optional()])
     country = StringField('Country', validators=[DataRequired()])
     region = StringField('Region', validators=[Optional()])
