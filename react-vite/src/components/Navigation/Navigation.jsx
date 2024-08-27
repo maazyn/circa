@@ -1,18 +1,36 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import { useSelector } from "react-redux";
+import { IoMdSettings } from "react-icons/io";
+import { VscHistory } from "react-icons/vsc";
+
 import "./Navigation.css";
 
 function Navigation() {
+  const sessionUser = useSelector((store) => store.session.user);
+  const navigate = useNavigate()
   return (
-    <ul>
-      <li>
-        <NavLink to="/">Home</NavLink>
-      </li>
+    <nav>
+      <div className="navContainer">
+        <NavLink className={"logo"} to="/">
+          <img className="nav-app-logo" src="/images/no-logo-yet" alt="Logo" />
+        </NavLink>
+      </div>
 
-      <li>
+      <div className="navRight" >
+      {sessionUser && (
+        <>
+          <div>
+            <IoMdSettings className="settings-history-logo" onClick={() => navigate("/settings")} />
+          </div>
+          <div>
+            <VscHistory className="settings-history-logo" onClick={() => navigate("/history")} />
+          </div>
+        </>
+      )}
         <ProfileButton />
-      </li>
-    </ul>
+      </div>
+  </nav>
   );
 }
 
