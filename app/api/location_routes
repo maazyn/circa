@@ -17,6 +17,18 @@ def user_locations():
         return {'errors': {'message': 'No existing locations'}}, 404
     return {'locations': [location.to_dict() for location in locations]}, 200
 
+# Get details for a user's saved location
+@location_routes.route('/<int:location_id>')
+@login_required
+def user_locations(location_id):
+    """
+    Get details for a current user's saved location
+    """
+    theLocation = Location.query.filter_by(user_id=current_user.id,  id=location_id).all()
+    if not theLocation:
+        return {'errors': {'message': 'No existing locations'}}, 404
+    return {'locations': [location.to_dict() for location in locations]}, 200
+    # return {'Album': album_details.to_dict(), 'UserInfo': [artist.to_dict() for artist in artist_info] ,'UserAlbums': [ album.to_dict() for album in albums]}, 200
 
 
 # Update location

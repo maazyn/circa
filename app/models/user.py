@@ -14,7 +14,14 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
+    city = db.Column(db.String(50))
+    region = db.Column(db.String(50))
+    country = db.Column(db.String(50))
+
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    # Relationships
+    locations = db.relationship('Location', back_populates='user', cascade="all, delete-orphan")
 
     @property
     def password(self):
@@ -30,6 +37,13 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
+            'first_name': self.first_name,
+            'last_name': self.last_name,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'city': self.city,
+            'region': self.state,
+            'country': self.country,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
