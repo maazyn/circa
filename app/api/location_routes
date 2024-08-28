@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import db, Location
-
+from app.forms import LocationForm
 
 location_routes = Blueprint('locations', __name__)
 
@@ -17,6 +17,7 @@ def user_locations():
         return {'errors': {'message': 'No existing locations'}}, 404
     return {'locations': [location.to_dict() for location in locations]}, 200
 
+
 # Get details for a user's saved location
 @location_routes.route('/<int:location_id>')
 @login_required
@@ -28,7 +29,6 @@ def user_locations(location_id):
     if not theLocation:
         return {'errors': {'message': 'No existing locations'}}, 404
     return {'locations': [location.to_dict() for location in locations]}, 200
-    # return {'Album': album_details.to_dict(), 'UserInfo': [artist.to_dict() for artist in artist_info] ,'UserAlbums': [ album.to_dict() for album in albums]}, 200
 
 
 # Update location
@@ -44,15 +44,17 @@ def update_location(location_id):
     if theLocation.user_id != current_user.id:
         return {'errors': {'message': 'Unauthorized'}}, 401
 
-    # form = LocationEditForm()
-    # form['csrf_token'].data = request.cookies['csrf_token']
+    form = LocationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
 
-    # if form.validate_on_submit():
-    #     theLocation.location=form.data['location']
-    #     db.session.add(theLocation)
-    #     db.session.commit()
-    #     return theLocation.to_dict()
-    # return form.errors, 401
+    if form.validate_on_submit():
+        theLocation.title=form.data['title']
+        theLocation.title=form.data['title']
+
+        db.session.add(theLocation)
+        db.session.commit()
+        return theLocation.to_dict()
+    return form.errors, 401
 
 
 
