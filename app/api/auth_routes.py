@@ -1,7 +1,6 @@
 from flask import Blueprint, request
 from app.models import User, db
-from app.forms import LoginForm
-from app.forms import SignUpForm
+from app.forms import LoginForm, SignUpForm, ProfileUpdateForm
 from flask_login import current_user, login_user, logout_user, login_required
 
 auth_routes = Blueprint('auth', __name__)
@@ -69,3 +68,51 @@ def unauthorized():
     Returns unauthorized JSON when flask-login authentication fails
     """
     return {'errors': {'message': 'Unauthorized'}}, 401
+
+
+
+@auth_routes.route('/update-user', methods=['PUT'])
+@login_required
+def update_profile():
+    """
+    Updates the current user's profile.
+    """
+    form = ProfileUpdateForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        user = current_user
+
+        user.first_name = form.data.get('first_name', user.first_name)
+        user.last_name = form.data.get('last_name', user.last_name)
+        user.city = form.data.get('city', user.city)
+        user.region = form.data.get('region', user.region)
+        user.country = form.data.get('country', user.country)
+
+        db.session.commit()
+        return user.to_dict()
+    return {'errors': form.errors}, 400
+
+
+@auth_routes.route('/delete-user', methods=['DELETE'])
+@login_required
+def delete_user():
+    """
+    Deletes the user if user owns account and is authenticated.
+    """
+    user = current_user
+    # user = User.query.get(user_id)
+    if not user:
+        return {'errors': {'message': 'User not found'}}, 404
+    # if user is None:
+    #     return {'errors': {'message': 'User not found'}}, 404
+
+    # if user.id != current_user.id:
+    #     return {'errors': {'message': 'Unauthorized to delete this user'}}, 403
+
+    db.session.delete(user)
+    db.session.commit()
+
+    logout_user()
+
+    return {'message': 'User deleted successfully'}
