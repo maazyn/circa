@@ -18,17 +18,50 @@ def user_locations():
     return {'locations': [location.to_dict() for location in locations]}, 200
 
 
+
 # Get details for a user's saved location
 @location_routes.route('/<int:location_id>')
 @login_required
-def user_locations(location_id):
+def user_location(location_id):
     """
     Get details for a current user's saved location
     """
-    theLocation = Location.query.filter_by(user_id=current_user.id,  id=location_id).all()
+    theLocation = Location.query.filter_by(user_id=current_user.id,  id=location_id).first()
     if not theLocation:
         return {'errors': {'message': 'No existing locations'}}, 404
-    return {'locations': [location.to_dict() for location in locations]}, 200
+    return theLocation.to_dict(), 200
+
+
+
+# Create a new location
+@location_routes.route('/', methods=['POST'])
+@login_required
+def create_location():
+    """
+    Creates/Adds a new location
+    """
+    form = LocationForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+
+    if form.validate_on_submit():
+        location = Location(
+            user_id=current_user.id,
+            title=form.data['title'],
+            # googleId: form.data['googleId'],
+            lat=form.data['lat'],
+            lng=form.data['lng'],
+            type=form.data['type'],
+            continent=form.data['continent'],
+            country=form.data['country'],
+            region=form.data['region'],
+            city=form.data['city'],
+            visitedAt=form.data['visitedAt']
+        )
+        db.session.add(location)
+        db.session.commit()
+        return location.to_dict(), 201
+    return form.errors, 400
+
 
 
 # Update location
@@ -48,8 +81,16 @@ def update_location(location_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        theLocation.title=form.data['title']
-        theLocation.title=form.data['title']
+        theLocation.title = form.data['title']
+        # theLocation.googleId: form.data['googleId'],
+        theLocation.lat = form.data['lat']
+        theLocation.lng = form.data['lng']
+        theLocation.type = form.data['type']
+        theLocation.continent = form.data['continent']
+        theLocation.country = form.data['country']
+        theLocation.region = form.data['region']
+        theLocation.city = form.data['city']
+        theLocation.visitedAt = form.data['visitedAt']
 
         db.session.add(theLocation)
         db.session.commit()
