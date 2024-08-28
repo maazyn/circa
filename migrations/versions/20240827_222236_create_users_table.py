@@ -1,8 +1,8 @@
 """create users table
 
-Revision ID: 0a2ad398c169
+Revision ID: 8d1970775491
 Revises:
-Create Date: 2024-08-26 20:15:52.261522
+Create Date: 2024-08-27 22:22:36.953299
 
 """
 from alembic import op
@@ -12,9 +12,8 @@ import os
 environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
-
 # revision identifiers, used by Alembic.
-revision = '0a2ad398c169'
+revision = '8d1970775491'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,6 +30,8 @@ def upgrade():
     sa.Column('city', sa.String(length=50), nullable=True),
     sa.Column('region', sa.String(length=50), nullable=True),
     sa.Column('country', sa.String(length=50), nullable=True),
+    sa.Column('created_at', sa.DateTime(), nullable=True),
+    sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
