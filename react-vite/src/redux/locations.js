@@ -42,8 +42,11 @@ export const fetchCurrUserLocations = () => async (dispatch) => {
     const response = await fetch("/api/locations/")
     const locations = await response.json()
     dispatch(loadLocations(locations.Locations))
-    return locations
+    // return locations
 }
+
+
+
 
 //* Create a saved location
 export const createLocation = (location) => async (dispatch) => {
@@ -66,7 +69,6 @@ export const createLocation = (location) => async (dispatch) => {
         console.error("Error adding a new location", err);
     }
 };
-
 
 //* Update a location by id
 export const editLocation = (location) => async dispatch => {
