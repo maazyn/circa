@@ -1,6 +1,8 @@
 // import { NavLink, useNavigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
-import { WiStars } from "react-icons/wi";
+import { IoFilter } from "react-icons/io";
+// import { WiStars } from "react-icons/wi";
+
 
 import "./AuxiliaryNav.css";
 
@@ -17,13 +19,11 @@ function AuxiliaryNav() {
 
 
         <div className="axnav-Right" >
-        {sessionUser && (
           <div className="axnavButtons">
             <button>Local</button>
-            <WiStars onClick={() => setScope("Sky")}/> note to self: dont forget to set up scope state management in LandingPage
+            {/* <WiStars onClick={() => setScope("Sky")}/> note to self: dont forget to set up scope state management in LandingPage */}
             <button>Global</button>
           </div>
-        )}
         </div>
       </div>
   </nav>
