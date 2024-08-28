@@ -91,16 +91,17 @@ export const editLocation = (location) => async dispatch => {
 
 //* Delete a location by id
 export const removeLocation = (locationId) => async (dispatch) =>{
-    try {
-
-        const response = await fetch(`/api/locations/${locationId}`, {
-            method: "DELETE"
-        })
-        dispatch(deleteLocation(locationId))
-        return response
-    } catch (err) {
-        console.error("Error deleting the saved location")
+    const response = await fetch(`/api/locations/${locationId}`, {
+        method: "DELETE"
+    })
+    if (response.ok) {
+        dispatch(deleteLocation(locationId));
+        return response;
+    } else {
+        const errors = await response.json();
+        throw errors;
     }
+
 }
 
 
@@ -112,7 +113,7 @@ const locationReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOAD_LOCATIONS: {
             const newState = {}
-            action.locations.locations?.forEach((location) => {
+            action.locations?.forEach((location) => {
                 newState[location.id] = location
             });
             return newState;
