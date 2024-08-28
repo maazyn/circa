@@ -17,7 +17,8 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(50))
     region = db.Column(db.String(50))
     country = db.Column(db.String(50))
-
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
     hashed_password = db.Column(db.String(255), nullable=False)
 
     # Relationships
@@ -42,7 +43,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'city': self.city,
-            'region': self.state,
+            'region': self.region,
             'country': self.country,
             'created_at': self.created_at,
             'updated_at': self.updated_at

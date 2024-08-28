@@ -6,9 +6,11 @@ import {
 } from "redux";
 import thunk from "redux-thunk";
 import sessionReducer from "./session";
+import locationReducer from "./locations"
 
 const rootReducer = combineReducers({
   session: sessionReducer,
+  location: locationReducer,
 });
 
 let enhancer;
