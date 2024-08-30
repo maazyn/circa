@@ -17,7 +17,7 @@ function AuxiliaryNav({ mode, setMode }) {
       <div className="axnavContainer">
         <div className="axnavLeft">
           <IoSearchSharp id="search-icon" />
-          <input className="axnav-search" type="text" placeholder=" Search"></input>
+          <input className="axnav-search" type="text" placeholder=" Search..."></input>
           <div id="filter-icon-container">
             <MdFilterAlt id="filter-icon" />
           </div>
