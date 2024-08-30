@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./LandingPage.css";
-import MapCard from "./MapCard";
 
 function SkyComponent() {
     // const dispatch = useDispatch();

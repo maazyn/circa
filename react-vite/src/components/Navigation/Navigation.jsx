@@ -10,8 +10,8 @@ function Navigation() {
   const sessionUser = useSelector((store) => store.session.user);
   const navigate = useNavigate()
   return (
-    <nav>
-      <div className="navContainer">
+    <nav className="navContainer">
+      <div className="navLeft">
         <NavLink className={"logo"} to="/">
           <img className="nav-app-logo" src="/images/no-logo-yet" alt="Logo" />
         </NavLink>
@@ -21,10 +21,10 @@ function Navigation() {
       {sessionUser && (
         <>
           <div>
-            <IoMdSettings className="settings-history-logo" onClick={() => navigate("/settings")} />
+            <IoMdSettings className="settings-history-logos" onClick={() => navigate("/settings")} />
           </div>
           <div>
-            <VscHistory className="settings-history-logo" onClick={() => navigate("/history")} />
+            <VscHistory className="settings-history-logos" onClick={() => navigate("/history")} />
           </div>
         </>
       )}

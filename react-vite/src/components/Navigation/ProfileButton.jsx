@@ -42,7 +42,7 @@ function ProfileButton() {
 
   return (
     <>
-      <button onClick={toggleMenu}>
+      <button className="profileButton"onClick={toggleMenu}>
         <CgProfile />
       </button>
       {showMenu && (

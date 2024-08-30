@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useEffect, useState } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import "./LandingPage.css";
-import MapCard from "./MapCard";
+// import MapCard from "../MapCard/MapCard";
 
 function GlobalComponent() {
     // const dispatch = useDispatch();
