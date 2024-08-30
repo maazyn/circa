@@ -83,7 +83,7 @@ export const editLocation = (location) => async dispatch => {
             const updatedLocation = await response.json()
             dispatch(updateLocation(updatedLocation))
         } else {
-            console.error("Error updating location", err)
+            console.error("Error updating location")
 
         }
     } catch (err) {
