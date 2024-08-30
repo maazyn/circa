@@ -9,7 +9,7 @@
   border-radius: 7px;
   background-color: transparent;
 
-  height: 45px;
+  height: 40px;
   /* gap: 30%; */
 }
 nav > input {
@@ -26,6 +26,9 @@ nav > input {
   background-color: rgb(229, 196, 186);
 }
 
+.navCenter {
+  
+}
 
 .navRight{
   display: flex;

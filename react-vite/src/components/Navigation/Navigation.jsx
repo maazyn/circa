@@ -17,6 +17,10 @@ function Navigation() {
         </NavLink>
       </div>
 
+      {/* <div className="navCenter">
+        <p>Weather</p>
+      </div> */}
+
       <div className="navRight" >
       {sessionUser && (
         <>
