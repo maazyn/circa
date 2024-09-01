@@ -13,7 +13,7 @@ function Navigation() {
     <nav className="navContainer">
       <div className="navLeft">
         <NavLink className={"logo"} to="/">
-          <img className="nav-app-logo" src="/images/no-logo-yet" alt="Logo" />
+          <img className="nav-app-logo" src="/images/circa-logo.png" alt="Circa-Logo" />
         </NavLink>
       </div>
 

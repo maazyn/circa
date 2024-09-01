@@ -23,11 +23,19 @@ nav > input {
   flex-grow: 1;
   box-sizing: border-box;
   border-radius: 7px;
-  background-color: rgb(229, 196, 186);
+  /* background-color: rgb(229, 196, 186); */
+}
+.logo{
+}
+
+.nav-app-logo {
+  width: 55px;
+  height: auto;
+  padding-top: 7px;
 }
 
 .navCenter {
-  
+
 }
 
 .navRight{
@@ -127,15 +135,5 @@ nav > input {
 #profile-email {
   margin-top: 2px;
   font-size: 13px;
-
-}
-
-
-
-
-.logo{
-}
-
-.nav-app-logo {
 
 }
