@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import LandingPage from "../components/LandingPage"
-// import UserProfile from "../components/UserProfile"
+import ProfilePage from "../components/ProfilePage"
 // import History from "../components/History"
 // import LocationDetails from "../components/LocationDetails"
 // import CollectionDetails from "../components/CollectionDetails"
@@ -25,10 +25,10 @@ export const router = createBrowserRouter([
         path: "signup",
         element: <SignupFormPage />,
       },
-      // {
-      //   path:"/home",
-      //   element:<UserProfile />
-      // },
+      {
+        path:"/home",
+        element:<ProfilePage />
+      },
       // {
       //   path:"/history",
       //   element:<History />

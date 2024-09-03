@@ -33,9 +33,9 @@ function Navigation() {
   };
 
 
-  useEffect(() => {
-    fetchWeatherData();
-  }, [])
+  // useEffect(() => {
+  //   fetchWeatherData();
+  // }, [])
 
   return (
     <nav className="navContainer">
