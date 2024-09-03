@@ -1,0 +1,81 @@
+
+
+.ppTop {
+    margin: 0px 80px 0px 80px;
+    display: flex;
+    height: 70px;
+    /* width: 50%; */
+    flex-direction: row;
+    justify-content: center;
+    border: 3px solid red;
+    border-radius: 7px;
+}
+
+.ppContainer {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: row;
+    margin: 0px 80px 0px 80px;
+    justify-content: center;
+    gap: 18px;
+    padding: 10px 0px;
+    height: calc(100vh - 400px);
+    /* height: 70vh; */
+}
+
+
+.ppLeft, .ppRight {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    /* padding: 10px;  */
+}
+.leftHeaderContainer, .rightHeaderContainer {
+    display: flex;
+    width: 30%;
+    margin: 15px auto;
+    padding: 0 12px;
+    height: 38px;
+    /* border: 3px solid red; */
+    border-radius: 7px;
+    margin-bottom: 30px;
+    justify-content: center;
+    background-color: rgb(255, 247, 247);
+}
+.leftHeader, .rightHeader {
+    color: black;
+    margin: auto;
+}
+.ppLeft {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 50%;
+    border-radius: 7px;
+    align-items: center;
+    align-content: center;
+    background-color: rgb(227, 226, 226);
+
+}
+
+/* margin: 10px; */
+
+.ppRight {
+    display: flex;
+    /* border: 3px solid red; */
+    width: 50%;
+    height: auto;
+    border-radius: 10px;
+    background-color: rgb(226, 207, 207);
+
+}
+
+.locationCards {
+    display: flex;
+    flex-direction: column;
+}
+.location-items {
+    margin-bottom: 10px;
+}
