@@ -4,7 +4,9 @@ import ProfileButton from "./ProfileButton";
 import { useSelector } from "react-redux";
 import { IoMdSettings } from "react-icons/io";
 import { VscHistory } from "react-icons/vsc";
-import { TOMORROW_API_KEY } from '../../../../x-apis/apiKeys';
+import { FaTemperatureArrowUp } from "react-icons/fa6";
+import { FaTemperatureArrowDown } from "react-icons/fa6";
+import { FaCloudRain } from "react-icons/fa6";
 
 import "./Navigation.css";
 
@@ -17,19 +19,21 @@ function Navigation() {
 
 
   const fetchWeatherData = async () => {
-    const options = { method: "GET"};
     try {
-      const response = await fetch(`https://api.tomorrow.io/v4/weather/forecast?location=42.3478,-71.0466&apikey=${TOMORROW_API_KEY}`, options);
-      const data = response.json();
-      setWeatherData(data)
-    } catch(err) {
-      setError(err)
-      console.error(err)
+      const response = await fetch('/api/weather/');
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      setWeatherData(data);
+    } catch (err) {
+      setError(err.message);
+      console.error('Fetch error:', err);
     }
   };
 
-  useEffect(() => {
 
+  useEffect(() => {
     fetchWeatherData();
   }, [])
 
@@ -41,9 +45,20 @@ function Navigation() {
         </NavLink>
       </div>
 
-      {/* <div className="navCenter">
-        <p>Weather</p>
-      </div> */}
+      <div className="navCenter">
+        {sessionUser ? (
+          <div className="weather-data" >
+            <div className="weather-icons-high"><FaTemperatureArrowUp /> </div>
+            <p>{weatherData?.timelines.daily[0].values["temperatureMax"] || 'N/A'}°C</p>
+            <div className="weather-icons-low"><FaTemperatureArrowDown /> </div>
+            <p>{weatherData?.timelines.daily[0].values["temperatureMin"] || 'N/A'}°C</p>
+            <div className="weather-icons-rain"><FaCloudRain /> </div>
+            <p>{weatherData?.timelines.daily[0].values["precipitationProbabilityAvg"] || 'N/A'}%</p>
+          </div>
+        ) : (
+          null
+        )}
+      </div>
 
       <div className="navRight" >
       {sessionUser && (

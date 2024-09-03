@@ -1,55 +1,90 @@
-.navContainer{
-  /* display: flex; */
+/* .navContainer{
   display: flex;
-  gap: 78%;
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 80px 10px 80px;
   border-radius: 7px;
   background-color: transparent;
+  } */
 
-  height: 40px;
+  .navContainer {
   /* gap: 30%; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  border-radius: 7px;
+  background-color: transparent;
+  margin: 10px 80px 10px 80px;
+  /* padding: 10px 80px; */
 }
 nav > input {
   background-color: red;
 }
-.navLeft {
-  height: 100%;
-  width: 25%;
+.navLeft, .navCenter, .navRight {
   display: flex;
   align-items: center;
-  flex-grow: 1;
-  box-sizing: border-box;
-  border-radius: 7px;
-  /* background-color: rgb(229, 196, 186); */
+}
+
+
+.navLeft {
+  flex: 1;
+  justify-content: flex-start;
 }
 .logo{
 }
-
 .nav-app-logo {
   width: 55px;
   height: auto;
   padding-top: 7px;
 }
 
-.navCenter {
 
+.navCenter {
+  flex: 3;
+  justify-content: center;
+  padding-top: 5px;
+
+
+  /* align-items: center; */
+}
+.weather-data {
+  gap: 10px;
+  display: flex;
+}
+.weather-data p {
+  margin-left: 0;
+  color: black;
+  font-size: 15px;
+  text-align: center;
+}
+.weather-icons-high,
+.weather-icons-low,
+.weather-icons-rain {
+  display: flex;
+  align-items: center;
+}
+.weather-icons-high {
+  color: red;
+}
+.weather-icons-low {
+  color: rgb(0, 102, 255);
+}
+.weather-icons-rain {
+  color: black;
 }
 
+
 .navRight{
-  display: flex;
+  flex: 1;
+  justify-content: flex-end;
   height: 100%;
-  flex-grow: 1;
   justify-content: space-evenly;
-  width: 100%;
+  /* width: 90%; */
   box-sizing: border-box;
   border-radius: 7px;
   background-color: rgb(229, 196, 186);
-
 }
-
 .navRight * {
   background-color: transparent;
   border: none;
@@ -57,7 +92,6 @@ nav > input {
   height: auto;
   width: 19px;
 }
-
 .navRight svg {
   display: flex;
   justify-items: center;
@@ -65,10 +99,10 @@ nav > input {
   width: 100%;
 }
 .settings-history-logos {
-  background-color: transparent;
+  /* background-color: transparent; */
   color: rgb(0, 0, 0);
-  justify-items: center;
-  align-self: center;
+  /* justify-items: center;
+  align-self: center; */
   cursor: pointer;
 }
 .profileButton {
@@ -103,7 +137,6 @@ nav > input {
   overflow-x: auto;
   /* justify-content:space-around; */
 }
-
 .profile-dropdown button {
   font-size: 13px ;
   font-weight:bold;
