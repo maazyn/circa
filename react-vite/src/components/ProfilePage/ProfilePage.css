@@ -19,8 +19,8 @@
     justify-content: center;
     gap: 18px;
     padding: 10px 0px;
-    height: calc(100vh - 400px);
-    /* height: 70vh; */
+    /* height: calc(100vh - 400px); */
+    height: 80vh;
 }
 
 
@@ -34,18 +34,21 @@
 .leftHeaderContainer, .rightHeaderContainer {
     display: flex;
     width: 30%;
+    min-width: 135px;
     margin: 15px auto;
-    padding: 0 12px;
+    padding: 0 10px;
     height: 38px;
     /* border: 3px solid red; */
     border-radius: 7px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     justify-content: center;
-    background-color: rgb(255, 247, 247);
+    background-color: #fffdfd;
 }
 .leftHeader, .rightHeader {
     color: black;
     margin: auto;
+    height: 40px;
+    align-content: center;
 }
 .ppLeft {
     /* border: 3px solid red; */
@@ -74,8 +77,68 @@
 
 .locationCards {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    overflow-y: scroll hidden;
+    height: auto;
 }
 .location-items {
-    margin-bottom: 10px;
+    width: 90%;
+}
+
+
+.location-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: black;
+    background-color: #fffdfd;
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0 0px 1px 0.5px rgba(255, 247, 247);
+    height: 70px;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+
+}
+
+.location-card:hover {
+    border: 0.5px solid rgb(211, 211, 211);
+    box-shadow: 0px 0px 5px 0.5px rgba(255, 255, 255, 0.4);
+    transform: scale(1.05);
+}
+.location-up, .location-down {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.location-up {
+    display: flex;
+    font-size: 14px;
+    font-weight: bold;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    height: 20px;
+    width: 100%;
+}
+.location-down {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+.location-detail {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 5px 0;
+}
+.location-card p {
+    /* gap: 15px; */
+    color: rgb(103, 102, 102);
 }

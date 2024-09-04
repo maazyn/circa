@@ -11,17 +11,6 @@ function ProfileUpdateModal({ user }) {
         first_name: user.first_name || "",
         last_name: user.last_name || "",
         city: user.city || "",
-        state: user.state || "",
-        email: user.email || "",
-        username: user.username || "",
-        bio: user.bio || "",
-        spotify: user.spotify || "",
-        instagram: user.instagram || "",
-        website: user.website || "",
-        facebook: user.facebook || "",
-        profile_img_url: user.profile_img_url || "",
-        banner_img_url: user.banner_img_url || "",
-        background_img_url: user.background_img_url || ""
     });
     const [errors, setErrors] = useState({});
     const [deleteErrors, setDeleteErrors] = useState({});

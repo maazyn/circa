@@ -109,6 +109,7 @@ nav > input {
   background-color: transparent;
   border: none;
   padding: 0px;
+  height: auto;
 }
 .profileButton button{
   background-color: black;
@@ -116,26 +117,32 @@ nav > input {
 }
 
 .profile-dropdown {
-  position: absolute;
-  list-style-type: none;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  position: absolute;
+  list-style-type: none;
   right: 80px;
   font-size: 10px;
   background-color: #306efdca;
   border: solid 0.5px rgb(218, 217, 217);
   border-radius: 6px;
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.4);
-  margin-top: 28px;
+  top: 45px;
   padding: 5px 0 5px;
   width: 120px;
   height: 90px;
   z-index: 1;
   color: rgb(255, 253, 253);
-  align-items: center;
-  overflow-x: auto;
-  /* justify-content:space-around; */
+  align-content: center;
+  /* justify-content: center; */
+  overflow-x: scroll hidden;
+  justify-content:space-around;
+}
+.profile-dropdown li {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 .profile-dropdown button {
   font-size: 13px ;
@@ -150,6 +157,13 @@ nav > input {
   border: 1px solid black;
   margin: 10px 0 0px 0;
   /* color: white; */
+}
+.profile-dropdown hr {
+  border: 0;
+  height: 1px;
+  width: 100%;
+  background: #ccc;
+  /* margin: 15px 0 10px; */
 }
 
 #profile-username {
@@ -167,6 +181,7 @@ nav > input {
 
 #profile-email {
   margin-top: 2px;
+  text-align: center;
   font-size: 13px;
 
 }

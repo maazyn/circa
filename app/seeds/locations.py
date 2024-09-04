@@ -8,25 +8,27 @@ def seed_locations():
         # googleId="googleId",
         lat=50.4444,
         lng=-50.4444,
-        # type="",
+        type="city",
         continent="Asia",
         country="China",
         # region="",
-        # city="",
-        visitedAt="2024-01-20")
+        city="Hong Kong",
+        visited=False
+    )
 
     demo_location_2 = Location(
         user_id=1,
-        title="Bermuda",
+        title="Miami FL",
         # googleId="googleId",
         lat=50.4444,
         lng=-50.4444,
-        # type="",
+        type="city",
         continent="North America",
-        country="Bermuda",
-        # region="",
-        # city="",
-        visitedAt="2024-03-20")
+        country="US",
+        region="FL",
+        city="Miami",
+        visited=True
+    )
 
     demo_location_3 = Location(
         user_id=2,
@@ -37,9 +39,11 @@ def seed_locations():
         type="national park",
         continent="North America",
         country="US",
-        region="Utah")
+        region="Utah",
+        visited=False
         # city="",
-        # visitedAt="2024-05-20")
+    )
+
 
 
     db.session.add(demo_location_1)

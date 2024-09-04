@@ -55,7 +55,7 @@ def create_location():
             country=form.data['country'],
             region=form.data['region'],
             city=form.data['city'],
-            visitedAt=form.data['visitedAt']
+            visited=form.data['visited']
         )
         db.session.add(location)
         db.session.commit()
@@ -90,7 +90,7 @@ def update_location(location_id):
         theLocation.country = form.data['country']
         theLocation.region = form.data['region']
         theLocation.city = form.data['city']
-        theLocation.visitedAt = form.data['visitedAt']
+        theLocation.visited = form.data['visited']
 
         db.session.add(theLocation)
         db.session.commit()

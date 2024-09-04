@@ -40,9 +40,14 @@ export const deleteLocation = (locationId) => {
 //* Get current user's locations
 export const fetchCurrUserLocations = () => async (dispatch) => {
     const response = await fetch("/api/locations/")
-    const locations = await response.json()
-    dispatch(loadLocations(locations.Locations))
-    // return locations
+    const data = await response.json()
+
+    if (response.ok) {
+        // console.log("TestTest:", data.locations);
+        dispatch(loadLocations(data.locations));
+    } else {
+        console.error("Error fetching locations", data.errors);
+    }
 }
 
 

@@ -1,8 +1,8 @@
 """create users table
 
-Revision ID: 8d1970775491
+Revision ID: 188fe0f7d3f5
 Revises:
-Create Date: 2024-08-27 22:22:36.953299
+Create Date: 2024-09-04 12:06:27.504132
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '8d1970775491'
+revision = '188fe0f7d3f5'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -27,12 +27,13 @@ def upgrade():
     sa.Column('last_name', sa.String(length=40), nullable=False),
     sa.Column('username', sa.String(length=40), nullable=False),
     sa.Column('email', sa.String(length=255), nullable=False),
-    sa.Column('city', sa.String(length=50), nullable=True),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('region', sa.String(length=50), nullable=True),
     sa.Column('country', sa.String(length=50), nullable=True),
+    sa.Column('profile_img', sa.String(length=200), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.Column('hashed_password', sa.String(length=255), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -51,7 +52,7 @@ def upgrade():
     sa.Column('country', sa.String(length=50), nullable=False),
     sa.Column('region', sa.String(length=50), nullable=True),
     sa.Column('city', sa.String(length=50), nullable=True),
-    sa.Column('visitedAt', sa.String(), nullable=True),
+    sa.Column('visited', sa.Boolean(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -59,6 +60,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE locations SET SCHEMA {SCHEMA};")
+
     # ### end Alembic commands ###
 
 

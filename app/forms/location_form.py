@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, FloatField, IntegerField
+from wtforms import StringField, FloatField, IntegerField, BooleanField
 from wtforms.validators import DataRequired, Optional, Length
 
 class LocationForm(FlaskForm):
@@ -13,4 +13,4 @@ class LocationForm(FlaskForm):
     country = StringField('Country', validators=[DataRequired()])
     region = StringField('Region', validators=[Optional()])
     city = StringField('City', validators=[DataRequired()])
-    visitedAt = StringField('VisitedAt', validators=[Optional()])
+    visited = BooleanField('Visited', validators=[Optional()])
