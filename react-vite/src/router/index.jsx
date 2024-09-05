@@ -26,9 +26,13 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path:"/home",
+        path:"/profile",
         element:<ProfilePage />
       },
+      // {
+      //   path:"/edit-profile",
+      //   element:<UpdateProfilePage />
+      // },
       // {
       //   path:"/history",
       //   element:<History />

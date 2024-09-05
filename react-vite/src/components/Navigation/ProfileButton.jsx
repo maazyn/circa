@@ -6,10 +6,10 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
-import { IoLogOut } from "react-icons/io5";
-import { FaUserEdit } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
-import { FaHistory } from "react-icons/fa";
+import { TbUserEdit } from "react-icons/tb";
+import { RiHistoryLine } from "react-icons/ri";
+import { AiOutlineSetting } from "react-icons/ai";
+import { RiLogoutBoxRLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 function ProfileButton() {
@@ -55,34 +55,34 @@ function ProfileButton() {
         <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-            <a className="user-info" href="/home">
+            <a className="user-info" href="/profile">
               <img className="user-info-image" src={user.profile_img} />
               <p  className="user-info-name" >{user.first_name} {user.last_name}</p>
             </a>
               <hr></hr>
 
-              <a href="/home" class="profile-menu-link">
-                <div className="profile-menu-icon"><FaUserEdit /></div>
+              <a href="/edit-profile" class="profile-menu-link">
+                <div className="profile-menu-icon"><TbUserEdit /></div>
                 <p>Edit Profile</p>
-                <span>></span>
+                <span>&gt;</span>
               </a>
 
               <a href="/history" class="profile-menu-link">
-                <div className="profile-menu-icon"><FaHistory /></div>
+                <div className="profile-menu-icon"><RiHistoryLine /></div>
                 <p>History</p>
-                <span>></span>
+                <span>&gt;</span>
               </a>
 
               <a href="/settings" class="profile-menu-link">
-                <div className="profile-menu-icon"><IoMdSettings /></div>
+                <div className="profile-menu-icon"><AiOutlineSetting /></div>
                 <p>Settings</p>
-                <span>></span>
+                <span>&gt;</span>
               </a>
 
               <a onClick={logout} class="profile-menu-link">
-                <div className="profile-menu-icon"><IoLogOut /></div>
+                <div className="profile-menu-icon"><RiLogoutBoxRLine /></div>
                 <p>Logout</p>
-                <span>></span>
+                <span>&gt;</span>
               </a>
 
               {/* <div>

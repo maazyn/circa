@@ -30,9 +30,7 @@ nav > input {
 .navLeft {
   /* flex: 1; */
   justify-content: flex-start;
-  width: 200px;
-}
-.logo{
+  width: 190px;
 }
 .nav-app-logo {
   width: 55px;
@@ -80,7 +78,7 @@ nav > input {
 
 .navRight{
   /* flex: 0.4; */
-  width: 200px;
+  width: 190px;
   /* max-width: 200px; */
   /* min-width: 100px; */
   justify-content: flex-end;
@@ -133,8 +131,8 @@ nav > input {
   background-color: rgb(246, 246, 246);
   border-radius: 6px;
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.4);
-  padding: 7px 0 5px;
-  width: 200px;
+  padding: 8px 0 10px;
+  width: 190px;
   height: 270px;
   z-index: 1;
   color: rgb(255, 253, 253);
@@ -202,6 +200,20 @@ nav > input {
   align-items: center;
   justify-content: center;
 }
+.pm-link > div > p{
+  display: flex;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+  margin: 12px 0;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid red;
+}
+.pm-icon {
+  border: 3px solid red;
+
+}
 .profile-menu-link p{
   width: 100%;
   color: black;
@@ -209,16 +221,16 @@ nav > input {
   justify-content: center;
 }
 .profile-menu-icon {
-  width: 30px;
+  width: 17px;
   background-color: transparent;
   color: black;
   padding: 8px;
-  margin: 0 13px;
+  margin: 0 15px;
   border-radius: 50%;
 }
 .profile-menu-link span {
   font-size: 12px;
-  margin-right: 16px;
+  margin-right: 21px;
   transition: transform 0.5s;
 }
 /* .profile-dropdown button {
