@@ -6,36 +6,41 @@ import "./SignupForm.css";
 
 function SignupFormModal() {
   const dispatch = useDispatch();
-  const [first_name, setFname] = useState("");
-  const [last_name, setLname] = useState("");
-  const [city, setCity] = useState("");
-  const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    first_name: '',
+    last_name: '',
+    username: '',
+    email: '',
+    city: '',
+    region: '',
+    country: '',
+    profile_img: '',
+    password: '',
+  });
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    if (password !== confirmPassword) {
+    if (formData.password !== confirmPassword) {
       return setErrors({
         confirmPassword:
           "Confirm Password field must be the same as the Password field",
       });
     }
 
-    const serverResponse = await dispatch(
-      thunkSignup({
-        first_name,
-        last_name,
-        city,
-        email,
-        username,
-        password,
-      })
-    );
+    const serverResponse = await dispatch(thunkSignup(formData));
 
     if (serverResponse) {
       setErrors(serverResponse);
@@ -45,16 +50,19 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div className="modal-content">
       <h1>Sign Up</h1>
       {errors.server && <p>{errors.server}</p>}
-      <form onSubmit={handleSubmit}>
+      <form className="form-container" onSubmit={handleSubmit}>
+
         <label>
           First Name
           <input
+          className="input-field"
             type="text"
-            value={first_name}
-            onChange={(e) => setFname(e.target.value)}
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
             required
           />
         </label>
@@ -63,31 +71,25 @@ function SignupFormModal() {
         <label>
           Last Name
           <input
+          className="input-field"
             type="text"
-            value={last_name}
-            onChange={(e) => setLname(e.target.value)}
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
             required
           />
         </label>
         {errors.last_name && <p>{errors.last_name}</p>}
 
-        <label>
-          City
-          <input
-            type="text"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            required
-          />
-        </label>
-        {errors.city && <p>{errors.city}</p>}
 
         <label>
           Email
           <input
+          className="input-field"
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
             required
           />
         </label>
@@ -96,20 +98,72 @@ function SignupFormModal() {
         <label>
           Username
           <input
+          className="input-field"
             type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            name="username"
+            value={formData.username}
+            onChange={handleChange}
             required
           />
         </label>
         {errors.username && <p>{errors.username}</p>}
 
         <label>
+          City
+          <input
+          className="input-field"
+            type="text"
+            name="city"
+            value={formData.city}
+            onChange={handleChange}
+          />
+        </label>
+        {errors.city && <p>{errors.city}</p>}
+
+        <label>
+          Region
+          <input
+          className="input-field"
+            type="text"
+            name="region"
+            value={formData.region}
+            onChange={handleChange}
+          />
+        </label>
+        {errors.region && <p>{errors.region}</p>}
+
+        <label>
+          Country
+          <input
+          className="input-field"
+            type="text"
+            name="country"
+            value={formData.country}
+            onChange={handleChange}
+          />
+        </label>
+        {errors.country && <p>{errors.country}</p>}
+
+        <label>
+          Profile Image Url
+          <input
+          className="input-field"
+            type="text"
+            name="profile_img"
+            value={formData.profile_img}
+            onChange={handleChange}
+          />
+        </label>
+        {errors.profile_img && <p>{errors.profile_img}</p>}
+
+        <label>
           Password
           <input
+          className="input-field"
             type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
             required
           />
         </label>
@@ -118,6 +172,7 @@ function SignupFormModal() {
         <label>
           Confirm Password
           <input
+          className="input-field"
             type="password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
@@ -126,9 +181,9 @@ function SignupFormModal() {
         </label>
         {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
 
-        <button type="submit">Sign Up</button>
+        <button className="form-button" type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

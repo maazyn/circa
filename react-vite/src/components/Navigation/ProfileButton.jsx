@@ -6,12 +6,18 @@ import { thunkLogout } from "../../redux/session";
 import OpenModalMenuItem from "./OpenModalMenuItem";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
+import { IoLogOut } from "react-icons/io5";
+import { FaUserEdit } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
+import { FaHistory } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function ProfileButton() {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
   const user = useSelector((store) => store.session.user);
   const ulRef = useRef();
+  const navigate = useNavigate();
 
   const toggleMenu = (e) => {
     e.stopPropagation(); // Keep from bubbling up to document and triggering closeMenu
@@ -43,20 +49,45 @@ function ProfileButton() {
   return (
     <>
       <button className="profileButton"onClick={toggleMenu}>
-        <CgProfile />
+        {user && user.profile_img.length > 1 ? ( <img className="profile-nav-image" src={user.profile_img}  />) : (<CgProfile />)} {/*if user image null, default to generic profile button*/}
       </button>
       {showMenu && (
-        <ul className={"profile-dropdown"} ref={ulRef}>
+        <div className={"profile-dropdown"} ref={ulRef}>
           {user ? (
             <>
-              <img src={user.profile_img}/>
-              <li>{user.first_name} {user.last_name}</li>
+            <a className="user-info" href="/home">
+              <img className="user-info-image" src={user.profile_img} />
+              <p  className="user-info-name" >{user.first_name} {user.last_name}</p>
+            </a>
               <hr></hr>
-              <li>{user.username}</li>
-              <li>{user.email}</li>
-              <li>
+
+              <a href="/home" class="profile-menu-link">
+                <div className="profile-menu-icon"><FaUserEdit /></div>
+                <p>Edit Profile</p>
+                <span>></span>
+              </a>
+
+              <a href="/history" class="profile-menu-link">
+                <div className="profile-menu-icon"><FaHistory /></div>
+                <p>History</p>
+                <span>></span>
+              </a>
+
+              <a href="/settings" class="profile-menu-link">
+                <div className="profile-menu-icon"><IoMdSettings /></div>
+                <p>Settings</p>
+                <span>></span>
+              </a>
+
+              <a onClick={logout} class="profile-menu-link">
+                <div className="profile-menu-icon"><IoLogOut /></div>
+                <p>Logout</p>
+                <span>></span>
+              </a>
+
+              {/* <div>
                 <button onClick={logout}>Log Out</button>
-              </li>
+              </div> */}
             </>
           ) : (
             <>
@@ -72,7 +103,7 @@ function ProfileButton() {
               />
             </>
           )}
-        </ul>
+        </div>
       )}
     </>
   );

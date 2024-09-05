@@ -2,8 +2,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProfileButton from "./ProfileButton";
 import { useSelector } from "react-redux";
-import { IoMdSettings } from "react-icons/io";
-import { VscHistory } from "react-icons/vsc";
+// import { IoMdSettings } from "react-icons/io";
+import { MdAddToPhotos } from "react-icons/md";
 import { FaTemperatureArrowUp } from "react-icons/fa6";
 import { FaTemperatureArrowDown } from "react-icons/fa6";
 import { FaCloudRain } from "react-icons/fa6";
@@ -63,11 +63,11 @@ function Navigation() {
       <div className="navRight" >
       {sessionUser && (
         <>
-          <div>
+          {/* <div>
             <IoMdSettings className="settings-history-logos" onClick={() => navigate("/settings")} />
-          </div>
+          </div> */}
           <div>
-            <VscHistory className="settings-history-logos" onClick={() => navigate("/history")} />
+            <MdAddToPhotos className="history-logo" onClick={() => navigate("/collections")} />
           </div>
         </>
       )}

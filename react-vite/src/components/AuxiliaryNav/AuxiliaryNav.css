@@ -6,14 +6,18 @@ nav {
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* border: solid orange 3px; */
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     /* margin: 10px 80px 10px 80px; */
+    padding: 0 1px 0 15px;
+    box-sizing: border-box;
     border-radius: 7px;
     height: 40px;
-    background-color: rgb(142, 135, 135);
-    gap: 30%;
+    background-color: rgb(168, 159, 159);
+    /* gap: 30%; */
     width: 100%;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
+    border: 0.5px solid rgb(168, 168, 168);
 }
 .axnavContainer .axnavLeft, .axnavContainer .axnavRight{
     width: 97%;
@@ -26,32 +30,35 @@ nav {
     display: flex;
     flex-direction: row;
     grid-template: 3fr 1fr;
-    padding-left: 11px;
+    /* padding-left: 11px; */
     width: 50%;
     gap: 10px;
+    /* padding-top: 2px; */
+    /* border: 0.5px solid rgb(168, 168, 168); */
 }
 .axnav-search {
     flex-grow: 3;
     border: none;
     border-radius: 5px;
-    height: 27px;
-    box-sizing: border-box;
-    /* height: 20px; */
+    height: 25px;
     max-width: 300px;
 }
 #search-icon {
     display: flex;
     align-self: center;
+    color: white;
+    font-weight: bold;
 }
 #filter-icon {
     display: flex;
-    /* flex-grow: 0.5; */
+    color: rgb(163, 163, 163);
     background-color: white;
     border-radius: 5px;
     height: 21px;
     width: auto;
     align-items: center;
     align-self: center;
+
 }
 #filter-icon-container {
     display: flex;
@@ -61,13 +68,15 @@ nav {
     background-color: white;
     border-radius: 5px;
 }
+#sky-icon {
+    color: rgb(0, 0, 0);
+}
 .axnavRight {
-    display: grid;
-    /* grid-area: right; */
-    flex-grow: 1;
-    /* justify-content: flex-end; */
+    display: flex;
+    justify-content: flex-end;
     width: 50%;
     gap: 10px;
+
 }
 
 
@@ -75,11 +84,13 @@ nav {
     display: flex;
     flex-direction: row;
     border-radius: 7px;
-    gap: 5px;
-
-
+    gap: 6px;
+    flex-grow: 0.5;
+    max-width: 500px;
 }
 .axnavButtons button, #sky-icon {
+    /* box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.3);
+    border: 0.5px solid rgb(168, 168, 168); */
     height: 27px;
     display: flex;
     flex-direction: row;
@@ -87,8 +98,9 @@ nav {
     border-radius: 5px;
     justify-content: center;
     align-items: center;
-
+    color: rgb(15, 15, 15);
     width: 100%;
+    min-width: 55px;
     box-sizing: border-box;
     border: none;
 }
