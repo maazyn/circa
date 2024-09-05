@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import {  NavLink } from "react-router-dom";
 import { fetchCurrUserLocations, editLocation, removeLocation } from "../../redux/locations";
 import OpenModalButton from "../OpenModalButton";
-import ProfileUpdateModal from "../ProfileUpdateModal";
+import ProfileUpdateModal from "../UpdateProfilePage";
 import LocationCard from "./LocationCard";
 // import CollectionCard from "./CollectionCard";
 import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";

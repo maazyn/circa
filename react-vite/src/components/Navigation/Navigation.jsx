@@ -2,6 +2,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import ProfileButton from "./ProfileButton";
 import { useSelector } from "react-redux";
+import OpenModalMenuItem from "./OpenModalMenuItem";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
+
 // import { IoMdSettings } from "react-icons/io";
 import { MdAddToPhotos } from "react-icons/md";
 import { FaTemperatureArrowUp } from "react-icons/fa6";
@@ -33,9 +37,9 @@ function Navigation() {
   };
 
 
-  // useEffect(() => {
-  //   fetchWeatherData();
-  // }, [])
+  useEffect(() => {
+    if (sessionUser) fetchWeatherData();
+  }, [])
 
   return (
     <nav className="navContainer">
@@ -45,33 +49,47 @@ function Navigation() {
         </NavLink>
       </div>
 
-      <div className="navCenter">
-        {sessionUser ? (
-          <div className="weather-data" >
-            <div className="weather-icons-high"><FaTemperatureArrowUp /> </div>
-            <p>{weatherData?.timelines.daily[0].values["temperatureMax"] || 'N/A'}°C</p>
-            <div className="weather-icons-low"><FaTemperatureArrowDown /> </div>
-            <p>{weatherData?.timelines.daily[0].values["temperatureMin"] || 'N/A'}°C</p>
-            <div className="weather-icons-rain"><FaCloudRain /> </div>
-            <p>{weatherData?.timelines.daily[0].values["precipitationProbabilityAvg"] || 'N/A'}%</p>
-          </div>
-        ) : (
-          null
-        )}
-      </div>
+      {sessionUser ? (
+        <div className="navCenter">
+            <div className="weather-data" >
+              <div className="weather-icons-high"><FaTemperatureArrowUp /> </div>
+              <p>{weatherData?.timelines.daily[0].values["temperatureMax"] || 'N/A'}°C</p>
+              <div className="weather-icons-low"><FaTemperatureArrowDown /> </div>
+              <p>{weatherData?.timelines.daily[0].values["temperatureMin"] || 'N/A'}°C</p>
+              <div className="weather-icons-rain"><FaCloudRain /> </div>
+              <p>{weatherData?.timelines.daily[0].values["precipitationProbabilityAvg"] || 'N/A'}%</p>
+            </div>
+        </div>
+      ) : (
+        null
+      )}
 
       <div className="navRight" >
-      {sessionUser && (
-        <>
-          {/* <div>
-            <IoMdSettings className="settings-history-logos" onClick={() => navigate("/settings")} />
-          </div> */}
-          <div>
-            <MdAddToPhotos className="history-logo" onClick={() => navigate("/collections")} />
+        {sessionUser ? (
+          <>
+            {/* <div>
+              <IoMdSettings className="settings-history-logos" onClick={() => navigate("/settings")} />
+            </div> */}
+            <div>
+              <MdAddToPhotos className="history-logo" onClick={() => navigate("/collections")} />
+            </div>
+            <ProfileButton />
+          </>
+        ) : (
+          <div className="nav-user-menu">
+            <OpenModalMenuItem
+              itemText="Log In"
+              // onItemClick={closeMenu}
+              modalComponent={<LoginFormModal />}
+            />
+            <p>/</p>
+            <OpenModalMenuItem
+              itemText="Sign Up"
+              // onItemClick={closeMenu}
+              modalComponent={<SignupFormModal />}
+            />
           </div>
-        </>
-      )}
-        <ProfileButton />
+        )}
       </div>
   </nav>
   );
