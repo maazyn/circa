@@ -1,18 +1,20 @@
+import { IoIosCheckmarkCircle } from "react-icons/io";
 import './ProfilePage.css'
 
-function LocationCard({location}) {
-
-    if (!location) return (<p>Loading...</p>)
+function LocationCard({theLocation}) {
+    console.log(theLocation)
+    if (!theLocation) return (<p>Loading...</p>)
     return (
-        <div key={location.id}>
-            <div className="location-card" >
-                <div className="location-data-container">
-                <p className="location-title">{location.title}</p>
-                <p className="location-detail">City: {location.city}</p>
-                <p className="location-detail">Country: {location.country}</p>
-                <p className="location-detail">Type: {location.type}</p>
-                <p className="location-detail">Visited?: {location.visitedAt || null} </p>
-                </div>
+        <div className="location-card" key={theLocation.id} >
+            <div className="location-up">
+                {/* <p className="location-title">{theLocation.title}</p> */}
+                {theLocation.region? <p className="location-detail">Region: {theLocation.region}</p> : null}
+                <p className="location-detail">{theLocation.city}</p>
+                <p className="theLocation-detail">{theLocation.country}</p>
+            </div>
+            <div className="location-down">
+                {theLocation.type ? <p className="theLocation-detail">Type: {theLocation.type}</p> : null}
+                {theLocation.visited && theLocation.visited.length > 1 ? ( <IoIosCheckmarkCircle className="theLocation-detail"/>) : null}
             </div>
         </div>
     )

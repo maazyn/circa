@@ -17,7 +17,7 @@ class Location(db.Model):
     country = db.Column(db.String(50), nullable=False)
     region = db.Column(db.String(50))
     city = db.Column(db.String(50))
-    visitedAt = db.Column(db.String())
+    visited = db.Column(db.Boolean, default=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
 
@@ -38,7 +38,7 @@ class Location(db.Model):
             'country': self.country,
             'region': self.region,
             'city': self.city,
-            'visitedAt': self.visitedAt,
+            'visited': self.visited,
             'created_at': self.created_at,
             'updated_at': self.updated_at
             # 'locations': [location.to_dict() for location in self.locations],

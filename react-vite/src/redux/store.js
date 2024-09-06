@@ -10,7 +10,7 @@ import locationReducer from "./locations"
 
 const rootReducer = combineReducers({
   session: sessionReducer,
-  location: locationReducer,
+  locations: locationReducer,
 });
 
 let enhancer;

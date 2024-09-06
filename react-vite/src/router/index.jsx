@@ -3,6 +3,7 @@ import LoginFormPage from '../components/LoginFormPage';
 import SignupFormPage from '../components/SignupFormPage';
 import LandingPage from "../components/LandingPage"
 import ProfilePage from "../components/ProfilePage"
+import UpdateProfilePage from '../components/UpdateProfilePage';
 // import History from "../components/History"
 // import LocationDetails from "../components/LocationDetails"
 // import CollectionDetails from "../components/CollectionDetails"
@@ -26,8 +27,12 @@ export const router = createBrowserRouter([
         element: <SignupFormPage />,
       },
       {
-        path:"/home",
+        path:"/profile",
         element:<ProfilePage />
+      },
+      {
+        path:"/edit-profile",
+        element:<UpdateProfilePage />
       },
       // {
       //   path:"/history",

@@ -51,9 +51,16 @@ def sign_up():
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         user = User(
+            first_name=form.data['first_name'],
+            last_name=form.data['last_name'],
             username=form.data['username'],
             email=form.data['email'],
-            password=form.data['password']
+            password=form.data['password'],
+            city=form.data['city'],
+            region=form.data.get('region', ''),
+            country=form.data.get('country', ''),
+            profile_img=form.data.get('profile_img', ''),
+
         )
         db.session.add(user)
         db.session.commit()
@@ -88,6 +95,7 @@ def update_profile():
         user.city = form.data.get('city', user.city)
         user.region = form.data.get('region', user.region)
         user.country = form.data.get('country', user.country)
+        user.profile_img =form.data.get('profile_img', user.profile_img)
 
         db.session.commit()
         return user.to_dict()

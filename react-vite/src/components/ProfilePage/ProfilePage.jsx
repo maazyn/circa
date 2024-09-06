@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import {  NavLink } from "react-router-dom";
 import { fetchCurrUserLocations, editLocation, removeLocation } from "../../redux/locations";
 import OpenModalButton from "../OpenModalButton";
-import ProfileUpdateModal from "../ProfileUpdateModal";
+import ProfileUpdateModal from "../UpdateProfilePage";
 import LocationCard from "./LocationCard";
 // import CollectionCard from "./CollectionCard";
 import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";
@@ -13,7 +13,9 @@ function ProfilePage({mode, setMode}) {
     const dispatch = useDispatch();
 
     const sessionUser = useSelector((state) => state.session.user);
-    let locations = useSelector((state) => state.location);
+    const locations = useSelector((state) => state.locations);
+    let userLocations = Object.values(locations).filter((loc) => loc.user_id === sessionUser.id);
+
 
     let [selectedLocationId, setSelectedLocationId] = useState(null);
     // let [selectedCollectionId, setSelectedCollectionId] = useState(null);
@@ -24,6 +26,8 @@ function ProfilePage({mode, setMode}) {
             // dispatch(fetchCurrUserCollections());
         }
     }, [dispatch, sessionUser]);
+
+    console.log("TEST:", userLocations[0]);
 
     const handleLocationClick = (locId) => {
         if (locId !== selectedLocationId) {
@@ -64,10 +68,10 @@ function ProfilePage({mode, setMode}) {
                     <h3 className="leftHeader">Saved Locations</h3>
                 </div>
                 <div className="locationCards">
-                    {Object.values(locations).map(location => (
-                            <div className="location-items" key={location.id}>
-                                <LocationCard locationData={location}/>
-                            </div>
+                    {userLocations.map(location => (
+                        <div className="location-items" key={location.id}>
+                            <LocationCard theLocation={location}/>
+                        </div>
                     ))}
 
                 </div>
