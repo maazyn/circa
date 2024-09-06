@@ -38,8 +38,10 @@ function Navigation() {
 
 
   useEffect(() => {
-    if (sessionUser) fetchWeatherData();
-  }, [])
+    if (sessionUser && !weatherData) {
+      fetchWeatherData();
+    }
+  }, [sessionUser, weatherData])
 
   return (
     <nav className="navContainer">
