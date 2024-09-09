@@ -57,8 +57,12 @@ function SkyComponent() {
 
 
     return (
-        <div className="scContainer">
-            <h2 className="sc-title">Star-Gazing Conditions Tracker</h2>
+        <div className="scContainer"
+            style={{
+                backgroundImage:"url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMTgtc2FzaS0wMV8xLmpwZw.jpg')",
+                backgroundPosition: "center"
+            }}>
+            <h2 className="sc-title">Star-Gazing Conditions - {userLoc}</h2>
             <section className="scTop">
                 <div className="sc-left">
                     <p>You are looking at data for {userLoc}</p>
@@ -70,7 +74,7 @@ function SkyComponent() {
                 </div>
             </section>
 
-            <section className="scBottom">
+            <section className="scBottom" >
                     <img className="sky-data-img" src={skyData?.url} />
                     <small>Credit: 7timer</small>
                 {/* <div className="sky-data">
