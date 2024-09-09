@@ -66,13 +66,15 @@
 }
 #sky-icon {
     color: rgb(0, 0, 0);
+    cursor: pointer;
+    width: 10%;
 }
 .axnavRight {
     display: flex;
     justify-content: flex-end;
     width: 50%;
     gap: 10px;
-
+    height: 27px;
 }
 
 
@@ -83,6 +85,9 @@
     gap: 6px;
     flex-grow: 0.5;
     max-width: 500px;
+    /* border: black 2px solid; */
+
+    /* box-sizing: border-box; */
 }
 .axnavButtons button, #sky-icon {
     /* box-shadow: 0px 0px 1px 0px rgba(0, 0, 0, 0.3);

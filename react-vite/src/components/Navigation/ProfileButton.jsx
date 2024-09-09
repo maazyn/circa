@@ -62,25 +62,25 @@ function ProfileButton() {
               </a>
               <hr id="user-info-hr"></hr>
 
-              <a href="/edit-profile" class="profile-menu-link">
+              <a href="/edit-profile" className="profile-menu-link">
                 <div className="profile-menu-icon"><TbUserEdit /></div>
                 <p>Edit Profile</p>
                 <span>&gt;</span>
               </a>
 
-              <a href="/history" class="profile-menu-link">
+              <a href="/history" className="profile-menu-link">
                 <div className="profile-menu-icon"><RiHistoryLine /></div>
                 <p>History</p>
                 <span>&gt;</span>
               </a>
 
-              <a href="/settings" class="profile-menu-link">
+              <a href="/settings" className="profile-menu-link">
                 <div className="profile-menu-icon"><AiOutlineSetting /></div>
                 <p>Settings</p>
                 <span>&gt;</span>
               </a>
 
-              <a onClick={logout} class="profile-menu-link">
+              <a onClick={logout} className="profile-menu-link">
                 <div className="profile-menu-icon"><RiLogoutBoxRLine /></div>
                 <p>Logout</p>
                 <span>&gt;</span>

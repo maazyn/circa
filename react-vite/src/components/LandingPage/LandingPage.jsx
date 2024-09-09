@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import "./LandingPage.css";
 // import MapCard from "../MapCard/MapCard";
 import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";
 
-import LocalComponent from "./LocalComponent";
-import SkyComponent from "./SkyComponent";
-import GlobalComponent from "./GlobalComponent";
-
+import LocalComponent from "../ScopeComponents/LocalComponent";
+import SkyComponent from "../ScopeComponents/SkyComponent";
+import GlobalComponent from "../ScopeComponents/GlobalComponent";
+import FooterNav from "../FooterNav/FooterNav";
 
 function LandingPage() {
   const [mode, setMode] = useState("Local");
@@ -25,6 +25,7 @@ function LandingPage() {
         {mode === "Global" && <GlobalComponent />}
       </div>
 
+      <FooterNav/>
     </>
   );
 }

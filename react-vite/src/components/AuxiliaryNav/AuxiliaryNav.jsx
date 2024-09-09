@@ -26,10 +26,33 @@ function AuxiliaryNav({ mode, setMode }) {
 
         <div className="axnavRight" >
           <div className="axnavButtons" mode={mode}>
-            <button onClick={() => setMode("Local")}>Local</button>
-            <WiStars id="sky-icon" onClick={() => setMode("Sky")}/>
+            <button
+              onClick={() => setMode("Local")}
+              style={{
+                boxShadow: mode === "Local" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
+                backgroundColor: mode === "Local" ? "white": "#a89a9a",
+                color: mode === "Local" ? "black" : "white"
+              }}
+            >Local</button>
+
+            <WiStars
+              id="sky-icon" onClick={() => setMode("Sky")}
+              style={{
+                boxShadow: mode === "Sky" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
+                backgroundColor: mode === "Sky" ? "white": "#a89a9a",
+                color: mode === "Sky" ? "black" : "white"
+
+              }}
+            />
+
               {/* note to self: dont forget to set up scope state management in LandingPage */}
-            <button onClick={() => setMode("Global")}>Global</button>
+            <button
+              onClick={() => setMode("Global")}
+              style={{
+                boxShadow: mode === "Global" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
+                backgroundColor: mode === "Global" ? "white": "#a89a9a",
+                color: mode === "Global" ? "black" : "white"
+              }}            >Global</button>
           </div>
         </div>
       </div>
