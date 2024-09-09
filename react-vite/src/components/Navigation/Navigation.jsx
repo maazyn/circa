@@ -37,17 +37,18 @@ function Navigation() {
   };
 
 
-  useEffect(() => {
-    if (sessionUser && !weatherData) {
-      fetchWeatherData();
-    }
-  }, [sessionUser, weatherData])
+  // useEffect(() => {
+  //   if (sessionUser && !weatherData) {
+  //     fetchWeatherData();
+  //   }
+  // }, [sessionUser, weatherData])
 
   return (
     <nav className="navContainer">
       <div className="navLeft">
         <NavLink className={"logo"} to="/">
           <img className="nav-app-logo" src="/images/circa-logo.png" alt="Circa-Logo" />
+          {/* <span>Circa</span> */}
         </NavLink>
       </div>
 

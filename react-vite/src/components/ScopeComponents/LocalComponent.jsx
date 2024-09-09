@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "./LandingPage.css";
+import "./ScopeComponents.css";
 import MapCard from "../MapCard/MapCard";
 
 function LocalComponent() {
