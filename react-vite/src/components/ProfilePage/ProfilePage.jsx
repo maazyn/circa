@@ -7,7 +7,7 @@ import ProfileUpdateModal from "../UpdateProfilePage";
 import LocationCard from "./LocationCard";
 // import CollectionCard from "./CollectionCard";
 import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";
-
+import FooterNav from "../FooterNav/FooterNav";
 
 function ProfilePage({mode, setMode}) {
     const dispatch = useDispatch();
@@ -97,6 +97,7 @@ function ProfilePage({mode, setMode}) {
 
 
         </div>
+        <FooterNav/>
         </>
     );
 }

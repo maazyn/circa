@@ -7,6 +7,7 @@ function SkyComponent() {
     const userLoc = user.city
     const [loc, setLoc] = useState(userLoc)
     const [skyData, setSkyData] = useState(null);
+
     // const [error, setError] = useState(null);
     // console.log(userLoc);
     // const dispatch = useDispatch();
@@ -70,9 +71,10 @@ function SkyComponent() {
             </section>
 
             <section className="scBottom">
-                <div className="sky-data">
                     <img className="sky-data-img" src={skyData?.url} />
-                </div>
+                    <small>Credit: 7timer</small>
+                {/* <div className="sky-data">
+                </div> */}
 
                     {/* {"Time: " + new Date().toLocaleTimeString()}
                      <li>{`Cloud cover: ${skyData?.dataseries[0].cloudcover}`}</li>

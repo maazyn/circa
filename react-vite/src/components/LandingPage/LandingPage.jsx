@@ -7,7 +7,7 @@ import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";
 import LocalComponent from "../ScopeComponents/LocalComponent";
 import SkyComponent from "../ScopeComponents/SkyComponent";
 import GlobalComponent from "../ScopeComponents/GlobalComponent";
-
+import FooterNav from "../FooterNav/FooterNav";
 
 function LandingPage() {
   const [mode, setMode] = useState("Local");
@@ -25,6 +25,7 @@ function LandingPage() {
         {mode === "Global" && <GlobalComponent />}
       </div>
 
+      <FooterNav/>
     </>
   );
 }
