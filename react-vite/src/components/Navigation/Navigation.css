@@ -7,16 +7,16 @@
   background-color: transparent;
   } */
 
-nav {
-  margin: 10px 80px 10px 80px;
-}
+/* nav {
+  margin: 20px 80px 10px 80px;
+} */
   .navContainer {
   /* gap: 30%; */
   /* padding-top: 10px;  */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 35px;
+  height: 40px;
   border-radius: 7px;
   background-color: transparent;
   margin: 20px 80px 10px 80px;

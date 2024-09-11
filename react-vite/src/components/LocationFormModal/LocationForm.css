@@ -1,10 +1,10 @@
-.review-form-parent {
+.location-form-parent {
+    width: 450px;
     max-width: 800px;
     min-width: 350px;
-    width: auto;
     min-height: 200px;
     margin: auto;
-    padding: 20px;
+    padding: 30px 60px 40px 60px;
     background-color: #f9f9f9;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -13,99 +13,122 @@
 
 }
 
-.review-form-heading {
-    color: black;
-}
-
-#delete-subheading {
-    font-size: 20px;
-    color: red;
+.location-form-heading {
+    /* color: black; */
 }
 
 
-.ADalbumArea button {
-    background-color: white;
-    color: black;
-    font-size: 16px;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.ADalbumArea button:active {
-    background-color: black;
-    color: white;
-    box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.4);
-}
-
-.review-buttons {
+.location-post-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
 }
 
-.review-buttons button{
-    display: inline-flex;
-    margin-bottom: 10px;
-    width: 100%;
-    height: auto;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
-}
 
 
-.submit-button, .cancel-button {
-    width: 45%;
-    height: 30px;
-    margin-top: 10px;
-    border-radius: 0%;
-    border: 1px solid rgb(13, 0, 0);
-    box-shadow: 1.5px 1.5px 0.5px 0px rgba(0, 0, 0, 1);
-}
 
-.submit-button:hover, .cancel-button:hover {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-}
-
-
-.review-form-body {
-    display: flex;
-    flex-direction: column;
+.location-form-parent {
+    /* border-radius: 10px; */
     /* width: 800px; */
 
     /* justify-content: space-between; */
     /* margin-top: 20px; */
 }
 
-.review-form-body label {
+/* .location-form-parent label {
     display: flex;
     flex-direction: column;
-}
+} */
 
-.review-form-body textarea {
+/* .location-form-parent checkbox {
     border-radius: 3px;
     height: 80px;
 
+} */
+.PU-name {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
-
-.reviews-list button {
-    background-color: transparent;
-    color: white;
-    border: 0.5px solid white ;
-    /* width: 100%; */
-    font-size: 11px;
-    border-radius: 10px;
+.title-input-field {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
-.review-modify-buttons {
-    display: inline-flex;
+.type-input-field {
+    width: 100%;
+    height: auto;
+    padding: 7.2px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.PU-location {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;    width: 100%;
     flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+.city-input-field, .region-input-field, .country-input-field {
+    width: 100%;
+    gap: 10px;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.lat-input-field, .lng-input-field {
+    width: 100%;
+    gap: 10px;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.PU-location-geo {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+#checkbox-input-label {
+    display: flex;
+    width: 100%;
+    /* padding: 8px;
+    margin: 5px 0; */
+    box-sizing: border-box;
+}
+.checkbox-input-field {
     margin-left: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    cursor:pointer;
+    height: auto;
+    width: 15px;
 }
 
-.review-edit-button button:hover {
-    background-color: green;
+.submit-button, .cancel-button {
+    width: 20%;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 50px;
+    border: 1px solid rgb(169, 169, 169);
+    /* box-shadow: 1.5px 1.5px 0.5px 0px rgba(0, 0, 0, 1); */
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    font-weight: bold;
 }
-.review-delete-button button:hover {
-    background-color: red;
+
+.submit-button:hover, .cancel-button:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
 }
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+  }

@@ -36,11 +36,12 @@ function LocationCard({theLocation}) {
         return dispatch(editLocation(updatedLocation));
     }
 
-    console.log(theLocation.visited)
+    // console.log(theLocation.visited)
     return (
         <div className="location-card" key={theLocation.id} >
             <div className="location-up">
-                {/* <p className="location-title">{theLocation.title}</p> */}
+                <p className="location-title">{theLocation.title}</p>
+                <br></br>
                 <p className="location-detail">{theLocation.city}</p>
                 {theLocation.region ? <p className="location-detail">{theLocation.region}</p> : null}
                 <p className="theLocation-detail">{theLocation.country}</p>
@@ -49,19 +50,20 @@ function LocationCard({theLocation}) {
                 {theLocation.type ? <p className="theLocation-detail">Type: {theLocation.type}</p> : null}
 
                 <div className="location-modify-icons">
-                    {theLocation.visited != false ? (
-                        <FaCalendarCheck
-                            className="LU-edit-icon"
-                            onClick={handleChange}
-                            style={{color: "silver"}}
-                            title="Click to mark the location as visited"
-                        />
-                    ): (
+                    {theLocation.visited ? (
                         <FaCalendarCheck
                             className="LU-edit-icon"
                             onClick={handleChange}
                             style={{color: "green"}}
                             title="Click to mark the location as unvisited"
+                        />
+                    ): (
+                        <FaCalendarCheck
+                            className="LU-edit-icon"
+                            onClick={handleChange}
+                            style={{color: "silver"}}
+                            title="Click to mark the location as visited"
+
                         />
                     )}
                     <TiDelete className="LU-delete-icon" onClick={handleDelete}/>

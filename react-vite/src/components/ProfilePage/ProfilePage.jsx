@@ -52,7 +52,7 @@ function ProfilePage({mode, setMode}) {
         <div className="axNav">
             <AuxiliaryNav mode={mode} setMode={setMode} />
         </div>
-        <section className="ppTop">
+        {/* <section className="ppTop">
             <div className="profile-details-container">
                 <div className="profile-username">{sessionUser.username}</div>
                 <div className="edit-profile-button-container">
@@ -62,19 +62,22 @@ function ProfilePage({mode, setMode}) {
                     />
                 </div>
             </div>
-        </section>
+        </section> */}
 
 
         <div className="ppContainer">
             <section className="ppLeft">
-                <div className='leftHeaderContainer'>
-                    <h3 className="leftHeader">Saved Locations</h3>
-                    <OpenModalButton
-                        className="post-location-button"
-                        buttonText="Add New"
-                        modalComponent={<PostLocationModal user={sessionUser} />}
-                    />
+                <div className="ppLeft-top">
+                    <div className='leftHeaderContainer'>
+                        <h3 className="leftHeader">Saved Locations</h3>
+                        <OpenModalButton
+                            className="post-location-button"
+                            buttonText="Add New"
+                            modalComponent={<PostLocationModal user={sessionUser} />}
+                            />
+                    </div>
                 </div>
+
                 <div className="locationCards">
                     {userLocations.map(location => (
                         <div className="location-items" key={location.id}>
@@ -87,13 +90,15 @@ function ProfilePage({mode, setMode}) {
 
 
             <section className="ppRight">
-                <div className='rightHeaderContainer'>
-                    <h3 className="rightHeader">Collections</h3>
-                    <OpenModalButton
-                        className="post-collection-button"
-                        buttonText="Add New"
-                        // modalComponent={<PostCollectionModal user={sessionUser} />}
-                    />
+                <div className="ppRight-top">
+                    <div className='rightHeaderContainer'>
+                        <h3 className="rightHeader">Collections</h3>
+                        <OpenModalButton
+                            className="post-collection-button"
+                            buttonText="Add New"
+                            // modalComponent={<PostCollectionModal user={sessionUser} />}
+                            />
+                    </div>
                 </div>
 
                 {/* <div className='collectionCards'>
