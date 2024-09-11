@@ -37,11 +37,11 @@ function Navigation() {
   };
 
 
-  // useEffect(() => {
-  //   if (sessionUser && !weatherData) {
-  //     fetchWeatherData();
-  //   }
-  // }, [sessionUser, weatherData])
+  useEffect(() => {
+    if (sessionUser && !weatherData) {
+      fetchWeatherData();
+    }
+  }, [sessionUser, weatherData])
 
   return (
     <nav className="navContainer">
@@ -56,11 +56,11 @@ function Navigation() {
         <div className="navCenter">
             <div className="weather-data" >
               <div className="weather-icons-high"><FaTemperatureArrowUp /> </div>
-              <p>{weatherData?.timelines.daily[0].values["temperatureMax"] || 'N/A'}°C</p>
+              <p>{Math.round(weatherData?.timelines.daily[0].values["temperatureMax"]) || 'N/A'}°C</p>
               <div className="weather-icons-low"><FaTemperatureArrowDown /> </div>
-              <p>{weatherData?.timelines.daily[0].values["temperatureMin"] || 'N/A'}°C</p>
+              <p>{Math.round(weatherData?.timelines.daily[0].values["temperatureMin"]) || 'N/A'}°C</p>
               <div className="weather-icons-rain"><FaCloudRain /> </div>
-              <p>{weatherData?.timelines.daily[0].values["precipitationProbabilityAvg"] || 'N/A'}%</p>
+              <p>{Math.round(weatherData?.timelines.daily[0].values["precipitationProbabilityAvg"]) || 'N/A'}%</p>
             </div>
         </div>
       ) : (
