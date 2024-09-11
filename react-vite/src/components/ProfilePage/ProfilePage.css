@@ -11,6 +11,40 @@
     border-radius: 7px;
 }
 
+.headersContainer {
+    display: flex;
+    margin: 0px 80px 0px 80px;
+    flex-direction: row;
+    height: 100px;
+    align-items: center;
+}
+.leftHeaderContainer, .rightHeaderContainer {
+    border: 1px solid grey;
+    height: 100px;
+    width: 80%;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    height: 150px;
+    align-items: center;
+    gap: 0px;
+}
+
+
+.headersContainer div {
+    background-color: rgb(67, 117, 182);
+    height: 70px;
+    width: 15%;
+    min-width: 154px;
+}
+.leftHeaderContainer button, .rightHeaderContainer button{
+    display: flex;
+    justify-content: center;
+    width: 30%;
+    min-width: 80px;
+    background-color: white;
+    border-radius: 40px;
+}
 .ppContainer {
     /* border: 3px solid red; */
     display: flex;
@@ -60,7 +94,7 @@
     align-items: center;
     align-content: center;
     background-color: rgb(227, 226, 226);
-
+    overflow-y: auto;
 }
 
 /* margin: 10px; */
@@ -72,9 +106,13 @@
     height: auto;
     border-radius: 10px;
     background-color: rgb(226, 207, 207);
-
+    overflow-y: auto;
 }
 
+
+
+
+/* Location card  properties */
 .locationCards {
     display: flex;
     flex-wrap: wrap;
@@ -86,8 +124,6 @@
 .location-items {
     width: 90%;
 }
-
-
 .location-card {
     display: flex;
     flex-direction: column;
@@ -141,4 +177,33 @@
 .location-card p {
     /* gap: 15px; */
     color: rgb(103, 102, 102);
+}
+
+.location-modify-icons {
+    /* width: 100%; */
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+    border: 3px solid red;
+    align-items: center;
+}
+.LU-edit-icon {
+    height: 16px;
+    width: auto;
+    transition: 1s;
+}
+.LU-edit-icon:hover {
+    height: 19px;
+}
+
+.LU-delete-icon {
+    height: 25px;
+    width: auto;
+    /* border: 3px solid green; */
+    transition: 1s;
+
+}
+.LU-delete-icon:hover {
+    color: red;
+    height: 28px;
 }
