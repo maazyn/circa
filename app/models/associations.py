@@ -10,4 +10,4 @@ location_collection = db.Table(
 )
 
 if environment == "production":
-        location_collection.schema = SCHEMA
+    location_collection.schema = SCHEMA

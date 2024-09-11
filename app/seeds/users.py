@@ -5,11 +5,31 @@ from sqlalchemy.sql import text
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        first_name="Demo", last_name='User', username='Demo', email='demo@aa.io', password='password', city='Worcester', region='MA', country='US', profile_img='https://t4.ftcdn.net/jpg/01/19/05/71/360_F_119057199_YSS8CAnnkvQCzPhZOj3aYfNsx0CQ41sT.jpg')
+        first_name="Demo",
+        last_name='User',
+        username='Demo',
+        email='demo@aa.io',
+        password='password',
+        city='Worcester',
+        region='MA',
+        country='US',
+        profile_img='https://t4.ftcdn.net/jpg/01/19/05/71/360_F_119057199_YSS8CAnnkvQCzPhZOj3aYfNsx0CQ41sT.jpg')
+
     user_1 = User(
-        first_name="First", last_name='User', username='user1', email='user1@aa.io', password='password', city='Boston')
+        first_name="First",
+        last_name='User',
+        username='user1',
+        email='user1@aa.io',
+        password='password',
+        city='Boston')
+
     user_2 = User(
-        first_name="Second", last_name='User',username='user2', email='user2@aa.io', password='password', city='Los Angeles')
+        first_name="Second",
+        last_name='User',
+        username='user2',
+        email='user2@aa.io',
+        password='password',
+        city='Los Angeles')
 
     db.session.add(demo)
     db.session.add(user_1)
