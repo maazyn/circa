@@ -65,13 +65,14 @@ export const createLocation = (location) => async (dispatch) => {
         if (response.ok) {
             const newLocation = await response.json();
             dispatch(addLocation(newLocation));
-            return newLocation;
+            // return newLocation;
         } else {
             const errors = await response.json();
-            throw errors;
+            return {errors};
         }
     } catch (err) {
-        console.error("Error adding a new location", err);
+        // console.error("Error adding a new location", err);
+        return { errors: ["An unexpected error occurred"] };
     }
 };
 

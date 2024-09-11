@@ -1,14 +1,64 @@
 
 
-.ppTop {
-    margin: 0px 80px 0px 80px;
+/* .ppTop {
     display: flex;
     height: 70px;
-    /* width: 50%; */
+    width: 50%;
     flex-direction: row;
     justify-content: center;
-    border: 3px solid red;
+    margin: 0 auto;
     border-radius: 7px;
+    background-color: rgb(180, 202, 231);
+} */
+
+.ppLeft-top, .ppRight-top {
+    width: 100%;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+.leftHeaderContainer, .rightHeaderContainer {
+    margin: 40px auto 40px auto;
+    display: flex;
+    background-color: rgb(167, 181, 223);
+    box-shadow: 0 2px 2px 0px rgb(0, 0, 0);
+
+    width: 20%;
+    min-width: 150px;
+    height: 32px;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 4px 15px;
+    border-radius: 7px;
+    justify-content: center;
+}
+
+.leftHeader, .rightHeader {
+    padding-top: 20px;
+    padding-bottom: 2px;
+    color: black;
+    margin: auto;
+    height: 50%;
+    align-content: center;
+    letter-spacing: 1px;
+}
+.leftHeaderContainer button, .rightHeaderContainer button{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    min-width: 80px;
+    background-color: white;
+    border-radius: 40px;
+    margin-top: 2px;
+    font-size: 13.5px;
+    font-weight: 500;
+}
+.leftHeaderContainer button:hover, .rightHeaderContainer button:hover {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    box-sizing: border-box;
+    border: 2px solid black;
 }
 
 .ppContainer {
@@ -31,36 +81,20 @@
     box-sizing: border-box;
     /* padding: 10px;  */
 }
-.leftHeaderContainer, .rightHeaderContainer {
-    display: flex;
-    width: 30%;
-    min-width: 135px;
-    margin: 15px auto;
-    padding: 0 10px;
-    height: 38px;
-    /* border: 3px solid red; */
-    border-radius: 7px;
-    margin-bottom: 15px;
-    justify-content: center;
-    background-color: #fffdfd;
-}
-.leftHeader, .rightHeader {
-    color: black;
-    margin: auto;
-    height: 40px;
-    align-content: center;
-}
 .ppLeft {
     /* border: 3px solid red; */
     display: flex;
     flex-direction: column;
     height: auto;
     width: 50%;
-    border-radius: 7px;
+    min-width: 280px;
+    border-radius: 10px;
     align-items: center;
     align-content: center;
     background-color: rgb(227, 226, 226);
-
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+    padding-bottom: 5px;
 }
 
 /* margin: 10px; */
@@ -69,12 +103,20 @@
     display: flex;
     /* border: 3px solid red; */
     width: 50%;
+    min-width: 280px;
     height: auto;
     border-radius: 10px;
     background-color: rgb(226, 207, 207);
+    /* overflow-y: auto; */
+    box-sizing: border-box;
+    padding-bottom: 5px;
 
 }
 
+
+
+
+/* Location card  properties */
 .locationCards {
     display: flex;
     flex-wrap: wrap;
@@ -82,12 +124,16 @@
     justify-content: center;
     overflow-y: scroll hidden;
     height: auto;
+    width: 100%;
+    overflow-y: auto;
+
+    /* margin: 0 80px; */
+    box-sizing: border-box;
 }
 .location-items {
-    width: 90%;
+    width: 100%;
+    /* padding-bottom: 10px; */
 }
-
-
 .location-card {
     display: flex;
     flex-direction: column;
@@ -97,24 +143,25 @@
     padding: 5px;
     border-radius: 8px;
     box-shadow: 0 0px 1px 0.5px rgba(255, 247, 247);
-    height: 70px;
-    width: 100%;
+    height: 60px;
+    /* width: 100%; */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-sizing: border-box;
-
+    margin: 0 70px 0 70px;
+    /* box-sizing: border-box; */
 }
 
-.location-card:hover {
+/* .location-card:hover {
     border: 0.5px solid rgb(211, 211, 211);
     box-shadow: 0px 0px 5px 0.5px rgba(255, 255, 255, 0.4);
     transform: scale(1.05);
-}
+} */
 .location-up, .location-down {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 .location-up {
+    /* padding-top: 5px; */
     display: flex;
     font-size: 14px;
     font-weight: bold;
@@ -122,7 +169,7 @@
     align-items: center;
     gap: 10px;
     text-align: center;
-    height: 20px;
+    height: 30px;
     width: 100%;
 }
 .location-down {
@@ -132,6 +179,7 @@
     align-items: center;
     justify-content: space-around;
     text-align: center;
+    height: 30px;
 }
 .location-detail {
     font-size: 0.95rem;
@@ -141,4 +189,38 @@
 .location-card p {
     /* gap: 15px; */
     color: rgb(103, 102, 102);
+}
+
+.location-modify-icons {
+    /* width: 100%; */
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+    /* border: 2px solid rgb(222, 222, 222); */
+    /* background-color: rgb(244, 244, 244); */
+    border-radius: 10px;
+    align-items: center;
+    padding: 0 5px;
+}
+.LU-edit-icon {
+    height: 16px;
+    width: auto;
+    transition: 100ms;
+    padding: 0 5px;
+}
+.LU-edit-icon:hover {
+    transform: scale(1.1);
+}
+
+.LU-delete-icon {
+    height: 25px;
+    width: auto;
+    /* border: 3px solid green; */
+    transition: 100ms;
+    color: rgb(255, 112, 112);
+
+}
+.LU-delete-icon:hover {
+    transform: scale(1.11);
+    color: red;
 }

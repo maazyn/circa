@@ -1,8 +1,8 @@
 """create users table
 
-Revision ID: 188fe0f7d3f5
+Revision ID: d2f9fe678f82
 Revises:
-Create Date: 2024-09-04 12:06:27.504132
+Create Date: 2024-09-10 21:04:08.450095
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '188fe0f7d3f5'
+revision = 'd2f9fe678f82'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -45,9 +45,9 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('lat', sa.Float(), nullable=False),
-    sa.Column('lng', sa.Float(), nullable=False),
-    sa.Column('type', sa.String(length=50), nullable=True),
+    sa.Column('lat', sa.Float(), nullable=True),
+    sa.Column('lng', sa.Float(), nullable=True),
+    sa.Column('type', sa.String(length=50), nullable=False),
     sa.Column('continent', sa.String(length=50), nullable=True),
     sa.Column('country', sa.String(length=50), nullable=False),
     sa.Column('region', sa.String(length=50), nullable=True),
@@ -59,8 +59,7 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     if environment == "production":
-        op.execute(f"ALTER TABLE locations SET SCHEMA {SCHEMA};")
-
+        op.execute(f"ALTER TABLE location SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 
