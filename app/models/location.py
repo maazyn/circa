@@ -1,4 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
+from .associations import location_collection
 
 class Location(db.Model):
     __tablename__ = 'locations'
@@ -24,6 +25,8 @@ class Location(db.Model):
     # many to one relationship to User
     user = db.relationship('User', back_populates='locations')
 
+    # Associations
+    collections = db.relationship('Collection', secondary='location_collections', back_populates='locations')
 
     def to_dict(self):
         return {
@@ -40,6 +43,6 @@ class Location(db.Model):
             'city': self.city,
             'visited': self.visited,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
-            # 'locations': [location.to_dict() for location in self.locations],
+            'updated_at': self.updated_at,
+            'collections': [collection.to_dict() for collection in self.collections],
         }
