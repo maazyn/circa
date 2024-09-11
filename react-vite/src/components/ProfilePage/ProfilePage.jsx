@@ -65,29 +65,16 @@ function ProfilePage({mode, setMode}) {
         </section>
 
 
-        <section className="headersContainer">
-            <div className='leftHeaderContainer'>
-                <h3 className="leftHeader">Saved Locations</h3>
-                <OpenModalButton
-                    className="post-location-button"
-                    buttonText="Add New"
-                    modalComponent={<PostLocationModal user={sessionUser} />}
-                />
-            </div>
-
-            <div className='rightHeaderContainer'>
-                <h3 className="rightHeader">Collections</h3>
-                <OpenModalButton
-                    className="post-collection-button"
-                    buttonText="Add New"
-                    // modalComponent={<PostCollectionModal user={sessionUser} />}
-                />
-            </div>
-        </section>
-
-
         <div className="ppContainer">
             <section className="ppLeft">
+                <div className='leftHeaderContainer'>
+                    <h3 className="leftHeader">Saved Locations</h3>
+                    <OpenModalButton
+                        className="post-location-button"
+                        buttonText="Add New"
+                        modalComponent={<PostLocationModal user={sessionUser} />}
+                    />
+                </div>
                 <div className="locationCards">
                     {userLocations.map(location => (
                         <div className="location-items" key={location.id}>
@@ -100,14 +87,22 @@ function ProfilePage({mode, setMode}) {
 
 
             <section className="ppRight">
+                <div className='rightHeaderContainer'>
+                    <h3 className="rightHeader">Collections</h3>
+                    <OpenModalButton
+                        className="post-collection-button"
+                        buttonText="Add New"
+                        // modalComponent={<PostCollectionModal user={sessionUser} />}
+                    />
+                </div>
 
                 {/* <div className='collectionCards'>
                     {Object.values(collection).map(collection => (
                         <div className="collection-item" key={collection.id}>
-                            <CollectionCard collectionData={collectionId}/>
+                        <CollectionCard collectionData={collectionId}/>
                         </div>
-                    ))}
-                </div> */}
+                        ))}
+                        </div> */}
             </section>
 
 

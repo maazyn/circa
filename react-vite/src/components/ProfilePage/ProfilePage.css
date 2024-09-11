@@ -11,13 +11,13 @@
     border-radius: 7px;
 }
 
-.headersContainer {
+/* .headersContainer {
     display: flex;
     margin: 0px 80px 0px 80px;
     flex-direction: row;
     height: 100px;
     align-items: center;
-}
+} */
 .leftHeaderContainer, .rightHeaderContainer {
     border: 1px solid grey;
     height: 100px;
@@ -31,12 +31,13 @@
 }
 
 
-.headersContainer div {
+.leftHeaderContainer div {
     background-color: rgb(67, 117, 182);
     height: 70px;
     width: 15%;
     min-width: 154px;
-}
+    }
+
 .leftHeaderContainer button, .rightHeaderContainer button{
     display: flex;
     justify-content: center;
