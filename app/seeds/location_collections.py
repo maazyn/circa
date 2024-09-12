@@ -1,31 +1,16 @@
-from app.models import db, Collection, Location, location_collection, environment, SCHEMA
+from app.models import db, location_collection, environment, SCHEMA
 from sqlalchemy.sql import text
 
 def seed_location_collections():
+    insert_data = [
+        {'location_id': 1, 'collection_id': 1},
+        {'location_id': 2, 'collection_id': 1},
+        {'location_id': 3, 'collection_id': 1},
+    ]
 
-    loc_coll_1 = location_collection(
-        location_id=1,
-        collection_id=1,
-    )
-
-    loc_coll_2 = location_collection(
-        location_id=2,
-        collection_id=1,
-    )
-
-    loc_coll_3 = location_collection(
-        location_id=3,
-        collection_id=1,
-    )
-
-    db.session.add(loc_coll_1)
-    db.session.add(loc_coll_2)
-    db.session.add(loc_coll_3)
-
-
+    db.session.execute(location_collection.insert().values(insert_data))
 
     db.session.commit()
-
 
 def undo_location_collections():
     if environment == "production":
