@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Location
+from app.models import db, Location, associations
 from app.forms import LocationForm
 
 location_routes = Blueprint('locations', __name__)
@@ -112,6 +112,10 @@ def delete_location(location_id):
     if not theLocation:
         return {'errors': {'message': 'Location not found'}}, 404
 
+    # deletes loc from all user collections too
+    db.session.execute(
+        location_collection.delete().where(location_collection.c.location_id == location_id)
+    )
     db.session.delete(theLocation)
     db.session.commit()
     return {'message': "Location successfully deleted"}, 200
