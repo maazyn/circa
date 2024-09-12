@@ -26,7 +26,7 @@ class Location(db.Model):
     user = db.relationship('User', back_populates='locations')
 
     # Associations
-    collections = db.relationship('Collection', secondary='location_collections', back_populates='locations')
+    collections = db.relationship('Collection', secondary=location_collection, back_populates='locations')
 
     def to_dict(self):
         return {
@@ -44,5 +44,5 @@ class Location(db.Model):
             'visited': self.visited,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
-            'collections': [collection.to_dict() for collection in self.collections],
+            # 'collections': [collection.to_dict() for collection in self.collections],
         }

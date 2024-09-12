@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
-from app.models import db, Collection, Location, associations
+from app.models import db, Collection, Location
 from app.forms import CollectionForm
 from app.forms import CollectionUpdateForm
 
@@ -75,17 +75,21 @@ def edit_collection(collection_id):
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
-        updatedCollection.title = form.data['title']
-        updatedCollection.description = form.data['description']
+        updatedCollection.title = form.title.data
+        updatedCollection.description = form.description.data
 
         # Grab loc ids from the form
-        location_ids = form.data.get('location_ids', [])
-        # Use to overwrite the loc array
-        updatedCollection.locations = Location.query.filter(Location.id.in_(location_ids)).all()
+        location_ids = form.location_ids.data
+        if location_ids:
+            locations = Location.query.filter(Location.id.in_(location_ids)).all()
+            updatedCollection.locations = locations
+        else:
+            # clears if none provded
+            updatedCollection.locations  = []
 
-        db.session.add(updatedCollection)
+        # db.session.add(updatedCollection)
         db.session.commit()
-        return updatedCollection.to_dict(), 201
+        return updatedCollection.to_dict(), 200
     return form.errors, 400
 
 
