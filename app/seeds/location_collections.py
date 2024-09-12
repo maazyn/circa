@@ -31,6 +31,6 @@ def undo_location_collections():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.location_collections RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute(text("DELETE FROM collection_locations"))
+        db.session.execute(text("DELETE FROM location_collections"))
 
     db.session.commit()
