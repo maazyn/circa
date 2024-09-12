@@ -28,7 +28,7 @@ def user_location(location_id):
     """
     theLocation = Location.query.filter_by(user_id=current_user.id,  id=location_id).first()
     if not theLocation:
-        return {'errors': {'message': 'No existing locations'}}, 404
+        return {'errors': {'message': 'This location does not exist'}}, 404
     return theLocation.to_dict(), 200
 
 
@@ -113,9 +113,9 @@ def delete_location(location_id):
         return {'errors': {'message': 'Location not found'}}, 404
 
     # deletes loc from all user collections too
-    db.session.execute(
-        location_collection.delete().where(location_collection.c.location_id == location_id)
-    )
+    # db.session.execute(
+    #     location_collection.delete().where(location_collection.c.location_id == location_id)
+    # )
     db.session.delete(theLocation)
     db.session.commit()
     return {'message': "Location successfully deleted"}, 200

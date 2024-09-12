@@ -26,7 +26,7 @@ class Location(db.Model):
     user = db.relationship('User', back_populates='locations')
 
     # Associations
-    collections = db.relationship('Collection', secondary='location_collections', back_populates='locations', cascade='all, delete-orphan' )
+    collections = db.relationship('Collection', secondary='location_collections', back_populates='locations')
 
     def to_dict(self):
         return {
