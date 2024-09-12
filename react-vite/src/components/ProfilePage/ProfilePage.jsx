@@ -16,7 +16,9 @@ function ProfilePage({mode, setMode}) {
 
     const sessionUser = useSelector((state) => state.session.user);
     const locations = useSelector((state) => state.locations);
+    const collections = useSelector((state) => state.collections);
     let userLocations = Object.values(locations).filter((loc) => loc.user_id === sessionUser.id);
+    let userCollections = Object.values(collections).filter((coll) => coll.user_id === sessionUser.id);
 
 
     let [selectedLocationId, setSelectedLocationId] = useState(null);
