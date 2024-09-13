@@ -116,7 +116,7 @@ function EditCollectionPage() {
         </label>
 
         <label id="input-label">
-            Add Locations now?
+            Add or Remove Locations:
             {/* <span className="required-asterisk" style={{color:"red"}}> *</span> */}
             <select
               className="input-field"
