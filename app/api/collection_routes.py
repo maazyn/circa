@@ -53,6 +53,15 @@ def create_collection():
         )
         db.session.add(newCollection)
         db.session.commit()
+
+        location_ids = request.json.get('location_ids', [])
+        if location_ids:
+            for location_id in location_ids:
+                location = Location.query.get(location_id)
+                if location:
+                    newCollection.locations.append(location)
+
+        db.session.commit()
         return newCollection.to_dict(), 201
     return form.errors, 400
 

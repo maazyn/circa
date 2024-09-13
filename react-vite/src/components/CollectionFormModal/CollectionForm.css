@@ -1,0 +1,134 @@
+.location-form-parent {
+    width: 450px;
+    max-width: 800px;
+    min-width: 350px;
+    min-height: 200px;
+    margin: auto;
+    padding: 30px 60px 40px 60px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+
+}
+
+.location-form-heading {
+    /* color: black; */
+}
+
+
+.location-post-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+
+
+
+.location-form-parent {
+    /* border-radius: 10px; */
+    /* width: 800px; */
+
+    /* justify-content: space-between; */
+    /* margin-top: 20px; */
+}
+
+/* .location-form-parent label {
+    display: flex;
+    flex-direction: column;
+} */
+
+/* .location-form-parent checkbox {
+    border-radius: 3px;
+    height: 80px;
+
+} */
+.PU-name {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+.title-input-field {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.type-input-field {
+    width: 100%;
+    height: auto;
+    padding: 7.2px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.PU-location {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+.city-input-field, .region-input-field, .country-input-field {
+    width: 100%;
+    gap: 10px;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.lat-input-field, .lng-input-field {
+    width: 100%;
+    gap: 10px;
+    padding: 8px;
+    margin: 5px 0;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.PU-location-geo {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+}
+#checkbox-input-label {
+    display: flex;
+    width: 100%;
+    /* padding: 8px;
+    margin: 5px 0; */
+    box-sizing: border-box;
+}
+.checkbox-input-field {
+    margin-left: 10px;
+    cursor:pointer;
+    height: auto;
+    width: 15px;
+}
+
+.submit-button, .cancel-button {
+    width: 20%;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 50px;
+    border: 1px solid rgb(169, 169, 169);
+    /* box-shadow: 1.5px 1.5px 0.5px 0px rgba(0, 0, 0, 1); */
+    background-color: rgb(255, 255, 255);
+    margin-top: 30px;
+    font-weight: bold;
+}
+
+.submit-button:hover, .cancel-button:hover {
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+  }

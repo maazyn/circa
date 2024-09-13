@@ -65,7 +65,7 @@ export const createCollection = (collection) => async (dispatch) => {
         if (response.ok) {
             const newCollection = await response.json();
             dispatch(addCollection(newCollection));
-            // return newCollection;
+            return newCollection;
         } else {
             const errors = await response.json();
             return {errors};

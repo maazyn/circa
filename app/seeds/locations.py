@@ -72,7 +72,7 @@ def seed_locations():
         visited=False
     )
 
-    demo_location_5 = Location(
+    demo_location_6 = Location(
         user_id=1,
         title="Ho Chi Minh city",
         # googleId="googleId",
@@ -86,7 +86,7 @@ def seed_locations():
         visited=False
     )
 
-    demo_location_6 = Location(
+    demo_location_7 = Location(
         user_id=1,
         title="Grand Canyon National Park",
         # googleId="googleId",
@@ -100,7 +100,7 @@ def seed_locations():
         # city="",
     )
 
-    demo_location_7 = Location(
+    demo_location_8 = Location(
         user_id=1,
         title="Zion National Park",
         # googleId="googleId",
@@ -114,7 +114,7 @@ def seed_locations():
         # city="",
     )
 
-    demo_location_8 = Location(
+    demo_location_9 = Location(
         user_id=1,
         title="Canyonlands National Park",
         # googleId="googleId",
@@ -128,7 +128,7 @@ def seed_locations():
         # city="",
     )
 
-    demo_location_9 = Location(
+    demo_location_10 = Location(
         user_id=1,
         title="Olympic National Park",
         # googleId="googleId",
@@ -142,7 +142,7 @@ def seed_locations():
         # city="",
     )
 
-    demo_location_10 = Location(
+    demo_location_11 = Location(
         user_id=2,
         title="Boston",
         # googleId="googleId",
@@ -156,7 +156,7 @@ def seed_locations():
         visited=True
     )
 
-    demo_location_11 = Location(
+    demo_location_12 = Location(
         user_id=2,
         title="Worcester",
         # googleId="googleId",
@@ -170,7 +170,7 @@ def seed_locations():
         visited=True
     )
 
-    demo_location_12 = Location(
+    demo_location_13 = Location(
         user_id=2,
         title="Providence",
         # googleId="googleId",
@@ -184,7 +184,7 @@ def seed_locations():
         visited=True
     )
 
-    demo_location_13 = Location(
+    demo_location_14 = Location(
         user_id=2,
         title="Hartford",
         # googleId="googleId",
@@ -198,7 +198,7 @@ def seed_locations():
         visited=True
     )
 
-    demo_location_14 = Location(
+    demo_location_15 = Location(
         user_id=2,
         title="New York",
         # googleId="googleId",
@@ -227,6 +227,7 @@ def seed_locations():
     db.session.add(demo_location_12)
     db.session.add(demo_location_13)
     db.session.add(demo_location_14)
+    db.session.add(demo_location_15)
 
 
 

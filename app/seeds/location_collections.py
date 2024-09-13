@@ -3,9 +3,9 @@ from sqlalchemy.sql import text
 
 def seed_location_collections():
     insert_data = [
-        {'location_id': 1, 'collection_id': 1},
-        {'location_id': 2, 'collection_id': 1},
         {'location_id': 3, 'collection_id': 1},
+        {'location_id': 5, 'collection_id': 1},
+        {'location_id': 6, 'collection_id': 1},
     ]
 
     db.session.execute(location_collection.insert().values(insert_data))

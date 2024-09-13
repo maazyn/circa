@@ -8,8 +8,8 @@ import { IoIosCheckmarkCircle } from "react-icons/io";
 // import DeleteLocationModal from "../DeleteLocationModal/DeleteLocationModal"
 // import EditLocationModal from "../EditLocationModal/EditLocationModal"
 // import LocationButton from "../LocationButton/LocationButton";
-import PostLocationModal from '../LocationFormModal/PostLocationModal';
-import OpenModalButton from "../OpenModalButton";
+// import PostLocationModal from '../LocationFormModal/PostLocationModal';
+// import OpenModalButton from "../OpenModalButton";
 
 
 
