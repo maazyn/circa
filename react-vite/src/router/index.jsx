@@ -4,6 +4,7 @@ import SignupFormPage from '../components/SignupFormPage';
 import LandingPage from "../components/LandingPage"
 import ProfilePage from "../components/ProfilePage"
 import UpdateProfilePage from '../components/UpdateProfilePage';
+import EditCollectionPage from '../components/CollectionForm/EditCollectionPage';
 // import History from "../components/History"
 // import LocationDetails from "../components/LocationDetails"
 // import CollectionDetails from "../components/CollectionDetails"
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
       {
         path:"/edit-profile",
         element:<UpdateProfilePage />
+      },
+      {
+        path:"/collections/:collectionId",
+        element:<EditCollectionPage />
       },
       // {
       //   path:"/history",

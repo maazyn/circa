@@ -11,7 +11,7 @@ def seed_collections():
     demo_collection_1 = Collection(
         user_id=1,
         title="Asia travel list",
-        # description="",
+        description="Places in Asia that seem interesting",
         # locations=[
         #     user1_location_map.get("Shanghai"),
         #     user1_location_map.get("Astana"),

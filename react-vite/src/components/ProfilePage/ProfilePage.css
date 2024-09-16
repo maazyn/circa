@@ -100,13 +100,17 @@
 /* margin: 10px; */
 
 .ppRight {
-    display: flex;
     /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: auto;
     width: 50%;
     min-width: 280px;
-    height: auto;
     border-radius: 10px;
+    align-items: center;
+    align-content: center;
     background-color: rgb(226, 207, 207);
+    /* background-color: rgb(227, 226, 226); */
     /* overflow-y: auto; */
     box-sizing: border-box;
     padding-bottom: 5px;
@@ -223,4 +227,16 @@
 .LU-delete-icon:hover {
     transform: scale(1.11);
     color: red;
+}
+
+.collection-modify-icons {
+    /* width: 100%; */
+    display: flex;
+    /* margin-right: auto; */
+    gap: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    align-items: center;
+    /* justify-content:flex-end; */
+    padding: 0 5px;
 }

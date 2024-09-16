@@ -5,6 +5,9 @@ from flask.cli import AppGroup
 from .seed_users import seed_users
 from .seed_locations import seed_locations
 from .seed_collections import seed_collections
+from .seed_location_collections import seed_location_collections
+
+
 
 # Create a seed group to hold our commands
 seed_commands = AppGroup('seed')
@@ -14,6 +17,8 @@ def seed_all():
     seed_users()
     seed_locations()
     seed_collections()
+    seed_location_collections()
+
     click.echo('Seeded all data!')
 
 @seed_commands.command('users')
@@ -30,3 +35,8 @@ def seed_locations_command():
 def seed_collections_command():
     seed_collections()
     click.echo('Seeded collections!')
+
+@seed_commands.command('location_collections')
+def seed_location_collections_command():
+    seed_location_collections()
+    click.echo('Seeded location_collections!')

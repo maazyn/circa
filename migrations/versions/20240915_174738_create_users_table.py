@@ -1,19 +1,16 @@
 """create users table
 
-Revision ID: 71402cc08b84
-Revises:
-Create Date: 2024-09-11 19:02:25.308646
+Revision ID: dc3267ff0d61
+Revises: 
+Create Date: 2024-09-15 17:47:38.551240
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '71402cc08b84'
+revision = 'dc3267ff0d61'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -38,9 +35,6 @@ def upgrade():
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-
     op.create_table('collections',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -51,9 +45,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE collections SET SCHEMA {SCHEMA};")
-
     op.create_table('locations',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
@@ -71,15 +62,12 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-    if environment == "production":
-        op.execute(f"ALTER TABLE locations SET SCHEMA {SCHEMA};")
-
     op.create_table('location_collections',
     sa.Column('location_id', sa.Integer(), nullable=False),
     sa.Column('collection_id', sa.Integer(), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),
-    sa.ForeignKeyConstraint(['collection_id'], ['collections.id'], ),
+    sa.ForeignKeyConstraint(['collection_id'], ['collections.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['location_id'], ['locations.id'], )
     )
     # ### end Alembic commands ###
