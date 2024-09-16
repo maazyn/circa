@@ -35,16 +35,30 @@ function SkyComponent() {
     //     }
     //   };
 
-
+    // const fetchSkyData = async () => {
+    //     try {
+    //       const response = await fetch('/api/weather/sky-conditions');
+    //       if (!response.ok) {
+    //         throw new Error(`HTTP error! Status: ${response.status}`);
+    //       }
+    //       const data = await response.json();
+    //       console.log("Sky image:", response);
+    //       setSkyData(data);
+    //     } catch (err) {
+    //       setError(err.message);
+    //       console.error('Fetch error:', err);
+    //     }
+    // };
     const fetchSkyData = async () => {
-        const url = "http://www.7timer.info/bin/astro.php?lon=113.17&lat=23.09&ac=0&lang=en&unit=metric&output=internal&tzshift=0";
+        // const url = "http://www.7timer.info/bin/astro.php?lon=113.17&lat=23.09&ac=0&lang=en&unit=metric&output=internal&tzshift=0";
         try {
-            const response = await fetch(url);
+            const response = await fetch('/api/weather/sky-conditions');
+            // console.log(response)
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             // const data = await response.json();
-            console.log("Sky image:", response);
+            // console.log("Sky image:", response);
             setSkyData(response);
         } catch (err) {
             setError(err.message);

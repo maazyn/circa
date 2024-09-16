@@ -24,7 +24,7 @@ function Navigation() {
 
   const fetchWeatherData = async () => {
     try {
-      const response = await fetch('/api/weather/');
+      const response = await fetch('/api/weather/forecast');
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
