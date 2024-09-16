@@ -98,13 +98,59 @@
     justify-content: space-between;
     gap: 10px;
 }
-#checkbox-input-label {
-    display: flex;
-    width: 100%;
-    /* padding: 8px;
-    margin: 5px 0; */
+#pcoll-input-label {
+    /* display: flex; */
+    background-color: rgb(235, 240, 255);
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 25vh;
+    width: 90%;
+    overflow-y: scroll;
+    /* padding: 10px; */
     box-sizing: border-box;
+    margin: 5px auto;
 }
+#ecoll-input-label {
+    /* display: flex; */
+    background-color: rgb(251, 247, 255);
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    height: 25vh;
+    width: 90%;
+    overflow-y: scroll;
+    /* padding: 10px; */
+    box-sizing: border-box;
+    margin: 5px auto;
+}
+.checkboxContainer {
+    display: flex;
+    align-items: center;
+    height: 20px;
+    gap: 10px;
+    margin: 2px;
+
+}
+.coll-input-field{
+    /* width: 100%; */
+    /* padding: 8px; */
+    /* margin: 5px 0; */
+    /* box-sizing: border-box; */
+
+}
+.coll-item {
+    display: inline-flex;
+    align-items: center;
+    /* border: 2px solid red; */
+    width: 80%;
+    margin-left: 5px;
+    padding-top: 5px;
+}
+/* .coll-item label{
+    text-align: left;
+} */
+
 .checkbox-input-field {
     margin-left: 10px;
     cursor:pointer;

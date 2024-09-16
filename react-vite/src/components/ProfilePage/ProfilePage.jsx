@@ -35,7 +35,7 @@ function ProfilePage({mode, setMode}) {
         if (sessionUser) {
             dispatch(fetchCurrUserCollections());
         }
-    }, [dispatch, userCollections?.length]);
+    }, [dispatch, userCollections.length]);
     // console.log("TEST:", userCollections[0]);
 
     // const handleLocationClick = (locId) => {
@@ -108,11 +108,11 @@ function ProfilePage({mode, setMode}) {
                     </div>
                 </div>
 
-                <div className='locationCards'>
+                <div className='collectionCards'>
                     {userCollections.map(collection => (
-                        <div className="location-items" key={collection.id}>
-                            <CollectionCard theCollection={collection} />
-                        </div>
+                        // <div  >
+                            <CollectionCard key={collection.id} className="collection-items" theCollection={collection} />
+                        // </div>
                     ))}
                 </div>
             </section>

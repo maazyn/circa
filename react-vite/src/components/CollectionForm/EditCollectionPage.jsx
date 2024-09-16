@@ -160,19 +160,20 @@ function EditCollectionPage() {
           {errors.description && <p className="error-message">{errors.description}</p>}
         </label>
 
-        <label id="input-label">
-            Add or Remove Locations:
+        <p style={{color: "blue", fontWeight:"bold", marginBottom:"0px"}}>Add or Remove Locations:</p>
+        <label id="ecoll-input-label">
             {userLocations.map((location) => (
               <div key={location.id} className="checkboxContainer">
-                <input
-                  className="input-field"
-                  type="checkbox"
-                  // name="location_ids"
-                  value={location.id.toString()}
-                  checked={savedLocations.includes(location.id.toString())}
-                  onChange={handleCheckboxChange}
-                />
-                <label>{location.title}</label>
+
+                  <input
+                    className="coll-input-field"
+                    type="checkbox"
+                    // name="location_ids"
+                    value={location.id.toString()}
+                    checked={savedLocations.includes(location.id.toString())}
+                    onChange={handleCheckboxChange}
+                  />
+                <label className="coll-item">{location.title}</label>
               </div>
             ))}
           {errors.location_ids && <p className="error-message">{errors.location_ids}</p>}
