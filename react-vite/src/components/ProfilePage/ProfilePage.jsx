@@ -31,6 +31,11 @@ function ProfilePage({mode, setMode}) {
         }
     }, [dispatch, sessionUser]);
 
+    useEffect(() => {
+        if (sessionUser) {
+            dispatch(fetchCurrUserCollections());
+        }
+    }, [dispatch, userCollections?.length]);
     // console.log("TEST:", userCollections[0]);
 
     // const handleLocationClick = (locId) => {

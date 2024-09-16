@@ -16,10 +16,26 @@ function PostCollectionModal({ user, userLocations }) {
     description: "",
     location_ids: [],
   });
-  const [errors, setErrors] = useState({});
-  const [locationsToAdd, setLocationsToAdd] = useState([]);
-  const [locationsToRemove, setLocationsToRemove] = useState([]);
 
+  // const [savedLocations, setSavedLocations] = useState([]);
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleCheckboxChange = (e) => {
+    const { value, checked } = e.target;
+    setFormData(prevState => ({
+      ...prevState,
+      location_ids: checked
+        ? [...prevState.location_ids, value]
+        : prevState.location_ids.filter(id => id !== value)
+    }));
+  };
 
 
   const handleSubmit = async (e) => {
@@ -29,43 +45,23 @@ function PostCollectionModal({ user, userLocations }) {
     const serverResponse = await dispatch(createCollection(formData));
     if (serverResponse && serverResponse.errors) {
       setErrors(serverResponse.errors);
+      return;
     }
     const collectionId = serverResponse.id;
 
-    if (locationsToAdd.length > 0 || locationsToRemove.length > 0) {
-      const locolResponse = await dispatch(editLocol({
-        collection_id: collectionId,
-        add: locationsToAdd,
-        remove: locationsToRemove
-      }));
-      if (locolResponse && locolResponse.errors) {
-        setErrors(locolResponse.errors);
-        return;
-      }
+    const locolResponse = await dispatch(editLocol({
+      collection_id: collectionId,
+      locations: formData.location_ids
+    }));
+    if (locolResponse && locolResponse.errors) {
+      setErrors(locolResponse.errors);
+      return;
     }
     closeModal()
 
   };
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
 
-  const handleLocationSelect = (e) => {
-    const selectedLocationIds = Array.from(e.target.selectedOptions, (option) => option.value);
-    const newLocationsToAdd = selectedLocationIds.filter(id => !formData.location_ids.includes(id));
-    const newLocationsToRemove = formData.location_ids.filter(id => !selectedLocationIds.includes(id));
-
-    setFormData({
-      ...formData,
-      location_ids: selectedLocationIds
-    });
-    setLocationsToAdd(newLocationsToAdd);
-    setLocationsToRemove(newLocationsToRemove);
-  };
   // const handleLocationSelect = (e) => {
   //   const selectedLocationIds = Array.from(e.target.selectedOptions, (option) => option.value);
   //   setFormData({
@@ -108,24 +104,21 @@ function PostCollectionModal({ user, userLocations }) {
 
 
         <label id="input-label">
-          Add Locations now?
-          {/* <span className="required-asterisk" style={{color:"red"}}> *</span> */}
-          <select
-            className="input-field"
-            name="location_ids"
-            multiple={true}
-            value={formData.location_ids}
-            onChange={handleLocationSelect}
-            // required
-          >
-            <option value="" disabled>Select one or more locations</option>
+            Add or Remove Locations:
             {userLocations.map((location) => (
-              <option key={location.id} value={location.id}>
-                {location.title}
-              </option>
+              <div key={location.id} className="checkboxContainer">
+                <input
+                  className="input-field"
+                  type="checkbox"
+                  // name="location_ids"
+                  value={location.id.toString()}
+                  checked={formData.location_ids.includes(location.id.toString())}
+                  onChange={handleCheckboxChange}
+                />
+                <label>{location.title}</label>
+              </div>
             ))}
-          </select>
-        {errors.location_ids && <p className="error-message">{errors.location_ids}</p>}
+          {errors.location_ids && <p className="error-message">{errors.location_ids}</p>}
         </label>
 
 

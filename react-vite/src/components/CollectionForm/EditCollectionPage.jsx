@@ -28,7 +28,7 @@ function EditCollectionPage() {
 
     // console.log(typeof collectionId)
 
-    const [savedLocations, setSavedLocations] = useState(formData.location_ids || []);
+    const [savedLocations, setSavedLocations] = useState(formData?.location_ids);
     // const [newSavedLocations, setNewSavedLocations] = useState([]);
     const [deleteErrors, setDeleteErrors] = useState({});
     const [errors, setErrors] = useState({});
@@ -37,6 +37,11 @@ function EditCollectionPage() {
     useEffect(() => {
       if (collection) {
         const currentLocations = collection.locations.map(location => location.id.toString());
+        setFormData({
+          title: collection.title || "",
+          description: collection.description || "",
+          location_ids: currentLocations,
+        });
         setSavedLocations(currentLocations);
       }
     }, [collection]);
@@ -90,10 +95,10 @@ function EditCollectionPage() {
 
     }
     // console.log("PRE-REMOVE", locationsToRemove)
-    console.log("Dispatch payload:", {
-      collection_id: collectionId,
-      locations: savedLocations,
-    });
+    // console.log("Dispatch payload:", {
+    //   collection_id: collectionId,
+    //   locations: savedLocations,
+    // });
     const locolResponse = await dispatch(editLocol({
       collection_id: collectionId,
       locations: savedLocations
@@ -173,17 +178,16 @@ function EditCollectionPage() {
           {errors.location_ids && <p className="error-message">{errors.location_ids}</p>}
         </label>
 
-
-            <div className="profile-update-buttons">
-                <button className="submit-button" type="submit">Save Changes</button>
-                <button onClick={() => navigate("/profile")} className="cancel-button">Cancel</button>
-            </div>
-            <div className="delete-button-container">
-                {user.id !== 1? (
-                    <button onClick={handleDelete} className="profile-delete-button">Delete User</button>
-                ): null}
-            </div>
-            {deleteErrors.server && (<p className="error-message">{deleteErrors.server}</p>)}
+          <div className="profile-update-buttons">
+              <button className="submit-button" type="submit">Save Changes</button>
+              <button onClick={() => navigate("/profile")} className="cancel-button">Cancel</button>
+          </div>
+          <div className="delete-button-container">
+              {user.id !== 1? (
+                  <button onClick={handleDelete} className="profile-delete-button">Delete User</button>
+              ): null}
+          </div>
+          {deleteErrors.server && (<p className="error-message">{deleteErrors.server}</p>)}
         </form>
     </div>
   );
