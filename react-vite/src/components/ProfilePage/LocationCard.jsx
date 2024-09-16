@@ -1,10 +1,8 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { editLocation, removeLocation } from '../../redux/locations';
 import './ProfilePage.css'
 import { TiDelete } from "react-icons/ti";
 import { FaCalendarCheck } from "react-icons/fa";
-import { IoIosCheckmarkCircle } from "react-icons/io";
 // import DeleteLocationModal from "../DeleteLocationModal/DeleteLocationModal"
 // import EditLocationModal from "../EditLocationModal/EditLocationModal"
 // import LocationButton from "../LocationButton/LocationButton";

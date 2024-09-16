@@ -4,7 +4,6 @@ import {editLocol } from '../../redux/locols'
 import { useDispatch } from 'react-redux';
 import { useModal } from '../../context/Modal';
 import "./CollectionForm.css"
-import { useNavigate } from 'react-router-dom';
 
 
 function PostCollectionModal({ user, userLocations }) {

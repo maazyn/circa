@@ -7,7 +7,7 @@
 
 import "./FooterNav.css";
 
-function FooterNav({ mode, setMode }) {
+function FooterNav() {
   // const navigate = useNavigate()
 
   return (

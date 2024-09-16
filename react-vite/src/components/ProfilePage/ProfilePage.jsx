@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import {  NavLink } from "react-router-dom";
-import { fetchCurrUserLocations, editLocation, removeLocation } from "../../redux/locations";
+import { fetchCurrUserLocations} from "../../redux/locations";
 import { fetchCurrUserCollections } from "../../redux/collections";
 import OpenModalButton from "../OpenModalButton";
 import LocationCard from "./LocationCard";
@@ -29,13 +28,14 @@ function ProfilePage({mode, setMode}) {
             dispatch(fetchCurrUserLocations());
             dispatch(fetchCurrUserCollections());
         }
-    }, [dispatch, sessionUser]);
+    }, [dispatch, sessionUser, userCollections.length]);
 
-    useEffect(() => {
-        if (sessionUser) {
-            dispatch(fetchCurrUserCollections());
-        }
-    }, [dispatch, userCollections.length]);
+    // useEffect(() => {
+    //     if (sessionUser) {
+    //         dispatch(fetchCurrUserCollections());
+    //     }
+    // }, [dispatch, userCollections.length]);
+
     // console.log("TEST:", userCollections[0]);
 
     // const handleLocationClick = (locId) => {
@@ -59,17 +59,6 @@ function ProfilePage({mode, setMode}) {
         <div className="axNav">
             <AuxiliaryNav mode={mode} setMode={setMode} />
         </div>
-        {/* <section className="ppTop">
-            <div className="profile-details-container">
-                <div className="profile-username">{sessionUser.username}</div>
-                <div className="edit-profile-button-container">
-                    <OpenModalButton
-                        buttonText="Edit Profile"
-                        modalComponent={<ProfileUpdateModal user={sessionUser} />}
-                    />
-                </div>
-            </div>
-        </section> */}
 
 
         <div className="ppContainer">
@@ -87,9 +76,7 @@ function ProfilePage({mode, setMode}) {
 
                 <div className="locationCards">
                     {userLocations.map(location => (
-                        // <div className="location-items" >
-                            <LocationCard key={location.id} theLocation={location}/>
-                        // </div>
+                        <LocationCard key={location.id} theLocation={location}/>
                     ))}
 
                 </div>
@@ -110,9 +97,7 @@ function ProfilePage({mode, setMode}) {
 
                 <div className='collectionCards'>
                     {userCollections.map(collection => (
-                        // <div  >
-                            <CollectionCard key={collection.id} className="collection-items" theCollection={collection} />
-                        // </div>
+                        <CollectionCard key={collection.id} className="collection-items" theCollection={collection} />
                     ))}
                 </div>
             </section>

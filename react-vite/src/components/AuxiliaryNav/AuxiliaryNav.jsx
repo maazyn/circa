@@ -1,16 +1,24 @@
-// import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 // import { useSelector } from "react-redux";
 // import { useEffect, useState } from "react";
 import { MdFilterAlt } from "react-icons/md";
 import { WiStars } from "react-icons/wi";
 import { IoSearchSharp } from "react-icons/io5";
 
+import { useMode } from "../../context/ModeContext";
+
 
 
 import "./AuxiliaryNav.css";
 
-function AuxiliaryNav({ mode, setMode }) {
-  // const navigate = useNavigate()
+function AuxiliaryNav() {
+  const navigate = useNavigate()
+  const {mode, setMode} = useMode();
+
+  const handleMode = async (newMode) => {
+    navigate("/");
+    setMode(newMode);
+  }
 
   return (
     <nav>
@@ -27,7 +35,7 @@ function AuxiliaryNav({ mode, setMode }) {
         <div className="axnavRight" >
           <div className="axnavButtons" mode={mode}>
             <button
-              onClick={() => setMode("Local")}
+              onClick={() => handleMode("Local")}
               style={{
                 boxShadow: mode === "Local" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
                 backgroundColor: mode === "Local" ? "white": "#a89a9a",
@@ -36,7 +44,7 @@ function AuxiliaryNav({ mode, setMode }) {
             >Local</button>
 
             <WiStars
-              id="sky-icon" onClick={() => setMode("Sky")}
+              id="sky-icon" onClick={() => handleMode("Sky")}
               style={{
                 boxShadow: mode === "Sky" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
                 backgroundColor: mode === "Sky" ? "white": "#a89a9a",
@@ -47,7 +55,7 @@ function AuxiliaryNav({ mode, setMode }) {
 
               {/* note to self: dont forget to set up scope state management in LandingPage */}
             <button
-              onClick={() => setMode("Global")}
+              onClick={() => handleMode("Global")}
               style={{
                 boxShadow: mode === "Global" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
                 backgroundColor: mode === "Global" ? "white": "#a89a9a",

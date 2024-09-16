@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./ScopeComponents.css";
 
 function SkyComponent() {
@@ -7,6 +7,7 @@ function SkyComponent() {
     const userLoc = user?.city
     const [loc, setLoc] = useState(userLoc || "Worcester")
     const [skyData, setSkyData] = useState(null);
+    const [error, setError] = useState({});
 
     // const [error, setError] = useState(null);
     // console.log(userLoc);
@@ -14,9 +15,9 @@ function SkyComponent() {
 
     // let userLocations = Object.values(locations).filter((loc) => loc.user_id === sessionUser.id);
 
-    function handleUpdateLocation(newLocation) {
-        setLoc(newLocation);
-    }
+    // function handleUpdateLocation(newLocation) {
+    //     setLoc(newLocation);
+    // }
 
     // const fetchSkyData = async () => {
     //     const url = "http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json";

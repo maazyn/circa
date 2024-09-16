@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { removeCollection } from '../../redux/collections';
 import { useNavigate } from "react-router-dom";
@@ -15,17 +16,27 @@ function CollectionCard({theCollection}) {
     // const user = useSelector((store) => store.session.user);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-
+    const [deleteErrors, setDeleteErrors] = useState({});
 
     const handleEdit = () => {
         navigate(`/collections/${theCollection.id}`);
     };
 
-    const handleDelete = async (e) => {
-        e.preventDefault();
-        return dispatch(removeCollection(theCollection.id));
-    };
+    // const handleDelete = async (e) => {
+    //     e.preventDefault();
+    //     return dispatch(removeCollection(theCollection.id));
+    // };
 
+    const handleDelete = async () => {
+        if (window.confirm("Are you sure you want to delete this collection?")) {
+          const deleteResponse = await dispatch(removeCollection(theCollection.id));
+          if (deleteResponse.errors) {
+            setDeleteErrors(deleteResponse.errors);
+          } else {
+            navigate("/profile");
+          }
+        }
+    };
     // const handleChange = async (e) => {
     //     e.preventDefault();
 
