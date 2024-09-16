@@ -102,22 +102,21 @@ function PostCollectionModal({ user, userLocations }) {
         {errors.description && <p className="error-message">{errors.description}</p>}
         </label>
 
-
-        <label id="input-label">
-            Add or Remove Locations:
-            {userLocations.map((location) => (
-              <div key={location.id} className="checkboxContainer">
-                <input
-                  className="input-field"
-                  type="checkbox"
-                  // name="location_ids"
-                  value={location.id.toString()}
-                  checked={formData.location_ids.includes(location.id.toString())}
-                  onChange={handleCheckboxChange}
-                />
-                <label>{location.title}</label>
-              </div>
-            ))}
+        <p style={{color: "blue", fontWeight:"bold", marginBottom:"0px"}}>Add Locations:</p>
+        <label id="pcoll-input-label">
+          {userLocations.map((location) => (
+            <div key={location.id} className="checkboxContainer">
+              <input
+                className="coll-input-field"
+                type="checkbox"
+                // name="location_ids"
+                value={location.id.toString()}
+                checked={formData.location_ids.includes(location.id.toString())}
+                onChange={handleCheckboxChange}
+              />
+              <label className="coll-item">{location.title}</label>
+            </div>
+          ))}
           {errors.location_ids && <p className="error-message">{errors.location_ids}</p>}
         </label>
 
