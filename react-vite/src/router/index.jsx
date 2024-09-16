@@ -36,7 +36,7 @@ export const router = createBrowserRouter([
         element:<UpdateProfilePage />
       },
       {
-        path:"/collections/:collectionId/edit",
+        path:"/collections/:collectionId",
         element:<EditCollectionPage />
       },
       // {

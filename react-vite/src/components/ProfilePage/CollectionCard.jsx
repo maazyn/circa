@@ -1,6 +1,5 @@
-import { useState } from 'react';
-import { useDispatch, useSelector } from "react-redux";
-import { editCollection, removeCollection } from '../../redux/collections';
+import { useDispatch } from "react-redux";
+import { removeCollection } from '../../redux/collections';
 import { useNavigate } from "react-router-dom";
 import './ProfilePage.css'
 import { TiDelete } from "react-icons/ti";
@@ -19,7 +18,7 @@ function CollectionCard({theCollection}) {
 
 
     const handleEdit = () => {
-        navigate(`/collections/${theCollection.id}/edit`);
+        navigate(`/collections/${theCollection.id}`);
     };
 
     const handleDelete = async (e) => {

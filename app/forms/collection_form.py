@@ -16,4 +16,4 @@ class CollectionForm(FlaskForm):
     user_id = IntegerField('User ID', validators=[DataRequired()])
     title = StringField('Title', validators=[DataRequired(), Length(max=100), title_exists_for_user])
     description = StringField('Description', validators=[Optional()])
-    location_ids = FieldList(IntegerField('Location IDs'), validators=[Optional()])
+    # location_ids = FieldList(IntegerField('Location IDs'), validators=[Optional()])

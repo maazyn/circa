@@ -88,9 +88,11 @@ export const editCollection = (collection) => async dispatch => {
         if (response.ok) {
             const updatedCollection = await response.json()
             dispatch(updateCollection(updatedCollection))
+            return updatedCollection;
         } else {
-            console.error("Error updating collection")
-
+            const error = await response.json();
+            console.error("Error updating collection", error)
+            return { errors: error };
         }
     } catch (err) {
         console.error("Error loading collection", err)

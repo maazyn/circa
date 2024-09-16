@@ -8,11 +8,13 @@ import thunk from "redux-thunk";
 import sessionReducer from "./session";
 import locationReducer from "./locations"
 import collectionReducer from "./collections"
+import locolReducer from "./locols";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   locations: locationReducer,
   collections: collectionReducer,
+  locols: locolReducer
 });
 
 let enhancer;

@@ -9,6 +9,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .api.location_routes import location_routes
 from .api.collection_routes import collection_routes
+from .api.locol_routes import locol_routes
 from .api.weather_routes import weather_routes
 
 from .seeds import seed_commands
@@ -34,6 +35,7 @@ app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
 app.register_blueprint(location_routes, url_prefix='/api/locations')
 app.register_blueprint(collection_routes, url_prefix='/api/collections')
+app.register_blueprint(locol_routes, url_prefix='/api/location-collections')
 app.register_blueprint(weather_routes, url_prefix='/api/weather')
 db.init_app(app)
 Migrate(app, db)

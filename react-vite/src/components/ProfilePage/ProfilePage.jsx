@@ -21,8 +21,8 @@ function ProfilePage({mode, setMode}) {
     let userCollections = Object.values(collections).filter((coll) => coll.user_id === sessionUser.id);
 
 
-    let [selectedLocationId, setSelectedLocationId] = useState(null);
-    let [selectedCollectionId, setSelectedCollectionId] = useState(null);
+    // let [selectedLocationId, setSelectedLocationId] = useState(null);
+    // let [selectedCollectionId, setSelectedCollectionId] = useState(null);
 
     useEffect(() => {
         if (sessionUser) {
@@ -33,13 +33,13 @@ function ProfilePage({mode, setMode}) {
 
     // console.log("TEST:", userCollections[0]);
 
-    const handleLocationClick = (locId) => {
-        if (locId !== selectedLocationId) {
-            selectedLocationId(locId);
-        } else {
-            selectedLocationId(null)
-        }
-    };
+    // const handleLocationClick = (locId) => {
+    //     if (locId !== selectedLocationId) {
+    //         selectedLocationId(locId);
+    //     } else {
+    //         selectedLocationId(null)
+    //     }
+    // };
     // const handleCollectionClick = (collId) => {
     //     if (collId !== selectedCollectionId) {
     //         selectedCollectionId(locId);

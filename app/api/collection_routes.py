@@ -52,14 +52,14 @@ def create_collection():
             description=form.data['description'],
         )
         db.session.add(newCollection)
-        db.session.commit()
+        # db.session.commit()
 
-        location_ids = request.json.get('location_ids', [])
-        if location_ids:
-            for location_id in location_ids:
-                location = Location.query.get(location_id)
-                if location:
-                    newCollection.locations.append(location)
+        # location_ids = request.json.get('location_ids', [])
+        # if location_ids:
+        #     for location_id in location_ids:
+        #         location = Location.query.get(location_id)
+        #         if location:
+        #             newCollection.locations.append(location)
 
         db.session.commit()
         return newCollection.to_dict(), 201
@@ -87,18 +87,18 @@ def edit_collection(collection_id):
         updatedCollection.title = form.title.data
         updatedCollection.description = form.description.data
 
-        # Grab loc ids from the form
-        location_ids = form.location_ids.data
-        if location_ids:
-            locations = Location.query.filter(Location.id.in_(location_ids)).all()
-            updatedCollection.locations = locations
-        else:
-            # clears if none provded
-            updatedCollection.locations  = []
+        # # Grab loc ids from the form
+        # location_ids = form.location_ids.data
+        # if location_ids:
+        #     locations = Location.query.filter(Location.id.in_(location_ids)).all()
+        #     updatedCollection.locations = locations
+        # else:
+        #     # clears if none provded
+        #     updatedCollection.locations  = []
 
         # db.session.add(updatedCollection)
         db.session.commit()
-        return updatedCollection.to_dict(), 200
+        return {'collection': updatedCollection.to_dict()}, 200
     return form.errors, 400
 
 
