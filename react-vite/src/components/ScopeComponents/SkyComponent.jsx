@@ -4,8 +4,8 @@ import "./ScopeComponents.css";
 
 function SkyComponent() {
     const user = useSelector((store) => store.session.user);
-    const userLoc = user.city
-    const [loc, setLoc] = useState(userLoc)
+    const userLoc = user?.city
+    const [loc, setLoc] = useState(userLoc || "Worcester")
     const [skyData, setSkyData] = useState(null);
 
     // const [error, setError] = useState(null);
@@ -52,8 +52,13 @@ function SkyComponent() {
     };
 
     useEffect(()=> {
-        if (!skyData) fetchSkyData()
-    }, [skyData]);
+        if (user && !skyData) {
+            fetchSkyData()
+        } else if (!user && !skyData) {
+            setLoc("Worcester")
+            fetchSkyData()
+        }
+    }, [user, skyData]);
 
 
     return (
@@ -62,10 +67,18 @@ function SkyComponent() {
                 backgroundImage:"url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMTgtc2FzaS0wMV8xLmpwZw.jpg')",
                 backgroundPosition: "center"
             }}>
-            <h2 className="sc-title">Star-Gazing Conditions - {userLoc}</h2>
+            <h2 className="sc-title">Star-Gazing Conditions - {`${userLoc ? userLoc: loc} (Demo city)`}</h2>
             <section className="scTop">
                 <div className="sc-left">
-                    <p>You are looking at data for {userLoc}</p>
+                    {userLoc? (
+                        <p>You are looking at data for {userLoc}</p>
+                    ) : (
+                        <p style={{padding:"10px"}}>
+                            You are looking at demo data.
+                            <br></br>
+                            Sign up or log in to see data for your location.
+                        </p>
+                    )}
                     {/* <p id="sc-location-title">{loc}</p> */}
                     {/* <input onSubmit={handleUpdateLocation()}>Set Location</input> */}
                 </div>
