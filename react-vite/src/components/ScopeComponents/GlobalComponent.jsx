@@ -7,14 +7,28 @@ function GlobalComponent() {
     // const dispatch = useDispatch();
 
     return (
-      <>
-        {/* <div className="lpMapContainer">
-          <aside className="lp-section2">
-            <MapCard data={data} />
-          </aside>
-        </div> */}
+      <div className="gcContainer">
+          <section className="gcLeft">
+              <div className="gc-leftTop">
 
-      </>
+              </div>
+              <div className="gc-leftBottom">
+
+              </div>
+          </section>
+
+          <section className="gcMapContainer">
+            <div className="gcMap"
+              data-alt="Map Functionality coming soon."
+              style={{
+                backgroundImage: "url('/images/demo-global.png')",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}>
+
+            </div>
+          </section>
+      </div>
     );
   }
 

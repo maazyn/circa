@@ -7,15 +7,29 @@ function LocalComponent() {
     // const dispatch = useDispatch();
 
     return (
-      <>
-        {/* <div className="lpMapContainer">
-          <aside className="lp-section2">
-            <MapCard data={data} />
-          </aside>
-        </div> */}
+      <div className="lcContainer">
+          <section className="lcLeft">
+              <div className="lc-leftTop">
 
-      </>
-    );
-  }
+              </div>
+              <div className="lc-leftBottom">
+
+              </div>
+          </section>
+
+          <section className="lcMapContainer">
+            <div className="lcMap"
+              data-alt="Map Functionality coming soon."
+              style={{
+                backgroundImage: "url('/images/demo-local.png')",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              }}>
+
+            </div>
+          </section>
+      </div>
+  );
+}
 
   export default LocalComponent;
