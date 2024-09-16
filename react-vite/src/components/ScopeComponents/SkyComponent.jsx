@@ -67,7 +67,7 @@ function SkyComponent() {
                 backgroundImage:"url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMTgtc2FzaS0wMV8xLmpwZw.jpg')",
                 backgroundPosition: "center"
             }}>
-            <h2 className="sc-title">Star-Gazing Conditions - {`${userLoc ? userLoc: loc} (Demo city)`}</h2>
+            <h2 className="sc-title">Star-Gazing Conditions Tracker</h2>
             <section className="scTop">
                 <div className="sc-left">
                     {userLoc? (
