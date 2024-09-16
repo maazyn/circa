@@ -1,22 +1,27 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+// import { useDispatch, useSelector } from "react-redux";
 import "./LandingPage.css";
 // import MapCard from "../MapCard/MapCard";
 import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";
 
-import LocalComponent from "./LocalComponent";
-import SkyComponent from "./SkyComponent";
-import GlobalComponent from "./GlobalComponent";
-
+import LocalComponent from "../ScopeComponents/LocalComponent";
+import SkyComponent from "../ScopeComponents/SkyComponent";
+import GlobalComponent from "../ScopeComponents/GlobalComponent";
+import FooterNav from "../FooterNav/FooterNav";
+import { useMode } from "../../context/ModeContext";
 
 function LandingPage() {
-  const [mode, setMode] = useState("Local");
-  // const dispatch = useDispatch();
+  // const [mode, setMode] = useState("Local");
+  const { mode, setMode } = useMode();
+
+  useEffect(() => {
+    if (!mode) setMode("Local");
+  }, [mode, setMode]);
 
   return (
     <>
       <div className="axNav">
-        <AuxiliaryNav mode={mode} setMode={setMode} />
+        <AuxiliaryNav />
       </div>
 
       <div className="lpContainer">
@@ -25,6 +30,7 @@ function LandingPage() {
         {mode === "Global" && <GlobalComponent />}
       </div>
 
+      <FooterNav/>
     </>
   );
 }

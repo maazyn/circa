@@ -40,9 +40,14 @@ export const deleteLocation = (locationId) => {
 //* Get current user's locations
 export const fetchCurrUserLocations = () => async (dispatch) => {
     const response = await fetch("/api/locations/")
-    const locations = await response.json()
-    dispatch(loadLocations(locations.Locations))
-    // return locations
+    const data = await response.json()
+
+    if (response.ok) {
+        // console.log("TestTest:", data.locations);
+        dispatch(loadLocations(data.locations));
+    } else {
+        console.error("Error fetching locations", data.errors);
+    }
 }
 
 
@@ -60,13 +65,14 @@ export const createLocation = (location) => async (dispatch) => {
         if (response.ok) {
             const newLocation = await response.json();
             dispatch(addLocation(newLocation));
-            return newLocation;
+            // return newLocation;
         } else {
             const errors = await response.json();
-            throw errors;
+            return {errors};
         }
     } catch (err) {
-        console.error("Error adding a new location", err);
+        // console.error("Error adding a new location", err);
+        return { errors: ["An unexpected error occurred"] };
     }
 };
 

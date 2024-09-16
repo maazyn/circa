@@ -14,15 +14,17 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(40), nullable=False)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
-    city = db.Column(db.String(50))
+    hashed_password = db.Column(db.String(255), nullable=False)
+    city = db.Column(db.String(50), nullable=False)
     region = db.Column(db.String(50))
     country = db.Column(db.String(50))
+    profile_img = db.Column(db.String(200))
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
-    hashed_password = db.Column(db.String(255), nullable=False)
 
-    # Relationships
+    # Relationships one-to-many
     locations = db.relationship('Location', back_populates='user', cascade="all, delete-orphan")
+    collections = db.relationship('Collection', back_populates='user')
 
     @property
     def password(self):
@@ -45,6 +47,9 @@ class User(db.Model, UserMixin):
             'city': self.city,
             'region': self.region,
             'country': self.country,
+            'profile_img': self.profile_img,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'collections': [collection.to_dict() for collection in self.collections],
+
         }
