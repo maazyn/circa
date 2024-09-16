@@ -7,7 +7,7 @@ def title_exists_for_user(form, field):
     title = field.data
     user_id = form.user_id.data
     location = Location.query.filter_by(user_id=user_id, title=title).first()
-    if location:
+    if location and location.id == id:
         raise ValidationError('You already have a location with this title.')
 
 

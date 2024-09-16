@@ -41,10 +41,10 @@ function LocationCard({theLocation}) {
         <div className="location-card" key={theLocation.id} >
             <div className="location-up">
                 <p className="location-title">{theLocation.title}</p>
-                <br></br>
-                <p className="location-detail">{theLocation.city}</p>
+                {/* <br></br> */}
+                {theLocation.city !== theLocation.title ? <p className="location-detail">{theLocation.city}</p>: null}
                 {theLocation.region ? <p className="location-detail">{theLocation.region}</p> : null}
-                <p className="theLocation-detail">{theLocation.country}</p>
+                <p className="location-detail">{theLocation.country}</p>
             </div>
             <div className="location-down">
                 {theLocation.type ? <p className="theLocation-detail">Type: {theLocation.type}</p> : null}

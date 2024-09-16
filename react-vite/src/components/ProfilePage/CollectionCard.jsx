@@ -38,7 +38,7 @@ function CollectionCard({theCollection}) {
 
     // console.log(theCollection)
     return (
-        <div className="location-card" key={theCollection.id} >
+        <div className="collection-card" key={theCollection.id} >
             <div className="location-up">
                 <p className="location-title">{theCollection.title}</p>
             </div>

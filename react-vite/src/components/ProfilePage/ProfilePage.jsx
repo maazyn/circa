@@ -87,9 +87,9 @@ function ProfilePage({mode, setMode}) {
 
                 <div className="locationCards">
                     {userLocations.map(location => (
-                        <div className="location-items" key={location.id}>
-                            <LocationCard theLocation={location}/>
-                        </div>
+                        // <div className="location-items" >
+                            <LocationCard key={location.id} theLocation={location}/>
+                        // </div>
                     ))}
 
                 </div>

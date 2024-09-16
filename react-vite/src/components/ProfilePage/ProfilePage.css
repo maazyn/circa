@@ -11,13 +11,14 @@
     background-color: rgb(180, 202, 231);
 } */
 
+
 .ppLeft-top, .ppRight-top {
     width: 100%;
     background-color: transparent;
     box-sizing: border-box;
 }
 .leftHeaderContainer, .rightHeaderContainer {
-    margin: 40px auto 40px auto;
+    margin: 40px auto 30px auto;
     display: flex;
     background-color: rgb(167, 181, 223);
     box-shadow: 0 2px 2px 0px rgb(0, 0, 0);
@@ -70,47 +71,32 @@
     gap: 18px;
     padding: 10px 0px;
     /* height: calc(100vh - 400px); */
-    height: 80vh;
+    height: 90vh;
 }
 
 
 .ppLeft, .ppRight {
-    position: relative;
-    width: 50%;
-    height: 100%;
-    box-sizing: border-box;
-    /* padding: 10px;  */
-}
-.ppLeft {
-    /* border: 3px solid red; */
     display: flex;
     flex-direction: column;
-    height: auto;
     width: 50%;
+    height: 100%;
     min-width: 280px;
     border-radius: 10px;
     align-items: center;
-    align-content: center;
-    background-color: rgb(227, 226, 226);
-    /* overflow-y: auto; */
     box-sizing: border-box;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    /* padding: 10px;  */
+}
+.ppLeft {
+    background-color: rgb(227, 226, 226);
+    flex-grow: 1;
 }
 
 /* margin: 10px; */
 
 .ppRight {
-    display: flex;
-    flex-direction: column;
-    height: auto;
-    width: 50%;
-    min-width: 280px;
-    border-radius: 10px;
-    align-items: center;
-    align-content: center;
     background-color: rgb(226, 207, 207);
-    box-sizing: border-box;
-    padding-bottom: 5px;
+    flex-grow: 1;
 
 }
 
@@ -119,16 +105,18 @@
 
 /* Location card  properties */
 .locationCards {
+    flex-grow: 1;
     display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    overflow-y: scroll hidden;
-    height: auto;
-    width: 100%;
+    flex-direction: column;
+    padding: 10px 15px;
+    justify-content: flex-start;
+    align-items: center;
     overflow-y: auto;
+    width: 100%;
+    gap: 10px;
+    /* flex-grow: 1; */
+    /* padding-top: 25px; */
 
-    /* margin: 0 80px; */
     box-sizing: border-box;
 }
 .location-items {
@@ -145,10 +133,9 @@
     border-radius: 8px;
     box-shadow: 0 0px 1px 0.5px rgba(255, 247, 247);
     height: 60px;
-    /* width: 100%; */
+    width: 75%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 70px 0 70px;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
 /* .location-card:hover {
@@ -170,7 +157,7 @@
     align-items: center;
     gap: 10px;
     text-align: center;
-    height: 30px;
+    height: 25px;
     width: 100%;
 }
 .location-down {
@@ -184,18 +171,24 @@
 }
 .location-detail {
     font-size: 0.95rem;
-    color: #555;
+    color: #949494;
     margin: 5px 0;
 }
-.location-card p {
-    /* gap: 15px; */
-    color: rgb(103, 102, 102);
+.theLocation-detail {
+    width: 50%;
+    margin: 0px;
+    text-align: start;
+    color: rgb(98, 120, 207);
+    font-size: 13px;
+}
+.location-title {
+    color: rgb(15, 0, 0);
 }
 
 .location-modify-icons {
     /* width: 100%; */
     display: flex;
-    gap: 15px;
+    gap: 20px;
     cursor: pointer;
     /* border: 2px solid rgb(222, 222, 222); */
     /* background-color: rgb(244, 244, 244); */
@@ -214,8 +207,9 @@
 }
 
 .LU-delete-icon {
-    height: 25px;
+    height: 24px;
     width: auto;
+    padding: 1px 0px 0 0px;
     /* border: 3px solid green; */
     transition: 100ms;
     color: rgb(255, 112, 112);
@@ -230,7 +224,7 @@
     /* width: 100%; */
     display: flex;
     /* margin-right: auto; */
-    gap: 15px;
+    gap: 20px;
     cursor: pointer;
     border-radius: 10px;
     align-items: center;
@@ -241,24 +235,21 @@
 
 /* Collection card  properties */
 .collectionCards {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: center;
-    overflow-y: scroll hidden;
-    height: auto;
-    width: 100%;
+    padding: 10px 15px;
+    justify-content: flex-start;
+    align-items: center;
     overflow-y: auto;
+    width: 100%;
+    gap: 10px;
+    /* flex-grow: 1; */
+    /* padding-top: 25px; */
 
-    /* margin: 0 80px; */
     box-sizing: border-box;
 }
-.collection-items {
-    width: 100%;
-    /* padding-bottom: 10px; */
-}
-/* .location-card {
+.collection-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -268,6 +259,11 @@
     border-radius: 8px;
     box-shadow: 0 0px 1px 0.5px rgba(255, 247, 247);
     height: 60px;
+    width: 75%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 0 70px 0 70px;
-} */
+    box-sizing: border-box;
+}
+.collection-items {
+    width: 100%;
+    /* padding-bottom: 10px; */
+}

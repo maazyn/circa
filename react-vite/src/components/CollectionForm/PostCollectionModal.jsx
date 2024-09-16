@@ -102,7 +102,7 @@ function PostCollectionModal({ user, userLocations }) {
         {errors.description && <p className="error-message">{errors.description}</p>}
         </label>
 
-        <p style={{color: "blue", fontWeight:"bold", marginBottom:"0px"}}>Add Locations:</p>
+        <p style={{color: "blue", fontWeight:"bold", marginBottom:"0px"}}>Add from your Saved Locations:</p>
         <label id="pcoll-input-label">
           {userLocations.map((location) => (
             <div key={location.id} className="checkboxContainer">
