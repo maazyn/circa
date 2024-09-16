@@ -37,11 +37,11 @@ function Navigation() {
   };
 
 
-  // useEffect(() => {
-  //   if (sessionUser && !weatherData) {
-  //     fetchWeatherData();
-  //   }
-  // }, [sessionUser, weatherData])
+  useEffect(() => {
+    if (sessionUser && !weatherData) {
+      fetchWeatherData();
+    }
+  }, [sessionUser, weatherData])
 
   return (
     <nav className="navContainer">
