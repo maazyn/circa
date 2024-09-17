@@ -43,6 +43,10 @@ function Navigation() {
     }
   }, [sessionUser, weatherData])
 
+  const windowAlert = async () => {
+    window.confirm("Feature coming soon!");
+  };
+
   return (
     <nav className="navContainer">
       <div className="navLeft">
@@ -74,7 +78,7 @@ function Navigation() {
               <IoMdSettings className="settings-history-logos" onClick={() => navigate("/settings")} />
             </div> */}
             <div>
-              <MdAddToPhotos className="history-logo" onClick={() => navigate("/collections")} />
+              <MdAddToPhotos className="history-logo" onClick={windowAlert} />
             </div>
             <ProfileButton />
           </>

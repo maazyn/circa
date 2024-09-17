@@ -35,6 +35,10 @@ function ProfileButton() {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  const windowAlert = async () => {
+    window.confirm("Feature coming soon!");
+  };
+
   const closeMenu = () => setShowMenu(false);
 
   const logout = (e) => {
@@ -65,13 +69,13 @@ function ProfileButton() {
                 <span>&gt;</span>
               </a>
 
-              <a href="/history" className="profile-menu-link">
+              <a onClick={windowAlert} className="profile-menu-link">
                 <div className="profile-menu-icon"><RiHistoryLine /></div>
                 <p>History</p>
                 <span>&gt;</span>
               </a>
 
-              <a href="/settings" className="profile-menu-link">
+              <a onClick={windowAlert}  className="profile-menu-link">
                 <div className="profile-menu-icon"><AiOutlineSetting /></div>
                 <p>Settings</p>
                 <span>&gt;</span>

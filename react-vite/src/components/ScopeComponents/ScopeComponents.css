@@ -76,7 +76,7 @@
   filter: brightness(50%);
 } */
 .lcMap, .gcMap {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     box-sizing: border-box;
     position: relative;
