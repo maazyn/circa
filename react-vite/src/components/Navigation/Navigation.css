@@ -152,8 +152,9 @@ nav > input {
   overflow-x: scroll hidden;
   justify-content:space-around;
   box-sizing: border-box;
-
+  /* transition: transform 1s; */
 }
+
 .profile-dropdown a {
   display: flex;
   justify-content: center;

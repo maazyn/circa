@@ -11,6 +11,7 @@ from .api.location_routes import location_routes
 from .api.collection_routes import collection_routes
 from .api.locol_routes import locol_routes
 from .api.weather_routes import weather_routes
+from .api.search_routes import search_routes
 
 from .seeds import seed_commands
 from .config import Config
@@ -37,6 +38,9 @@ app.register_blueprint(location_routes, url_prefix='/api/locations')
 app.register_blueprint(collection_routes, url_prefix='/api/collections')
 app.register_blueprint(locol_routes, url_prefix='/api/location-collections')
 app.register_blueprint(weather_routes, url_prefix='/api/weather')
+app.register_blueprint(search_routes, url_prefix='/api/search')
+
+
 db.init_app(app)
 Migrate(app, db)
 

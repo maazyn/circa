@@ -18,6 +18,8 @@
     /* margin: 10px 80px 10px 80px; */
     /* min-width: 760px; */
     /* gap: 30%; */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
 }
 .axnavContainer .axnavLeft, .axnavContainer .axnavRight{
     width: 97%;
@@ -33,20 +35,21 @@
     /* padding-left: 11px; */
     width: 50%;
     gap: 10px;
-    /* padding-top: 2px; */
-    /* border: 0.5px solid rgb(168, 168, 168); */
 }
-.axnav-search {
+.search-input {
     flex-grow: 3;
     border: none;
     border-radius: 5px;
     height: 25px;
-    max-width: 300px;
+    /* border: 3px solid red; */
+    max-width: 250px;
+    border-radius: 5px;
+    padding-left: 8px;
 }
 #search-icon {
     display: flex;
     align-self: center;
-    color: white;
+    color: rgb(253, 0, 0);
     font-weight: bold;
 }
 #filter-icon {
@@ -54,7 +57,7 @@
     color: rgb(163, 163, 163);
     background-color: white;
     border-radius: 5px;
-    height: 21px;
+    height: 20px;
     width: auto;
     align-items: center;
     align-self: center;
@@ -108,4 +111,55 @@
     min-width: 55px;
     box-sizing: border-box;
     border: none;
+}
+
+
+.searchDropdown{
+    display: grid;
+    position:absolute;
+    z-index: 2;
+    border: 1px solid rgb(211, 211, 211);
+    width: 40%;
+    height: auto;
+    top: 115px;
+    left: 10px;
+    max-width: 311px;
+    min-width: 219px;
+    flex-grow: 3;
+    background-color: rgba(255, 255, 255, 0.904);
+    border-radius: 7px;
+    /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+    /* transform: scale(1); */
+    margin: 10px 80px 10px 80px;
+    /* margin: none; */
+    padding: 15px 15px 15px 15px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+    cursor: pointer;
+}
+#loc-dropdown {
+    color: rgb(44, 91, 221);
+}
+#coll-dropdown {
+    color: rgb(198, 127, 231);
+    width: 100%;
+}
+#users-dropdown {
+    color: rgb(221, 97, 44);
+}
+#loc-dropdown span, #coll-dropdown span, #user-dropdown span {
+    display: inline-flex;
+    /* flex-direction: row; */
+    /* width: 60%; */
+    justify-content: flex-end;
+    color: rgb(182, 181, 181);
+}
+#loc-dropdown , #coll-dropdown , #user-dropdown  {
+    padding-bottom: 5px;
+    /* font-size: 16px; */
+    /* justify-content: flex-end; */
+}
+.searchDropdown div:hover {
+    background-color: rgb(231, 244, 251);
+    transform: scale(1.03);
 }
