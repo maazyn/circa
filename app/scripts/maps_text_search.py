@@ -37,8 +37,9 @@ response = service.places().searchText(
     fields="*"
 ).execute()
 
-print(response)
 places_list = response['places']
+# df = pd.DataFrame(places_list)
+df = pd.json_normalize(places_list)
+df.to_csv('places_results.csv', index=False)
+# print(df)
 # places_list[0]
-
-df = pd.DataFrame(places_list)

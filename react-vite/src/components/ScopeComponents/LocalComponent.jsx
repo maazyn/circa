@@ -4,31 +4,25 @@ import "./ScopeComponents.css";
 import MapCard from "../MapCard/MapCard";
 
 function LocalComponent() {
-    // const dispatch = useDispatch();
-
-    return (
-      <div className="lcContainer">
-          <section className="lcLeft">
-              <div className="lc-leftTop">
-
-              </div>
-              <div className="lc-leftBottom">
-
-              </div>
-          </section>
-
-          <section className="lcMapContainer">
-            <div className="lcMap"
-              data-alt="Map Functionality coming soon."
-              style={{
-                backgroundImage: "url('/images/demo-local.png')",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-              }}>
+  const placesData = [
+    { lat: 42.3601, lng: -71.0589, name: 'Boston' },  // Example place
+    { lat: 42.3736, lng: -71.1097, name: 'Cambridge' }  // Anotha example
+  ];
+  return (
+    <div className="lcContainer">
+        <section className="lcLeft">
+            <div className="lc-leftTop">
 
             </div>
-          </section>
-      </div>
+            <div className="lc-leftBottom">
+
+            </div>
+        </section>
+
+        <section className="lcMapContainer">
+          <MapCard data={placesData}/>
+        </section>
+    </div>
   );
 }
 
