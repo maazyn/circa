@@ -160,15 +160,14 @@ function EditCollectionPage() {
           {errors.description && <p className="error-message">{errors.description}</p>}
         </label>
 
-        <p style={{color: "blue", fontWeight:"bold", marginBottom:"0px"}}>Add or Remove Locations:</p>
+        <p className="text-[#007BFF] font-bold mb-[0px]">Add or Remove Locations:</p>
         <label id="ecoll-input-label">
             {userLocations.map((location) => (
               <div key={location.id} className="checkboxContainer">
 
                   <input
-                    className="coll-input-field"
+                    className="coll-input-field font-light"
                     type="checkbox"
-                    // name="location_ids"
                     value={location.id.toString()}
                     checked={savedLocations.includes(location.id.toString())}
                     onChange={handleCheckboxChange}

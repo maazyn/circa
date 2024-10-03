@@ -4,8 +4,11 @@ import "./ScopeComponents.css";
 
 function SkyComponent() {
     const user = useSelector((store) => store.session.user);
-    const userLoc = user?.city
-    const [loc, setLoc] = useState(userLoc || "Worcester")
+    const [city, setCity] = useState(user.city);
+    const [country, setCountry] = useState(user.Country);
+
+    const [lat, setLat] = useState(user.city || "23.09")
+    const [lng, setLng] = useState(user.city || "113.17")
     const [skyData, setSkyData] = useState(null);
     const [error, setError] = useState({});
 
@@ -15,50 +18,63 @@ function SkyComponent() {
 
     // let userLocations = Object.values(locations).filter((loc) => loc.user_id === sessionUser.id);
 
-    // function handleUpdateLocation(newLocation) {
-    //     setLoc(newLocation);
-    // }
+    function handleUpdateLocation(lt, lg) {
+        setLat(lt);
+        setLng(lg);
+    }
 
-    // const fetchSkyData = async () => {
-    //     const url = "http://www.7timer.info/bin/api.pl?lon=113.17&lat=23.09&product=astro&output=json";
-    //     try {
-    //       const response = await fetch(url);
-    //       if (!response.ok) {
-    //         throw new Error(`HTTP error! Status: ${response.status}`);
-    //       }
-    //       const data = await response.json();
-    //       console.log("Sunrise time:", data.dataseries[0]);
-    //       setSkyData(data);
-    //     } catch (err) {
-    //       setError(err.message);
-    //       console.error('Fetch error:', err);
-    //     }
-    //   };
+    const fetchCoordinates = async () => {
+        if (city && country) {
+            const query = encodeURIComponent(`${city}, ${country}`);
+            try {
+                const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`);
+                const data = await response.json();
+                if (data.length > 0) {
+                    const { lat, lon } = data[0];
+                    console.log(lat, lon)
+                    setLat(parseFloat(lat).toFixed(3));
+                    setLng(parseFloat(lon).toFixed(3));
+                }
+                console.log("COORDINATES:", lat, lng)
 
-    // const fetchSkyData = async () => {
-    //     try {
-    //       const response = await fetch('/api/weather/sky-conditions');
-    //       if (!response.ok) {
-    //         throw new Error(`HTTP error! Status: ${response.status}`);
-    //       }
-    //       const data = await response.json();
-    //       console.log("Sky image:", response);
-    //       setSkyData(data);
-    //     } catch (err) {
-    //       setError(err.message);
-    //       console.error('Fetch error:', err);
-    //     }
-    // };
+            } catch (error) {
+                console.error("Error fetching coordinates:", error);
+            }
+        } else if (city && !country) {
+            const query = encodeURIComponent(`${city}`);
+            try {
+                const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`);
+                const data = await response.json();
+                if (data.length > 0) {
+                    if (data.length > 0) {
+                        const { lat, lon } = data[0];
+                        setLat(parseFloat(lat).toFixed(4));
+                        setLng(parseFloat(lon).toFixed(4));
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching coordinates:", error);
+            }
+        }
+    };
+
+    useEffect(() => {
+        console.log("Updated COORDINATES:", city, country);
+    }, [city, country]);
+
+    useEffect(() => {
+        console.log("Updated COORDINATES:", lat, lng);
+    }, [lat, lng]);
+
     const fetchSkyData = async () => {
-        // const url = "http://www.7timer.info/bin/astro.php?lon=113.17&lat=23.09&ac=0&lang=en&unit=metric&output=internal&tzshift=0";
+        console.log("GEOLOC:", lat, lng)
+        const url = `http://www.7timer.info/bin/astro.php?lon=${lng}&lat=${lat}&ac=0&lang=en&unit=metric&output=internal&tzshift=0`;
         try {
-            const response = await fetch('/api/weather/sky-conditions');
-            // console.log(response)
+            const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            // const data = await response.json();
-            // console.log("Sky image:", response);
+            console.log("Sunrise time:", response);
             setSkyData(response);
         } catch (err) {
             setError(err.message);
@@ -66,14 +82,36 @@ function SkyComponent() {
         }
     };
 
-    useEffect(()=> {
-        if (user && !skyData) {
-            fetchSkyData()
-        } else if (!user && !skyData) {
-            setLoc("Worcester")
-            fetchSkyData()
+    // const fetchSkyData = async () => {
+    //     try {
+    //         const response = await fetch('/api/weather/sky-conditions');
+    //         // console.log(response)
+    //         if (!response.ok) {
+    //             throw new Error(`HTTP error! Status: ${response.status}`);
+    //         }
+    //         setSkyData(response);
+    //     } catch (err) {
+    //         setError(err.message);
+    //         console.error('Fetch error:', err);
+    //     }
+    // };
+
+
+    // useEffect(()=> {
+    //     if (user && !skyData) {
+    //         fetchCoordinates()
+    //         fetchSkyData()
+    //     } else if (!user && !skyData) {
+    //         fetchSkyData()
+    //     }
+    // }, [user, skyData]);
+
+
+    useEffect(() => {
+        if (user && lat && lng && !skyData) {
+            fetchSkyData();
         }
-    }, [user, skyData]);
+    }, [lat, lng, skyData]);
 
 
     return (
@@ -84,11 +122,11 @@ function SkyComponent() {
             }}>
             <h2 className="sc-title">Star-Gazing Conditions Tracker</h2>
             <section className="scTop">
-                <div className="sc-left">
-                    {userLoc? (
-                        <p>You are looking at data for {userLoc}</p>
+                <div className="sc-left text-center items-center">
+                    {user.city? (
+                        <p className="px-[15px]">You are looking at data for <span className="font-bold" >{user.city}</span></p>
                     ) : (
-                        <p style={{padding:"10px"}}>
+                        <p className="p-[10px]">
                             You are looking at demo data.
                             <br></br>
                             Sign up or log in to see data for your location.
@@ -97,7 +135,8 @@ function SkyComponent() {
                     {/* <p id="sc-location-title">{loc}</p> */}
                     {/* <input onSubmit={handleUpdateLocation()}>Set Location</input> */}
                 </div>
-                <div className="sc-right">
+                <div className="sc-right text-center items-center">
+                    <p className="px-[15px]">Recents /<span className="" >Favorites</span></p>
 
                 </div>
             </section>

@@ -57,8 +57,8 @@ function PostLocationModal({ user }) {
           const { lat, lon } = data[0];
           setFormData((prevData) => ({
             ...prevData,
-            lat,
-            lng: lon,
+            lat: parseFloat(lat).toFixed(4),
+            lng: parseFloat(lon).toFixed(4),
           }));
         }
       } catch (error) {
@@ -90,8 +90,8 @@ function PostLocationModal({ user }) {
       city: locationDetails.city || "",
       region: locationDetails.state || "",
       country: locationDetails.country || "",
-      lat,
-      lng: lon,
+      lat: parseFloat(lat).toFixed(4), 
+      lng: parseFloat(lon).toFixed(4),
     }));
     setDropdownVisible(false);
     setManualEntry(false);
@@ -117,8 +117,10 @@ function PostLocationModal({ user }) {
       [name]: value,
     });
 
-    if (name === 'title') {
-      fetchAddressSuggestions(value);
+  if (name === 'title') {
+    setManualEntry(true);
+    fetchAddressSuggestions(value);
+  } else if (name === 'city' || name === 'country') {
       setManualEntry(true);
     }
   };
@@ -128,7 +130,7 @@ function PostLocationModal({ user }) {
     if (manualEntry) {
       fetchCoordinatesFromAddress();
     }
-  }, [formData.city, formData.region, formData.country]);
+  }, [formData.city, formData.country]);
 
 
   useEffect(() => {

@@ -38,9 +38,11 @@ def fetch_sky_conditions():
     """
     Get sky conditions
     """
-    # city = current_user.city
-    # if not city:
-    #     return {'errors': {'message': 'City not set'}}, 400
+    city = current_user.city
+    country = current_user.country
+
+    if not city :
+        return {'errors': {'message': 'City not set'}}, 400
 
     url = f'http://www.7timer.info/bin/astro.php?lon=113.17&lat=23.09&ac=0&lang=en&unit=metric&output=internal&tzshift=0'
 
@@ -55,5 +57,3 @@ def fetch_sky_conditions():
         return jsonify({'errors': {'Req error': f"Request error occurred: {req_err}"}}), 500
     except:
         return jsonify({'errors': {'message': "Failed to fetch"}}), 500
-
-
