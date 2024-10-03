@@ -55,3 +55,5 @@ def fetch_sky_conditions():
         return jsonify({'errors': {'Req error': f"Request error occurred: {req_err}"}}), 500
     except:
         return jsonify({'errors': {'message': "Failed to fetch"}}), 500
+
+

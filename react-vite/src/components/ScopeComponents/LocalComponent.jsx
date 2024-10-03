@@ -4,10 +4,12 @@ import "./ScopeComponents.css";
 import MapCard from "../MapCard/MapCard";
 
 function LocalComponent() {
-  const placesData = [
-    { lat: 42.3601, lng: -71.0589, name: 'Boston' },  // Example place
-    { lat: 42.3736, lng: -71.1097, name: 'Cambridge' }  // Anotha example
-  ];
+  const defaultView = {
+    center: [42.3601, -71.0589],
+    zoom: 13  // B-town
+  }
+
+
   return (
     <div className="lcContainer">
         <section className="lcLeft">
@@ -20,7 +22,7 @@ function LocalComponent() {
         </section>
 
         <section className="lcMapContainer">
-          <MapCard data={placesData}/>
+          <MapCard defaultView={defaultView}/>
         </section>
     </div>
   );
