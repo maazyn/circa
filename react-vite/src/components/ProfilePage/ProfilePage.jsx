@@ -65,10 +65,10 @@ function ProfilePage({mode, setMode}) {
             <section className="ppLeft">
                 <div className="ppLeft-top">
                     <div className='leftHeaderContainer'>
-                        <h3 className="leftHeader">Saved Locations</h3>
+                        <h3 className="leftHeader w-full text-[17px] mt-2">Saved Locations</h3>
                         <OpenModalButton
                             className="post-location-button"
-                            buttonText="Add New"
+                            buttonText="Add"
                             modalComponent={<PostLocationModal user={sessionUser} />}
                             />
                     </div>
@@ -86,10 +86,10 @@ function ProfilePage({mode, setMode}) {
             <section className="ppRight">
                 <div className="ppRight-top">
                     <div className='rightHeaderContainer'>
-                        <h3 className="rightHeader">Collections</h3>
+                        <h3 className="rightHeader w-full text-[17px] mt-2">Collections</h3>
                         <OpenModalButton
                             className="post-location-button"
-                            buttonText="Add New"
+                            buttonText="Add"
                             modalComponent={<PostCollectionModal user={sessionUser} userLocations={userLocations} />}
                         />
                     </div>
