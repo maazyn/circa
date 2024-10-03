@@ -25,7 +25,7 @@ const MapCard = ({ defaultView }) => {
     }, []);
 
     return (
-        <div id="map" style={{ height: '75vh', width: '60vw' }}></div>
+        <div id="map" class=""></div>
     );
 };
 

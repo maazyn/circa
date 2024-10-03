@@ -4,16 +4,21 @@
 /* Document
    ========================================================================== */
    /** our sitewide */
-   button {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  button {
     cursor: pointer;
   }
   html {
     background-color: rgb(255, 255, 255);
     min-width: 50vw;
   }
-  p{
+  /* p{
     color: lightgrey;
-  }
+  } */
   div{
     color: lightgrey;
   }
