@@ -13,6 +13,8 @@ def seed_users():
         city='Worcester',
         region='MA',
         country='US',
+        lat=42.2626,
+        lng=-71.8019,
         profile_img='https://t4.ftcdn.net/jpg/01/19/05/71/360_F_119057199_YSS8CAnnkvQCzPhZOj3aYfNsx0CQ41sT.jpg')
 
     user_1 = User(
@@ -21,7 +23,9 @@ def seed_users():
         username='user1',
         email='user1@aa.io',
         password='password',
-        city='Boston')
+        city='Boston',
+        lat=42.3554,
+        lng=-71.0605,)
 
     user_2 = User(
         first_name="Second",
@@ -29,7 +33,9 @@ def seed_users():
         username='user2',
         email='user2@aa.io',
         password='password',
-        city='Los Angeles')
+        city='Los Angeles',
+        lat=34.0549,
+        lng=-118.2426,)
 
     db.session.add(demo)
     db.session.add(user_1)

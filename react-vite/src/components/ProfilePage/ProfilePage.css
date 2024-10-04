@@ -22,44 +22,47 @@
     display: flex;
     background-color: rgb(167, 181, 223);
     box-shadow: 0 2px 2px 0px rgb(0, 0, 0);
-
     width: 20%;
-    min-width: 150px;
+    min-width: 180px;
     height: 32px;
     flex-direction: column;
     align-items: center;
-
+    text-align: center;
+    font-weight: 400;
+    color: black;
     padding: 4px 15px;
     border-radius: 7px;
     justify-content: center;
 }
 
 .leftHeader, .rightHeader {
-    padding-top: 20px;
-    padding-bottom: 2px;
+    padding-top: 10px;
     color: black;
     margin: auto;
-    height: 50%;
+    height: 100%;
+
     align-content: center;
     letter-spacing: 1px;
 }
 .leftHeaderContainer button, .rightHeaderContainer button{
     display: flex;
     justify-content: center;
-    width: 50%;
-    min-width: 80px;
+    width: 30%;
+    min-width: 40px;
     background-color: white;
+    color: black;
     border-radius: 40px;
-    margin-top: 2px;
-    font-size: 13.5px;
-    font-weight: 500;
+    margin-top: 5px;
+    font-weight: 700;
+    font-size: 13px;
+    box-shadow: 0 2px 2px 0px rgb(0, 0, 0);
+
 }
 .leftHeaderContainer button:hover, .rightHeaderContainer button:hover {
     background-color: black;
     color: white;
     font-weight: bold;
     box-sizing: border-box;
-    border: 2px solid black;
 }
 
 .ppContainer {
@@ -170,8 +173,8 @@
     height: 30px;
 }
 .location-detail {
-    font-size: 0.95rem;
-    color: #949494;
+    font-size: 0.90rem;
+    color: #676767;
     margin: 5px 0;
 }
 .theLocation-detail {
@@ -182,7 +185,9 @@
     font-size: 13px;
 }
 .location-title {
-    color: rgb(15, 0, 0);
+    color: #676767;
+    font-size: 0.90rem;
+
 }
 
 .location-modify-icons {

@@ -10,8 +10,8 @@ def seed_collections():
 
     demo_collection_1 = Collection(
         user_id=1,
-        title="Asia travel list",
-        description="Places in Asia that seem interesting",
+        title="Travel list - Asia",
+        description="Countries to visit",
         # locations=[
         #     user1_location_map.get("Shanghai"),
         #     user1_location_map.get("Astana"),
@@ -21,8 +21,8 @@ def seed_collections():
 
     demo_collection_2 = Collection(
         user_id=1,
-        title="Visited National Parks",
-        description="3 down, 60 more to go!",
+        title="US National Parks",
+        description="4 down, 60 more to go!",
         # locations=[
         #     user1_location_map.get("Zion National Park"),
         #     user1_location_map.get("Canyonlands National Park"),
@@ -31,9 +31,9 @@ def seed_collections():
     )
 
     demo_collection_3 = Collection(
-        user_id=2,
+        user_id=1,
         title="New England",
-        description="Places I've been in the Northeast",
+        description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum suscipit, velit eu auctor euismod, felis nibh condimentum elit, non varius augue diam vitae massa. Aliquam nunc dolor, sodales eu neque et, accumsan mollis mauris. Etiam eu tempus risus, eget dignissim odio. Nulla facilisi. Nulla porttitor eu est vel tempor. ",
         # locations=[
         #     user2_location_map.get("Boston"),
         #     user2_location_map.get("Worcester"),

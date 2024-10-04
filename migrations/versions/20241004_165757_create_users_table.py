@@ -1,8 +1,8 @@
 """create users table
 
-Revision ID: dc3267ff0d61
+Revision ID: 9134c50e172b
 Revises:
-Create Date: 2024-09-15 17:47:38.551240
+Create Date: 2024-10-04 16:57:57.753824
 
 """
 from alembic import op
@@ -13,7 +13,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = 'dc3267ff0d61'
+revision = '9134c50e172b'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,6 +31,8 @@ def upgrade():
     sa.Column('city', sa.String(length=50), nullable=False),
     sa.Column('region', sa.String(length=50), nullable=True),
     sa.Column('country', sa.String(length=50), nullable=True),
+    sa.Column('lat', sa.Float(), nullable=True),
+    sa.Column('lng', sa.Float(), nullable=True),
     sa.Column('profile_img', sa.String(length=200), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
@@ -45,7 +47,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('description', sa.String(length=50), nullable=True),
+    sa.Column('description', sa.String(length=1000), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
@@ -73,7 +75,7 @@ def upgrade():
     )
     if environment == "production":
         op.execute(f"ALTER TABLE locations SET SCHEMA {SCHEMA};")
-
+        
     op.create_table('location_collections',
     sa.Column('location_id', sa.Integer(), nullable=False),
     sa.Column('collection_id', sa.Integer(), nullable=False),
@@ -82,7 +84,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['collection_id'], ['collections.id'], ondelete='CASCADE'),
     sa.ForeignKeyConstraint(['location_id'], ['locations.id'], )
     )
-    
     # ### end Alembic commands ###
 
 

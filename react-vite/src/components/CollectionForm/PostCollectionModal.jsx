@@ -91,6 +91,7 @@ function PostCollectionModal({ user, userLocations }) {
 
         <label id="input-label">
           Description
+          <span className="required-asterisk" style={{color:"red"}}> *</span>
           <input
             className="input-field"
             type="text"

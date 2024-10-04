@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrUserLocations} from "../../redux/locations";
 import { fetchCurrUserCollections } from "../../redux/collections";
@@ -9,9 +9,11 @@ import AuxiliaryNav from "../AuxiliaryNav/AuxiliaryNav";
 import FooterNav from "../FooterNav/FooterNav";
 import PostLocationModal from "../LocationFormModal/PostLocationModal";
 import PostCollectionModal from "../CollectionForm/PostCollectionModal";
+import { useNavigate } from "react-router-dom";
 
 function ProfilePage({mode, setMode}) {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const sessionUser = useSelector((state) => state.session.user);
     const locations = useSelector((state) => state.locations);
@@ -45,13 +47,7 @@ function ProfilePage({mode, setMode}) {
     //         selectedLocationId(null)
     //     }
     // };
-    // const handleCollectionClick = (collId) => {
-    //     if (collId !== selectedCollectionId) {
-    //         selectedCollectionId(locId);
-    //     } else {
-    //         selectedCollectionId(null)
-    //     }
-    // };
+
 
 
     return (
@@ -61,16 +57,16 @@ function ProfilePage({mode, setMode}) {
         </div>
 
 
-        <div className="ppContainer">
+        <div className="ppContainer h-[85vh] ">
             <section className="ppLeft">
                 <div className="ppLeft-top">
                     <div className='leftHeaderContainer'>
-                        <h3 className="leftHeader">Saved Locations</h3>
+                        <h3 className="leftHeader w-full text-[17px] mt-2">All Locations</h3>
                         <OpenModalButton
                             className="post-location-button"
-                            buttonText="Add New"
+                            buttonText="Add"
                             modalComponent={<PostLocationModal user={sessionUser} />}
-                            />
+                        />
                     </div>
                 </div>
 
@@ -86,18 +82,18 @@ function ProfilePage({mode, setMode}) {
             <section className="ppRight">
                 <div className="ppRight-top">
                     <div className='rightHeaderContainer'>
-                        <h3 className="rightHeader">Collections</h3>
+                        <h3 className="rightHeader w-full text-[17px] mt-2">Collections</h3>
                         <OpenModalButton
                             className="post-location-button"
-                            buttonText="Add New"
+                            buttonText="Add"
                             modalComponent={<PostCollectionModal user={sessionUser} userLocations={userLocations} />}
                         />
                     </div>
                 </div>
 
-                <div className='collectionCards'>
+                <div className='collectionCards cursor-pointer '>
                     {userCollections.map(collection => (
-                        <CollectionCard key={collection.id} className="collection-items" theCollection={collection} />
+                        <CollectionCard key={collection.id} className="collection-items " theCollection={collection}/>
                     ))}
                 </div>
             </section>

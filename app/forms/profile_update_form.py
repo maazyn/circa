@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField
+from wtforms import StringField, FloatField
 from wtforms.validators import DataRequired, Length, Optional, URL
 
 class ProfileUpdateForm(FlaskForm):
@@ -8,4 +8,6 @@ class ProfileUpdateForm(FlaskForm):
     city = StringField('City', validators=[DataRequired(), Length(max=50)])
     region = StringField('Region', validators=[Optional(), Length(max=50)])
     country = StringField('Country', validators=[Optional(), Length(max=50)])
+    lat = FloatField('Latitude', validators=[DataRequired()])
+    lng = FloatField('Longitude', validators=[DataRequired()])
     profile_img_url = StringField('Profile Image URL', validators=[Optional(), Length(max=255), URL()])

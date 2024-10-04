@@ -7,7 +7,7 @@ import UpdateProfilePage from '../components/UpdateProfilePage';
 import EditCollectionPage from '../components/CollectionForm/EditCollectionPage';
 // import History from "../components/History"
 // import LocationDetails from "../components/LocationDetails"
-// import CollectionDetails from "../components/CollectionDetails"
+import CollectionDetails from "../components/CollectionDetails"
 
 import Layout from './Layout';
 
@@ -37,6 +37,10 @@ export const router = createBrowserRouter([
       },
       {
         path:"/collections/:collectionId",
+        element:<CollectionDetails />
+      },
+      {
+        path:"/collections/:collectionId/edit",
         element:<EditCollectionPage />
       },
       // {

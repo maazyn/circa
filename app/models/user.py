@@ -18,6 +18,8 @@ class User(db.Model, UserMixin):
     city = db.Column(db.String(50), nullable=False)
     region = db.Column(db.String(50))
     country = db.Column(db.String(50))
+    lat = db.Column(db.Float)
+    lng = db.Column(db.Float)
     profile_img = db.Column(db.String(200))
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), onupdate=db.func.current_timestamp())
@@ -47,9 +49,10 @@ class User(db.Model, UserMixin):
             'city': self.city,
             'region': self.region,
             'country': self.country,
+            'lat': self.lat,
+            'lng': self.lng,
             'profile_img': self.profile_img,
             'created_at': self.created_at,
             'updated_at': self.updated_at,
             'collections': [collection.to_dict() for collection in self.collections],
-
         }

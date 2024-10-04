@@ -1,21 +1,3 @@
-.location-form-parent {
-    width: 450px;
-    max-width: 800px;
-    min-width: 350px;
-    min-height: 200px;
-    margin: auto;
-    padding: 30px 60px 40px 60px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    justify-content: center;
-    align-items: center;
-
-}
-
-.location-form-heading {
-    /* color: black; */
-}
 
 
 .location-post-buttons {
@@ -28,23 +10,8 @@
 
 
 .location-form-parent {
-    /* border-radius: 10px; */
-    /* width: 800px; */
-
-    /* justify-content: space-between; */
-    /* margin-top: 20px; */
+    background-color: red;
 }
-
-/* .location-form-parent label {
-    display: flex;
-    flex-direction: column;
-} */
-
-/* .location-form-parent checkbox {
-    border-radius: 3px;
-    height: 80px;
-
-} */
 .PU-name {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -120,6 +87,7 @@
     border: 1px solid rgb(169, 169, 169);
     /* box-shadow: 1.5px 1.5px 0.5px 0px rgba(0, 0, 0, 1); */
     background-color: rgb(255, 255, 255);
+    color: black;
     margin-top: 30px;
     font-weight: bold;
 }

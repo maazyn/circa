@@ -164,3 +164,6 @@ cython_debug/
 
 # google client-id
 client-secret.json
+
+token files
+token_places_v1.json

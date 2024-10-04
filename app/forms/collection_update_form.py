@@ -15,5 +15,5 @@ from app.models import Collection
 class CollectionUpdateForm(FlaskForm):
     # collection_id = IntegerField('Collection ID', validators=[DataRequired()])
     title = StringField('Title', validators=[DataRequired(), Length(max=100)])
-    description = StringField('Description', validators=[Optional()])
+    description = StringField('Description', validators=[DataRequired(), Length(max=1000)])
     # location_ids = FieldList(IntegerField('Location IDs'), validators=[Optional()])

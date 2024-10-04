@@ -11,7 +11,7 @@ import { FaCalendarCheck } from "react-icons/fa";
 
 
 
-function LocationCard({theLocation}) {
+function LocationCardLite({theLocation}) {
     if (!theLocation) return (<p>Loading...</p>)
     // const user = useSelector((store) => store.session.user);
     const dispatch = useDispatch();
@@ -64,7 +64,7 @@ function LocationCard({theLocation}) {
 
                         />
                     )}
-                    <TiDelete className="LU-delete-icon" onClick={handleDelete}/>
+                    {/* <TiDelete className="LU-delete-icon" onClick={handleDelete}/> */}
                 </div>
             </div>
 
@@ -72,4 +72,4 @@ function LocationCard({theLocation}) {
     )
 }
 
-export default LocationCard
+export default LocationCardLite

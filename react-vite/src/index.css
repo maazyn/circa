@@ -4,7 +4,12 @@
 /* Document
    ========================================================================== */
    /** our sitewide */
-   button {
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+  button {
     cursor: pointer;
   }
   html {

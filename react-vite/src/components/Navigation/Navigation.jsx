@@ -24,7 +24,7 @@ function Navigation() {
 
   const fetchWeatherData = async () => {
     try {
-      const response = await fetch('/api/weather/');
+      const response = await fetch('/api/weather/forecast');
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -37,11 +37,15 @@ function Navigation() {
   };
 
 
-  // useEffect(() => {
-  //   if (sessionUser && !weatherData) {
-  //     fetchWeatherData();
-  //   }
-  // }, [sessionUser, weatherData])
+  useEffect(() => {
+    if (sessionUser && !weatherData) {
+      fetchWeatherData();
+    }
+  }, [sessionUser, weatherData])
+
+  const windowAlert = async () => {
+    window.confirm("Feature coming soon!");
+  };
 
   return (
     <nav className="navContainer">
@@ -74,18 +78,18 @@ function Navigation() {
               <IoMdSettings className="settings-history-logos" onClick={() => navigate("/settings")} />
             </div> */}
             <div>
-              <MdAddToPhotos className="history-logo" onClick={() => navigate("/collections")} />
+              <MdAddToPhotos className="history-logo" onClick={windowAlert} />
             </div>
             <ProfileButton />
           </>
         ) : (
-          <div className="nav-user-menu">
+          <div className="nav-user-menu items-center h-auto m-auto">
             <OpenModalMenuItem
               itemText="Log In"
               // onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-            <p>/</p>
+            <p className="pb-[2px] font-light">/</p>
             <OpenModalMenuItem
               itemText="Sign Up"
               // onItemClick={closeMenu}
