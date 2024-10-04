@@ -48,6 +48,8 @@
     max-width: 250px;
     border-radius: 5px;
     padding-left: 8px;
+    color: gray;
+    letter-spacing: 1px;
 }
 #search-icon {
     display: flex;
@@ -125,7 +127,7 @@
     border: 1px solid rgb(211, 211, 211);
     width: 40%;
     height: auto;
-    top: 115px;
+    top: 90px;
     left: 10px;
     max-width: 311px;
     min-width: 219px;
