@@ -18,8 +18,12 @@ function CollectionCard({theCollection}) {
     const navigate = useNavigate()
     const [deleteErrors, setDeleteErrors] = useState({});
 
+    const handleCollectionClick = () => {
+        navigate(`/collections/${theCollection.id}`)
+    };
+
     const handleEdit = () => {
-        navigate(`/collections/${theCollection.id}`);
+        navigate(`/collections/${theCollection.id}/edit`);
     };
 
     // const handleDelete = async (e) => {
@@ -29,14 +33,15 @@ function CollectionCard({theCollection}) {
 
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this collection?")) {
-          const deleteResponse = await dispatch(removeCollection(theCollection.id));
-          if (deleteResponse.errors) {
-            setDeleteErrors(deleteResponse.errors);
-          } else {
-            navigate("/profile");
-          }
+            const deleteResponse = await dispatch(removeCollection(theCollection.id));
+            if (deleteResponse.errors) {
+                setDeleteErrors(deleteResponse.errors);
+            } else {
+                navigate("/profile");
+            }
         }
     };
+
     // const handleChange = async (e) => {
     //     e.preventDefault();
 
@@ -49,11 +54,11 @@ function CollectionCard({theCollection}) {
 
     // console.log(theCollection)
     return (
-        <div className="collection-card" key={theCollection.id} >
+        <div className="collection-card transition-transform duration-[0.2s] hover:scale-[1.03]" key={theCollection.id} onClick={handleCollectionClick} >
             <div className="location-up">
                 <p className="location-title">{theCollection.title}</p>
             </div>
-            <div className="location-down">
+            <div className="location-down overflow-hidden">
                 {theCollection.description ? <p className="theLocation-detail">{theCollection.description}</p> : null}
 
                 <div className="collection-modify-icons">

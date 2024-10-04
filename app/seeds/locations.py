@@ -3,7 +3,7 @@ from sqlalchemy.sql import text
 
 def seed_locations():
     demo_location_1 = Location(
-        user_id=1,
+        user_id=2,
         title="Boston",
         # googleId="googleId",
         lat=42.3554,
@@ -18,30 +18,30 @@ def seed_locations():
 
     demo_location_2 = Location(
         user_id=1,
-        title="Istanbul",
+        title="Nepal",
         # googleId="googleId",
-        lat=41.0064,
-        lng=28.9759,
-        type="city",
+        lat=28.3949,
+        lng=84.1240,
+        type="country",
         continent="Asia",
-        country="Turkey",
+        country="Nepal",
         # region="",
-        city="Istanbul",
-        visited=True
+        # city="Shanghai",
+        visited=False
     )
 
     demo_location_3 = Location(
         user_id=1,
-        title="Shanghai",
+        title="Turkiye",
         # googleId="googleId",
-        lat=31.2323,
-        lng=-121.4691,
-        type="city",
+        lat=38.9637,
+        lng=35.2433,
+        type="country",
         continent="Asia",
-        country="China",
+        country="Turkiye",
         # region="",
-        city="Shanghai",
-        visited=False
+        # city="Istanbul",
+        visited=True
     )
 
     demo_location_4 = Location(
@@ -60,13 +60,13 @@ def seed_locations():
 
     demo_location_5 = Location(
         user_id=1,
-        title="Astana",
+        title="Singapore",
         # googleId="googleId",
-        lat=51.1153,
-        lng=-71.4664,
-        type="city",
+        lat=1.3521,
+        lng=103.8198,
+        type="country",
         continent="Asia",
-        country="Kazakhstan",
+        country="Singapore",
         # region="FL",
         # city="Miami",
         visited=False
@@ -74,11 +74,11 @@ def seed_locations():
 
     demo_location_6 = Location(
         user_id=1,
-        title="Ho Chi Minh city",
+        title="Vietnam",
         # googleId="googleId",
-        lat=10.7764,
-        lng=-106.7011,
-        type="city",
+        lat=14.0583,
+        lng=108.2772,
+        type="country",
         continent="Asia",
         country="Vietnam",
         # region="FL",
@@ -143,7 +143,7 @@ def seed_locations():
     )
 
     demo_location_11 = Location(
-        user_id=2,
+        user_id=1,
         title="Boston",
         # googleId="googleId",
         lat=42.3554,
@@ -157,7 +157,7 @@ def seed_locations():
     )
 
     demo_location_12 = Location(
-        user_id=2,
+        user_id=1,
         title="Worcester",
         # googleId="googleId",
         lat=42.2626,
@@ -171,7 +171,7 @@ def seed_locations():
     )
 
     demo_location_13 = Location(
-        user_id=2,
+        user_id=1,
         title="Providence",
         # googleId="googleId",
         lat=41.8240,
@@ -185,7 +185,7 @@ def seed_locations():
     )
 
     demo_location_14 = Location(
-        user_id=2,
+        user_id=1,
         title="Hartford",
         # googleId="googleId",
         lat=41.7646,
@@ -199,7 +199,7 @@ def seed_locations():
     )
 
     demo_location_15 = Location(
-        user_id=2,
+        user_id=1,
         title="New York",
         # googleId="googleId",
         lat=40.7815,
@@ -212,6 +212,145 @@ def seed_locations():
         visited=True
     )
 
+    demo_location_16 = Location(
+        user_id=1,
+        title="Yellowstone National Park",
+        # googleId="googleId",
+        lat=44.6201,
+        lng=-110.5607,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="WY",
+        visited=False
+        # city="",
+    )
+
+    demo_location_17 = Location(
+        user_id=1,
+        title="Acadia National Park",
+        # googleId="googleId",
+        lat=44.3563,
+        lng=-68.2155,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="ME",
+        visited=False
+        # city="",
+    )
+
+    demo_location_18 = Location(
+        user_id=1,
+        title="Haleakalā National Park",
+        # googleId="googleId",
+        lat=20.6991,
+        lng=-156.1324,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="HI",
+        visited=False
+        # city="",
+    )
+
+    demo_location_19 = Location(
+        user_id=1,
+        title="Big Bend National Park",
+        # googleId="googleId",
+        lat=29.2502,
+        lng=-103.2505,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="TX",
+        visited=False
+        # city="",
+    )
+
+    demo_location_20 = Location(
+        user_id=1,
+        title="Badlands National Park",
+        # googleId="googleId",
+        lat=43.8554,
+        lng=-102.3397,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="SD",
+        visited=False
+        # city="",
+    )
+
+    demo_location_21 = Location(
+        user_id=1,
+        title="Yosemite National Park",
+        # googleId="googleId",
+        lat=37.8651,
+        lng=-119.5383,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="CA",
+        visited=False
+        # city="",
+    )
+
+    demo_location_22 = Location(
+        user_id=1,
+        title="Rocky Mountains National Park",
+        # googleId="googleId",
+        lat=40.3428,
+        lng=-105.6836,
+        type="nature",
+        continent="North America",
+        country="US",
+        region="CO",
+        visited=False
+        # city="",
+    )
+
+    demo_location_23 = Location(
+        user_id=1,
+        title="Malaysia",
+        # googleId="googleId",
+        lat=4.2105,
+        lng=101.9758,
+        type="country",
+        continent="Asia",
+        country="Malaysia",
+        # region="CO",
+        visited=False
+        # city="",
+    )
+
+    demo_location_24 = Location(
+        user_id=1,
+        title="Kazakhstan",
+        # googleId="googleId",
+        lat=48.0196,
+        lng=66.9237,
+        type="country",
+        continent="Asia",
+        country="Kazakhstan",
+        # region="CO",
+        visited=False
+        # city="",
+    )
+
+    demo_location_25 = Location(
+        user_id=1,
+        title="Kyrgyzstan",
+        # googleId="googleId",
+        lat=42.8746,
+        lng=74.5698,
+        type="country",
+        continent="Asia",
+        country="Kyrgyzstan",
+        # region="CO",
+        visited=False
+        # city="",
+    )
 
     db.session.add(demo_location_1)
     db.session.add(demo_location_2)
@@ -228,8 +367,16 @@ def seed_locations():
     db.session.add(demo_location_13)
     db.session.add(demo_location_14)
     db.session.add(demo_location_15)
-
-
+    db.session.add(demo_location_16)
+    db.session.add(demo_location_17)
+    db.session.add(demo_location_18)
+    db.session.add(demo_location_19)
+    db.session.add(demo_location_20)
+    db.session.add(demo_location_21)
+    db.session.add(demo_location_22)
+    db.session.add(demo_location_23)
+    db.session.add(demo_location_24)
+    db.session.add(demo_location_25)
 
     db.session.commit()
 

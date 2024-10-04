@@ -112,7 +112,7 @@ function EditCollectionPage() {
       setErrors(locolResponse.errors);
       return;
     }
-    navigate("/profile")
+    navigate(`/collections/${collectionId}`)
   };
 
   const handleDelete = async () => {

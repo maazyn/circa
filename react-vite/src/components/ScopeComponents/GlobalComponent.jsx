@@ -25,7 +25,7 @@ function GlobalComponent() {
               </div>
           </section>
 
-          <section className=" w-[100%] h-[100%] flex-row z-[-1]">
+          <section className=" w-[100%] h-[100%] flex-row">
             <MapCard defaultView={defaultView}/>
 
           </section>

@@ -28,9 +28,10 @@ function PostLocationModal({ user }) {
   const [manualEntry, setManualEntry] = useState(false); // To track manual entry in case user wants to use a custom title
 
   // Fetch address suggestion list using Nominatim API. Selecting from list is not necessary but benefit is it will pre-fill all fields
-  const fetchAddressSuggestions = async (input) => {
-    if (input) {
-      const encodedInput = encodeURIComponent(input);
+  const fetchAddressSuggestions = async () => {
+    const { title } = formData;
+    if (title) {
+      const encodedInput = encodeURIComponent(title);
       try {
         const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodedInput}&format=json&addressdetails=1`);
         const data = await response.json();
@@ -90,7 +91,7 @@ function PostLocationModal({ user }) {
       city: locationDetails.city || "",
       region: locationDetails.state || "",
       country: locationDetails.country || "",
-      lat: parseFloat(lat).toFixed(4), 
+      lat: parseFloat(lat).toFixed(4),
       lng: parseFloat(lon).toFixed(4),
     }));
     setDropdownVisible(false);
@@ -117,11 +118,11 @@ function PostLocationModal({ user }) {
       [name]: value,
     });
 
-  if (name === 'title') {
-    setManualEntry(true);
-    fetchAddressSuggestions(value);
-  } else if (name === 'city' || name === 'country') {
+    if (name === 'title') {
       setManualEntry(true);
+    //   fetchAddressSuggestions(value);
+    // } else if (name === 'city' || name === 'country') {
+    //   setManualEntry(true);
     }
   };
 
@@ -151,17 +152,18 @@ function PostLocationModal({ user }) {
     };
   }, [isDropdownVisible]);
 
+
   return (
     <div className=" sm:w-[80vw] md:w-[60vw] max-w-[850px] min-h-[200px] bg-[#f9f9f9] shadow-[0_0_10px_rgba(0,0,0,0.1)] justify-center items-center m-auto pt-[30px] pb-10 px-[60px] rounded-[10px]">
       <h1 className="location-form-heading">Add a location</h1>
       {errors.server && <p className="error-message">{errors.server}</p>}
       <form className="LP-form-container " onSubmit={handleSubmit}>
-        <div className="grid grid-cols-[10fr_1fr] gap-[10px]">
-          <label className="relative">
+        <div className="grid grid-cols-[4fr_1fr] gap-[10px] m-auto">
+          <label className="relative font-light">
             Search an address or create a custom title:
             <span className="required-asterisk" style={{color:"red"}}> *</span>
             <input
-              className="title-input-field"
+              className="title-input-field font-semibold"
               type="text"
               name="title"
               value={formData.title}
@@ -169,7 +171,6 @@ function PostLocationModal({ user }) {
               required
             />
             {errors.title && <p className="error-message">{errors.title}</p>}
-
             {isDropdownVisible && addressSuggestions.length > 0 && (
               <ul
                 ref={dropdownRef}
@@ -187,14 +188,17 @@ function PostLocationModal({ user }) {
               </ul>
             )}
           </label>
-          <button onClick={() => handleClear()} className="cancel-button w-full my-[29px] align-center h-[30%] rounded-full text-sm box-border  text-black hover:bg-[#007bffef] hover:text-white">Clear</button>
+          <div className="button-box flex flex-row gap-[2px] justify-center items-center mt-[12px]">
+            <button type="button" onClick={fetchAddressSuggestions} className="search-button w-full align-center h-auto rounded-full text-sm font-normal border box-border border-solid border-[rgba(169,169,169)] bg-white text-black hover:bg-[#5aab57ef] hover:text-white">Search</button>
+            <button onClick={() => handleClear()} className="cancel-button w-full m-0 align-center h-auto rounded-full text-sm box-border font-normal text-black hover:bg-[#007bffef] hover:text-white hover:shadow-none">Clear</button>
+          </div>
         </div>
 
         <div className="PU-location">
-          <label id="input-label">
+          <label id="input-label" className="font-light">
             City
             <input
-              className="city-input-field"
+              className="city-input-field font-semibold"
               type="text"
               name="city"
               value={formData.city}
@@ -203,10 +207,10 @@ function PostLocationModal({ user }) {
             {errors.city && <p className="error-message">{errors.city}</p>}
           </label>
 
-          <label id="input-label">
+          <label id="input-label" className="font-light">
             Region
             <input
-              className="region-input-field"
+              className="region-input-field font-semibold"
               type="text"
               name="region"
               value={formData.region}
@@ -215,11 +219,11 @@ function PostLocationModal({ user }) {
             {errors.region && <p className="error-message">{errors.region}</p>}
           </label>
 
-          <label id="input-label">
+          <label id="input-label" className="font-light">
             Country
             <span className="required-asterisk" style={{color:"red"}}> *</span>
             <input
-              className="country-input-field"
+              className="country-input-field font-semibold"
               type="text"
               name="country"
               value={formData.country}
@@ -231,10 +235,10 @@ function PostLocationModal({ user }) {
         </div>
 
         <div className="grid grid-cols-[1fr_1fr_3fr] gap-[10px] w-full flex-row justify-between">
-          <label id="input-label">
+          <label id="input-label" className="font-light">
             Latitude
             <input
-              className="lat-input-field"
+              className="lat-input-field font-semibold"
               type="float"
               name="lat"
               value={formData.lat}
@@ -243,10 +247,10 @@ function PostLocationModal({ user }) {
             {errors.lat && <p className="error-message">{errors.lat}</p>}
           </label>
 
-          <label id="lng-input-label">
+          <label id="lng-input-label" className="font-light">
             Longitude
             <input
-              className="input-field"
+              className="input-field font-semibold"
               type="float"
               name="lng"
               value={formData.lng}
@@ -255,11 +259,11 @@ function PostLocationModal({ user }) {
             {errors.lng && <p className="error-message">{errors.lng}</p>}
           </label>
 
-          <label id="input-label">
+          <label id="input-label" className="font-light">
             Type
             <span className="required-asterisk" style={{color:"red"}}> *</span>
             <select
-              className="type-input-field"
+              className="type-input-field font-medium text-[#475cc8]"
               name="type"
               value={formData.type}
               onChange={handleChange}
@@ -275,7 +279,7 @@ function PostLocationModal({ user }) {
           </label>
         </div>
 
-        <label className="inline-flex items-center cursor-pointer relative">
+        <label className="inline-flex items-center cursor-pointer relative font-light mt-[10px]">
           <input
             type="checkbox"
             name="visited"
@@ -285,7 +289,7 @@ function PostLocationModal({ user }) {
               visited: e.target.checked
             })}
           />
-          <span className="label ml-2">Visited?</span>
+          <span className="label ml-2 ">Did you visit this location?</span>
         </label>
 
         <div className="location-post-buttons">
