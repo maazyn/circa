@@ -6,6 +6,7 @@ import './MapCard.css';
 import { fetchCurrUserLocations} from "../../redux/locations";
 
 const MapCard = ({ defaultView }) => {
+    const [mapInstance, setMapInstance] = useState(null);
     const [locations, setLocations] = useState([]);
     const dispatch = useDispatch();
     const sessionUser = useSelector((state) => state.session.user);
@@ -13,12 +14,21 @@ const MapCard = ({ defaultView }) => {
 
     useEffect(() => {
         // Initializing map
-        const map = L.map('map', { center: defaultView.center, zoom: defaultView.zoom }); // B-town
+        const map = L.map('map', {
+            center: defaultView.center,
+            zoom: defaultView.zoom,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            interactive: true
+        });
 
         // Add a tile layer (OpenStreetMap credit)
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
+
+        setMapInstance(map); // Saving map instance bc Openstreetmaps will give me problems otherwise
+
 
         // // Fetch locations, add markers to map
         // if (sessionUser) {
@@ -40,7 +50,21 @@ const MapCard = ({ defaultView }) => {
                 map.remove();
             }
         };
-    }, [defaultView, locations]);
+    }, [defaultView]);
+
+    useEffect(() => {
+        if (sessionUser && mapInstance) {
+            dispatch(fetchCurrUserLocations()).then((fetchedLocations) => {
+                setLocations(fetchedLocations?.title);
+
+                fetchedLocations?.forEach((location) => {
+                    L.marker([location.latitude, location.longitude])
+                        .addTo(mapInstance)
+                        .bindPopup(location.name || 'Location');
+                });
+            });
+        }
+    }, [sessionUser, mapInstance, dispatch]);
 
     return (
         <div id="map" style={{ height: '85vh', width: '100%' }}></div>

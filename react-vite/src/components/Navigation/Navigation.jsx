@@ -83,13 +83,13 @@ function Navigation() {
             <ProfileButton />
           </>
         ) : (
-          <div className="nav-user-menu">
+          <div className="nav-user-menu items-center h-auto m-auto">
             <OpenModalMenuItem
               itemText="Log In"
               // onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-            <p>/</p>
+            <p className="pb-[2px] font-light">/</p>
             <OpenModalMenuItem
               itemText="Sign Up"
               // onItemClick={closeMenu}

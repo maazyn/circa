@@ -16,10 +16,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 40px;
+  height: 31px;
   border-radius: 7px;
   background-color: transparent;
-  margin: 20px 80px 10px 80px;
+  margin: 15px 80px 10px 80px;
   /* padding: 10px 80px; */
 }
 nav > input {
@@ -39,7 +39,7 @@ nav > input {
 .nav-app-logo {
   width: 55px;
   height: auto;
-  padding-top: 2px;
+  /* padding-top: 2px; */
 }
 
 
@@ -94,7 +94,8 @@ nav > input {
   box-sizing: border-box;
   border-radius: 7px;
   /* border: 0.5px solid rgb(205, 205, 205); */
-  background-color: rgb(130, 151, 214);
+  /* background-color: rgb(130, 151, 214); */
+  background-color: rgb(198, 198, 198);
   box-shadow: 0px 0px 2px 0px rgb(158, 158, 158);
 
 }
@@ -138,7 +139,7 @@ nav > input {
   flex-direction: column;
   list-style-type: none;
   right: 80px;
-  top: 66px;
+  top: 54px;
   font-size: 10px;
   background-color: rgb(246, 246, 246);
   border-radius: 6px;
@@ -337,11 +338,11 @@ nav > input {
 }
 .nav-user-menu li {
   text-align: center;
-  font-size: 15px;
+  /* font-size: 15px; */
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-  height: 35px;
+  height: 100%;
   color: #ffffff;
   width: 100%;
 }

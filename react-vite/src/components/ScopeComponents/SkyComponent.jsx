@@ -4,67 +4,20 @@ import "./ScopeComponents.css";
 
 function SkyComponent() {
     const user = useSelector((store) => store.session.user);
-    const [city, setCity] = useState(user.city);
-    const [country, setCountry] = useState(user.Country);
-
-    const [lat, setLat] = useState(user.city || "23.09")
-    const [lng, setLng] = useState(user.city || "113.17")
+    const [currCity, setCurrCity] = useState(user.city);
+    const [lat, setLat] = useState(user.lat || "23.09")
+    const [lng, setLng] = useState(user.lng || "113.17")
+    // const [lat, setLat] = useState("23.09")
+    // const [lng, setLng] = useState("113.17")
     const [skyData, setSkyData] = useState(null);
     const [error, setError] = useState({});
 
-    // const [error, setError] = useState(null);
-    // console.log(userLoc);
-    // const dispatch = useDispatch();
 
-    // let userLocations = Object.values(locations).filter((loc) => loc.user_id === sessionUser.id);
-
-    function handleUpdateLocation(lt, lg) {
+    function handleUpdateLocation(lt, lg, city) {
         setLat(lt);
         setLng(lg);
+        setCurrCity(city)
     }
-
-    const fetchCoordinates = async () => {
-        if (city && country) {
-            const query = encodeURIComponent(`${city}, ${country}`);
-            try {
-                const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`);
-                const data = await response.json();
-                if (data.length > 0) {
-                    const { lat, lon } = data[0];
-                    console.log(lat, lon)
-                    setLat(parseFloat(lat).toFixed(3));
-                    setLng(parseFloat(lon).toFixed(3));
-                }
-                console.log("COORDINATES:", lat, lng)
-
-            } catch (error) {
-                console.error("Error fetching coordinates:", error);
-            }
-        } else if (city && !country) {
-            const query = encodeURIComponent(`${city}`);
-            try {
-                const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`);
-                const data = await response.json();
-                if (data.length > 0) {
-                    if (data.length > 0) {
-                        const { lat, lon } = data[0];
-                        setLat(parseFloat(lat).toFixed(4));
-                        setLng(parseFloat(lon).toFixed(4));
-                    }
-                }
-            } catch (error) {
-                console.error("Error fetching coordinates:", error);
-            }
-        }
-    };
-
-    useEffect(() => {
-        console.log("Updated COORDINATES:", city, country);
-    }, [city, country]);
-
-    useEffect(() => {
-        console.log("Updated COORDINATES:", lat, lng);
-    }, [lat, lng]);
 
     const fetchSkyData = async () => {
         console.log("GEOLOC:", lat, lng)
@@ -74,7 +27,7 @@ function SkyComponent() {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-            console.log("Sunrise time:", response);
+            // console.log("Sunrise time:", response);
             setSkyData(response);
         } catch (err) {
             setError(err.message);
@@ -97,36 +50,42 @@ function SkyComponent() {
     // };
 
 
-    // useEffect(()=> {
-    //     if (user && !skyData) {
-    //         fetchCoordinates()
-    //         fetchSkyData()
-    //     } else if (!user && !skyData) {
-    //         fetchSkyData()
-    //     }
-    // }, [user, skyData]);
-
-
-    useEffect(() => {
-        if (user && lat && lng && !skyData) {
-            fetchSkyData();
+    useEffect(()=> {
+        if (user && !skyData) {
+            fetchSkyData()
+        } else if (!user && !skyData) {
+            fetchSkyData()
         }
-    }, [lat, lng, skyData]);
+    }, [user, skyData]);
+
+
+    // useEffect(() => {
+    //     if (user && lat && lng && !skyData) {
+    //         fetchSkyData();
+    //     }
+    // }, [lat, lng, skyData]);
 
 
     return (
-        <div className="scContainer"
+        <div className="flex flex-col w-full h-full  items-center gap-5 px-0 py-[50px] rounded-[7px]"
             style={{
                 backgroundImage:"url('https://images.rawpixel.com/image_800/czNmcy1wcml2YXRlL3Jhd3BpeGVsX2ltYWdlcy93ZWJzaXRlX2NvbnRlbnQvbHIvcm0yMTgtc2FzaS0wMV8xLmpwZw.jpg')",
                 backgroundPosition: "center"
             }}>
-            <h2 className="sc-title">Star-Gazing Conditions Tracker</h2>
-            <section className="scTop">
-                <div className="sc-left text-center items-center">
+            <h2 className="sc-title text-xl py-[5px]">Star-Gazing Conditions Tracker</h2>
+            <section className="w-full flex flex-col justify-center items-center box-border mb-[10px] rounded-[7px]" >
+                    <img className="h-auto w-[80%] bg-transparent border shadow-[0_0px_10px_0px_rgb(255,255,255)] rounded-[10px] border-solid border-white" src={skyData?.url} />
+                    <small className="text-[white] mt-[5px]">Credit: 7timer</small>
+            </section>
+            <section className="w-[70%] flex h-auto flex-row justify-center box-border gap-5 rounded-[7px]">
+                <div className="flex w-6/12 h-[100px] flex-row justify-center border bg-[rgba(219,200,200,0.777)] shadow-[0_2px_5px_0px_rgb(255,255,255)] rounded-[7px] border-solid border-white text-center items-center">
                     {user.city? (
-                        <p className="px-[15px]">You are looking at data for <span className="font-bold" >{user.city}</span></p>
+                        <p className="px-[15px] text-black">You are looking at forecast data for
+                        <br></br>
+                        <span className="font-bold text-2xl text-blue-800" >{currCity}</span>
+                        </p>
                     ) : (
-                        <p className="p-[10px]">
+                        <p className="p-[10px] text-white">
                             You are looking at demo data.
                             <br></br>
                             Sign up or log in to see data for your location.
@@ -135,24 +94,13 @@ function SkyComponent() {
                     {/* <p id="sc-location-title">{loc}</p> */}
                     {/* <input onSubmit={handleUpdateLocation()}>Set Location</input> */}
                 </div>
-                <div className="sc-right text-center items-center">
-                    <p className="px-[15px]">Recents /<span className="" >Favorites</span></p>
+                <div className="flex w-6/12 h-[100px] flex-row justify-center border bg-[rgba(219,200,200,0.777)] shadow-[0_2px_5px_0px_rgb(255,255,255)] rounded-[7px] border-solid border-white text-center items-center">
+                    <p className="px-[15px] text-black">Recents /<span className="" > Favorites</span></p>
 
                 </div>
             </section>
 
-            <section className="scBottom" >
-                    <img className="sky-data-img" src={skyData?.url} />
-                    <small>Credit: 7timer</small>
-                {/* <div className="sky-data">
-                </div> */}
 
-                    {/* {"Time: " + new Date().toLocaleTimeString()}
-                     <li>{`Cloud cover: ${skyData?.dataseries[0].cloudcover}`}</li>
-                    <li>{`Seeing: ${skyData?.dataseries[0].seeing}`}</li>
-                    <li>{`Transparency: ${skyData?.dataseries[0].transparency}`}</li> */}
-
-            </section>
         </div>
     );
   }

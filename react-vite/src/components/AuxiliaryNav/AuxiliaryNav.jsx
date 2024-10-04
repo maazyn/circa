@@ -98,7 +98,7 @@ function AuxiliaryNav() {
               onClick={() => handleMode("Local")}
               style={{
                 boxShadow: mode === "Local" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
-                backgroundColor: mode === "Local" ? "white": "#a89a9a",
+                backgroundColor: mode === "Local" ? "white": "rgb(175, 192, 242)",
                 color: mode === "Local" ? "black" : "white"
               }}
             >Local</button>
@@ -107,7 +107,7 @@ function AuxiliaryNav() {
               id="sky-icon" onClick={() => handleMode("Sky")}
               style={{
                 boxShadow: mode === "Sky" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
-                backgroundColor: mode === "Sky" ? "white": "#a89a9a",
+                backgroundColor: mode === "Sky" ? "white": "rgb(175, 192, 242)",
                 color: mode === "Sky" ? "black" : "white"
 
               }}
@@ -118,7 +118,7 @@ function AuxiliaryNav() {
               onClick={() => handleMode("Global")}
               style={{
                 boxShadow: mode === "Global" ? "0px 0px 3px 0px rgb(57, 57, 57)" : "none",
-                backgroundColor: mode === "Global" ? "white": "#a89a9a",
+                backgroundColor: mode === "Global" ? "white": "rgb(175, 192, 242)",
                 color: mode === "Global" ? "black" : "white"
               }}            >Global</button>
           </div>

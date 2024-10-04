@@ -10,11 +10,14 @@
     padding: 0 1px 0 15px;
     box-sizing: border-box;
     border-radius: 7px;
-    height: 45px;
-    background-color: rgb(144, 132, 132);
+    height: 43px;
+    /* background-color: rgb(144, 132, 132); */
+    /* background-color: rgb(201, 198, 198); */
+    /* background-color: rgb(159, 159, 159); */
+    background-color: rgb(130, 151, 214);
     width: 100%;
     box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.3);
-    border: 0.5px solid rgb(168, 168, 168);
+    border: 1px solid rgb(185, 183, 183);
     /* margin: 10px 80px 10px 80px; */
     /* min-width: 760px; */
     /* gap: 30%; */
@@ -40,7 +43,7 @@
     flex-grow: 3;
     border: none;
     border-radius: 5px;
-    height: 25px;
+    height: 27px;
     /* border: 3px solid red; */
     max-width: 250px;
     border-radius: 5px;
@@ -92,6 +95,7 @@
     gap: 6px;
     flex-grow: 0.5;
     max-width: 500px;
+    /* background-color: rgb(201, 198, 198); */
     /* border: black 2px solid; */
 
     /* box-sizing: border-box; */
