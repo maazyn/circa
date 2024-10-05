@@ -54,14 +54,14 @@ function CollectionCard({theCollection}) {
 
     // console.log(theCollection)
     return (
-        <div className="collection-card transition-transform duration-[0.2s] hover:scale-[1.03]" key={theCollection.id} onClick={handleCollectionClick} >
+        <div className="collection-card transition-transform duration-[0.2s] hover:scale-[1.03] justify-evenly" key={theCollection.id} onClick={handleCollectionClick} >
             <div className="location-up">
                 <p className="location-title">{theCollection.title}</p>
             </div>
             <div className="location-down overflow-hidden">
-                {theCollection.description ? <p className="theLocation-detail">{theCollection.description}</p> : null}
+                {theCollection.description ? <p className="w-full h-full text-center items-center text-[rgb(98,120,207)] text-[13px]  px-[5px]">{theCollection.description}</p> : null}
 
-                <div className="collection-modify-icons">
+                {/* <div className="collection-modify-icons">
                     <FaEdit
                         className="LU-edit-icon"
                         onClick={handleEdit}
@@ -69,7 +69,7 @@ function CollectionCard({theCollection}) {
                         title="Edit Collection"
                     />
                     <TiDelete className="LU-delete-icon" onClick={handleDelete}/>
-                </div>
+                </div> */}
             </div>
 
         </div>
