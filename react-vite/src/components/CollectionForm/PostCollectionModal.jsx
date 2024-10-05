@@ -74,7 +74,7 @@ function PostCollectionModal({ user, userLocations }) {
       <h1 className="location-form-heading">Add a collection</h1>
       {errors.server && <p className="error-message">{errors.server}</p>}
       <form className="LP-form-container" onSubmit={handleSubmit}>
-        <label>
+        <label className="font-light">
           Title
           <span className="required-asterisk" style={{color:"red"}}> *</span>
           <input
@@ -89,11 +89,11 @@ function PostCollectionModal({ user, userLocations }) {
         </label>
 
 
-        <label id="input-label">
+        <label id="input-label " className="font-light">
           Description
           <span className="required-asterisk" style={{color:"red"}}> *</span>
           <input
-            className="input-field"
+            className="input-field "
             type="text"
             name="description"
             value={formData.description}
@@ -102,8 +102,8 @@ function PostCollectionModal({ user, userLocations }) {
         {errors.description && <p className="error-message">{errors.description}</p>}
         </label>
 
-        <p style={{color: "blue", fontWeight:"bold", marginBottom:"0px"}}>Add from your Saved Locations:</p>
-        <label id="pcoll-input-label">
+        <p className="font-light mb-[0px] text-blue-700" >Add from your Saved Locations:</p>
+        <label id="pcoll-input-label" >
           {userLocations.map((location) => (
             <div key={location.id} className="checkboxContainer">
               <input
