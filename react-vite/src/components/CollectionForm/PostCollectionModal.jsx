@@ -78,7 +78,7 @@ function PostCollectionModal({ user, userLocations }) {
           Title
           <span className="required-asterisk" style={{color:"red"}}> *</span>
           <input
-            className="title-input-field"
+            className="title-input-field font-medium"
             type="text"
             name="title"
             value={formData.title}
@@ -93,7 +93,7 @@ function PostCollectionModal({ user, userLocations }) {
           Description
           <span className="required-asterisk" style={{color:"red"}}> *</span>
           <input
-            className="input-field "
+            className="input-field font-medium"
             type="text"
             name="description"
             value={formData.description}
