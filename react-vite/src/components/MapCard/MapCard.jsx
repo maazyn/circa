@@ -4,16 +4,15 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './MapCard.css';
 import { fetchCurrUserLocations} from "../../redux/locations";
+import markerIcon from 'leaflet/dist/images/marker-icon.png';
+import markerIconRetina from 'leaflet/dist/images/marker-icon-2x.png';
+import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 
 const MapCard = ({ defaultView }) => {
     const [mapInstance, setMapInstance] = useState(null);
-    const [loc, setLoc] = useState([]);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
     const locations = useSelector((state) => state.locations);
-    // const userLocations = (Object.values(locations).filter((location) => location.user_id === user.id));
-    // let collLocations = theCollection?.locations;
-
     const userLocations = user && locations ? Object.values(locations).filter((location) => location.user_id === user.id) : [];
     // console.log("TEST1: ", locations)
     // console.log("TEST2: ", userLocations)
@@ -35,6 +34,17 @@ const MapCard = ({ defaultView }) => {
                 scrollWheelZoom: true,
                 interactive: true
             });
+
+            const defaultIcon = L.icon({
+                iconUrl: markerIcon,
+                iconRetinaUrl: markerIconRetina,
+                shadowUrl: markerShadow,
+                iconSize: [25, 41],
+                iconAnchor: [12, 41],
+                popupAnchor: [1, -34],
+                shadowSize: [41, 41]
+            });
+            L.Marker.prototype.options.icon = defaultIcon;
 
             userLocations?.forEach((location) => {
                 L.marker([location.lat, location.lng])
@@ -61,7 +71,7 @@ const MapCard = ({ defaultView }) => {
     }, [defaultView]);
 
     // useEffect(() => {
-    //     if (sessionUser && mapInstance) {
+    //     if (user && mapInstance) {
     //         dispatch(fetchCurrUserLocations()).then((fetchedLocations) => {
     //             setLocations(fetchedLocations?.title);
 
@@ -72,7 +82,7 @@ const MapCard = ({ defaultView }) => {
     //             });
     //         });
     //     }
-    // }, [sessionUser, mapInstance, dispatch]);
+    // }, [user, mapInstance, dispatch]);
 
     return user ? (
         <div id="map" style={{ height: '85vh', width: '100%' }}></div>

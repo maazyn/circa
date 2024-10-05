@@ -4,9 +4,9 @@ import "./ScopeComponents.css";
 
 function SkyComponent() {
     const user = useSelector((store) => store.session.user);
-    const [currCity, setCurrCity] = useState(user.city);
-    const [lat, setLat] = useState(user.lat || "23.09")
-    const [lng, setLng] = useState(user.lng || "113.17")
+    const [currCity, setCurrCity] = useState(user?.city);
+    const [lat, setLat] = useState(user?.lat || "23.09")
+    const [lng, setLng] = useState(user?.lng || "113.17")
     // const [lat, setLat] = useState("23.09")
     // const [lng, setLng] = useState("113.17")
     const [skyData, setSkyData] = useState(null);
@@ -79,7 +79,7 @@ function SkyComponent() {
             </section>
             <section className="w-[70%] flex h-auto flex-row justify-center box-border gap-5 rounded-[7px]">
                 <div className="flex w-6/12 h-[100px] flex-row justify-center border bg-[rgba(219,200,200,0.777)] shadow-[0_2px_5px_0px_rgb(255,255,255)] rounded-[7px] border-solid border-white text-center items-center">
-                    {user.city? (
+                    {user?.city ? (
                         <p className="px-[15px] text-black">You are looking at forecast data for
                         <br></br>
                         <span className="font-bold text-2xl text-blue-800" >{currCity}</span>
