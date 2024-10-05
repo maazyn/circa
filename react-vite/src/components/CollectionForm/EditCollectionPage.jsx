@@ -134,11 +134,11 @@ function EditCollectionPage() {
         {errors.server && <p>{errors.server}</p>}
         <form className="PU-form-container" onSubmit={handleSubmit}>
 
-        <label>
+        <label className="font-light">
             Title
             <span className="required-asterisk" style={{color:"red"}}> *</span>
             <input
-              className="title-input-field"
+              className="title-input-field font-medium"
               type="text"
               name="title"
               value={formData.title}
@@ -148,10 +148,11 @@ function EditCollectionPage() {
             {errors.title && <p className="error-message">{errors.title}</p>}
         </label>
 
-        <label id="input-label">
+        <label id="input-label" className="font-light">
             Description
+            <span className="required-asterisk" style={{color:"red"}}> *</span>
             <input
-              className="input-field"
+              className="input-field font-medium"
               type="text"
               name="description"
               value={formData.description}
@@ -160,7 +161,7 @@ function EditCollectionPage() {
           {errors.description && <p className="error-message">{errors.description}</p>}
         </label>
 
-        <p className="text-[#007BFF] font-bold mb-[0px]">Add or Remove Locations:</p>
+        <p className="text-blue-700 font-light mb-[0px]">Add or Remove Locations:</p>
         <label id="ecoll-input-label">
             {userLocations.map((location) => (
               <div key={location.id} className="checkboxContainer">
