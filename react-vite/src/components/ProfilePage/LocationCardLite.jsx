@@ -38,7 +38,7 @@ function LocationCardLite({theLocation}) {
     return (
         <div className="location-card" key={theLocation.id} >
             <div className="location-up">
-            {theLocation.title !== theLocation.city && theLocation.title !== theLocation.country ? <p className="location-title">{theLocation.title}</p>: null}
+                {theLocation.title !== theLocation.city && theLocation.title !== theLocation.country ? <p className="location-title">{theLocation.title}</p>: null}
                 {/* <br></br> */}
                 {theLocation.city ? <p className="location-detail">{theLocation.city}</p>: null}
                 {theLocation.region ? <p className="location-detail">{theLocation.region}</p> : null}

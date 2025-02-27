@@ -79,7 +79,7 @@ function Navigation() {
       ) : (
         <div className="flex gap-2 align-center items-center">
           <button className="weather-icons-rain text-xl" onClick={forecastToggle}><FaToggleOff /> </button>
-          <p className="gap-2 font-thin text-sm text-black">weather forecast</p>
+          <p className="gap-2 font-thin text-sm text-black">weather forecast off</p>
         </div>
       )}
 
