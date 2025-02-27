@@ -7,13 +7,14 @@ import { fetchCurrUserLocations} from "../../redux/locations";
 import markerIcon from 'leaflet/dist/images/marker-icon.png';
 import markerIconRetina from 'leaflet/dist/images/marker-icon-2x.png';
 import markerShadow from 'leaflet/dist/images/marker-shadow.png';
+import { useMode } from "../../context/ModeContext";
 
-const MapCard = ({ defaultView }) => {
+const MapCard = ({ defaultView, localLocations, globalLocations }) => {
     const [mapInstance, setMapInstance] = useState(null);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user);
-    const locations = useSelector((state) => state.locations);
-    const userLocations = user && locations ? Object.values(locations).filter((location) => location.user_id === user.id) : [];
+    const { mode, setMode } = useMode();
+
     // console.log("TEST1: ", locations)
     // console.log("TEST2: ", userLocations)
 
@@ -46,11 +47,15 @@ const MapCard = ({ defaultView }) => {
             });
             L.Marker.prototype.options.icon = defaultIcon;
 
-            userLocations?.forEach((location) => {
-                L.marker([location.lat, location.lng])
-                .addTo(map)
-                .bindPopup(location.title || 'Location');
-            });
+            const locationsToUse = mode === 'Local' ? localLocations : mode === "Global" ? globalLocations : null;
+
+            if (locationsToUse) {
+                locationsToUse.forEach((location) => {
+                    L.marker([location.lat, location.lng])
+                        .addTo(map)
+                        .bindPopup(location.title || 'Location');
+                });
+            }
 
             // Add a tile layer (OpenStreetMap credit)
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -70,24 +75,11 @@ const MapCard = ({ defaultView }) => {
         }
     }, [defaultView]);
 
-    // useEffect(() => {
-    //     if (user && mapInstance) {
-    //         dispatch(fetchCurrUserLocations()).then((fetchedLocations) => {
-    //             setLocations(fetchedLocations?.title);
-
-    //             fetchedLocations?.forEach((location) => {
-    //                 L.marker([location.latitude, location.longitude])
-    //                     .addTo(mapInstance)
-    //                     .bindPopup(location.name || 'Location');
-    //             });
-    //         });
-    //     }
-    // }, [user, mapInstance, dispatch]);
 
     return user ? (
         <div id="map" style={{ height: '85vh', width: '100%' }}></div>
     ): (
-        <section className="lcMapContainer">
+        <section className="lcMapContainer shadow-md">
             <div className="lcMap"
                 data-alt="Log-in or Sign-up for full map functionality"
                 style={{
