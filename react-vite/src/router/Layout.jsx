@@ -5,6 +5,7 @@ import { ModalProvider, Modal } from "../context/Modal";
 import { thunkAuthenticate } from "../redux/session";
 import Navigation from "../components/Navigation/Navigation";
 import { ModeProvider } from "../context/ModeContext";
+import { ForecastProvider } from "../context/ForecastContext";
 // import AuxiliaryNav from "../components/AuxiliaryNav/AuxiliaryNav";
 
 export default function Layout() {
@@ -18,10 +19,12 @@ export default function Layout() {
     <>
       <ModalProvider>
         <ModeProvider>
-          <Navigation />
-          {/* <AuxiliaryNav/> */}
-          {isLoaded && <Outlet />}
-          <Modal />
+          <ForecastProvider>
+            <Navigation />
+              {/* <AuxiliaryNav/> */}
+              {isLoaded && <Outlet />}
+            <Modal />
+          </ForecastProvider>
         </ModeProvider>
       </ModalProvider>
     </>

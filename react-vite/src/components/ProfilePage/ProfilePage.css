@@ -132,10 +132,10 @@
     justify-content: space-between;
     color: black;
     background-color: #fffdfd;
-    padding: 5px;
+    padding: 9px 10px;
     border-radius: 8px;
     box-shadow: 0 0px 1px 0.5px rgba(255, 247, 247);
-    height: 60px;
+    height: auto;
     width: 75%;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     box-sizing: border-box;
@@ -152,16 +152,20 @@
     justify-content: center;
 }
 .location-up {
-    /* padding-top: 5px; */
     display: flex;
+    border: 1px solid rgb(255, 255, 255);
+    background-color: rgb(246, 246, 246);
+    border-radius: 6px;
+    padding: 3px 10px 0px 10px;
     font-size: 14px;
     font-weight: bold;
     flex-direction: row;
     align-items: center;
     gap: 10px;
     text-align: center;
-    height: 25px;
-    width: 100%;
+    height: auto;
+    width: auto;
+    overflow-y:auto;
 }
 .location-down {
     display: flex;
@@ -188,6 +192,8 @@
 .location-title {
     color: #676767;
     font-size: 0.90rem;
+    margin: 5px 0px;
+    /* overflow-y: scroll; */
 
 }
 
@@ -261,7 +267,7 @@
     justify-content: space-between;
     color: black;
     background-color: #fffdfd;
-    padding: 5px;
+    padding: 0px 10px;
     border-radius: 8px;
     box-shadow: 0 0px 1px 0.5px rgba(255, 247, 247);
     height: 90px;
