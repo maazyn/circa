@@ -57,10 +57,11 @@ function ProfileButton() {
         <div className={"profile-dropdown"} ref={ulRef}>
           {user && (
             <>
-              <a href="/profile" className="user-info">
+              <a href="/profile" className="user-info flex transition-none items-center pl-[16px] pt-1" title="Go to profile">
                 <img className="user-info-image" src={user.profile_img} />
                 <p  className="user-info-name" >{user.first_name} {user.last_name}</p>
               </a>
+                <small className="text-blue-700 w-[60px]">(Go to profile)</small>
               <hr id="user-info-hr"></hr>
 
               <a href="/edit-profile" className="profile-menu-link">

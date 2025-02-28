@@ -159,7 +159,7 @@ nav > input {
 
 .profile-dropdown a {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   width: 100%;
   margin: 0;
   /* z-index: 1000; */
@@ -196,10 +196,10 @@ nav > input {
   object-fit: cover;
   box-sizing: border-box;
 }
-.user-info-name:hover {
+.user-info:hover {
   font-weight: bold;
   box-sizing: border-box;
-
+  scale: 1.05;
 
 }
 .user-info-name {
