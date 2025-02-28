@@ -24,8 +24,8 @@ function GlobalComponent() {
     return (
       <div className="grid grid-cols-[2fr_4fr] w-full items-start gap-5 py-4 box-border h-[85vh] rounded-lg">
         <section className="flex flex-col w-full h-full bg-gray-100 shadow-md rounded-lg p-3 gap-3">
-          <div className="bg-white rounded-lg h-[15vh] flex items-center justify-start p-3">
-            <SearchCard/>
+          <div className="bg-white rounded-lg h-[15vh] flex items-center justify-center">
+            
           </div>
           <div className="bg-white rounded-lg p-3 overflow-y-auto h-[60vh] flex-grow space-y-2">
             {filteredLocations.map((location) => (
