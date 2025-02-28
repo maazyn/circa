@@ -59,6 +59,8 @@ def sign_up():
             city=form.data['city'],
             region=form.data.get('region', ''),
             country=form.data.get('country', ''),
+            lat=form.data.get('lat', ''),
+            lng=form.data.get('lng', ''),
             profile_img=form.data.get('profile_img', ''),
 
         )
@@ -95,6 +97,8 @@ def update_profile():
         user.city = form.data.get('city', user.city)
         user.region = form.data.get('region', user.region)
         user.country = form.data.get('country', user.country)
+        user.lat = form.data.get('lat', user.lat)
+        user.lng = form.data.get('lng', user.lng)
         user.profile_img =form.data.get('profile_img', user.profile_img)
 
         db.session.commit()

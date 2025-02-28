@@ -16,8 +16,8 @@ function UpdateProfilePage() {
         city: user.city || "",
         region: user.region || "",
         country: user.country || "",
-        lat: user.lat || 0,
-        lng: user.lng || 0,
+        lat: user.lat || "",
+        lng: user.lng || "",
         profile_img: user.profile_img || ""
     });
     const [addressSuggestions, setAddressSuggestions] = useState([]);
@@ -36,23 +36,6 @@ function UpdateProfilePage() {
         });
     };
 
-    // useEffect(() => {
-    //     const handleClickOutside = (event) => {
-    //       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-    //         setDropdownVisible(false);
-    //       }
-    //     };
-
-    //     if (isDropdownVisible) {
-    //       document.addEventListener('mousedown', handleClickOutside);
-    //     } else {
-    //       document.removeEventListener('mousedown', handleClickOutside);
-    //     }
-
-    //     return () => {
-    //       document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    // }, [isDropdownVisible]);
 
 
     const fetchAddressSuggestions = async () => {
@@ -72,27 +55,6 @@ function UpdateProfilePage() {
             setDropdownVisible(false);
         }
     };
-
-    // const fetchCoordinatesFromAddress = async () => {
-    //     const { city, region, country } = formData;
-    //     if (city && country) {
-    //         const query = encodeURIComponent(`${city}, ${region}, ${country}`);
-    //         try {
-    //             const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`);
-    //             const data = await response.json();
-    //             if (data.length > 0) {
-    //             const { lat, lon } = data[0];
-    //             setFormData((prevData) => ({
-    //                 ...prevData,
-    //                 lat: parseFloat(lat).toFixed(4),
-    //                 lng: parseFloat(lon).toFixed(4),
-    //             }));
-    //             }
-    //         } catch (error) {
-    //             console.error("Error fetching coordinates:", error);
-    //         }
-    //     }
-    // };
 
     const handleAddressSelect = (address) => {
         const { lat, lon, display_name, address: locationDetails } = address;
@@ -114,6 +76,8 @@ function UpdateProfilePage() {
         const serverResponse = await dispatch(thunkUpdateUserProfile(formData))
         if (serverResponse ) {
             setErrors(serverResponse);
+        } else {
+            navigate("/");
         }
     };
 
@@ -123,7 +87,7 @@ function UpdateProfilePage() {
             if (errors) {
                 setDeleteErrors(errors);
             } else {
-                closeModal();
+                // closeModal();
                 navigate("/")
             }
         }
@@ -200,38 +164,38 @@ function UpdateProfilePage() {
 
 
                 <div className="grid grid-cols-[4fr_1fr] gap-[10px] m-auto">
-                <label className="relative font-light w-full">
-                    Where do you live? Type your city and click search:
-                    <span className="required-asterisk" style={{color:"red"}}> *</span>
-                    <input
-                    className="title-input-field font-semibold"
-                    type="text"
-                    name="title"
-                    onChange={handleChange}
-                    required
-                    />
-                    {errors.title && <p className="error-message">{errors.title}</p>}
-                    {isDropdownVisible && addressSuggestions.length > 0 && (
-                    <ul
-                        ref={dropdownRef}
-                        className="font-light absolute w-full max-h-[130px] overflow-y-auto z-10 bg-[#f7f2ff] border  shadow-[0_4px_6px_rgba(0,0,0,0.1)] list-none m-auto border-solid border-[#ccc]"
-                    >
-                        {addressSuggestions.map((suggestion, index) => (
-                        <li
-                            className="pb-[1px]"
-                            key={index}
-                            onClick={() => handleAddressSelect(suggestion)}
+                    <label className="relative font-light w-full">
+                        Where do you live? Type your city and click search:
+                        <span className="required-asterisk" style={{color:"red"}}> *</span>
+                        <input
+                        className="title-input-field font-semibold"
+                        type="text"
+                        name="title"
+                        onChange={handleChange}
+                        required
+                        />
+                        {errors.title && <p className="error-message">{errors.title}</p>}
+                        {isDropdownVisible && addressSuggestions.length > 0 && (
+                        <ul
+                            ref={dropdownRef}
+                            className="font-light absolute w-full max-h-[130px] overflow-y-auto z-10 bg-[#f7f2ff] border  shadow-[0_4px_6px_rgba(0,0,0,0.1)] list-none m-auto border-solid border-[#ccc]"
                         >
-                            {suggestion.display_name}
-                        </li>
-                        ))}
-                    </ul>
-                    )}
-                </label>
-                <div className="button-box flex flex-row gap-[2px] justify-center items-center mt-[12px]">
-                    <button type="button" onClick={fetchAddressSuggestions} className="search-button w-full align-center h-auto rounded-full text-sm font-normal border box-border border-solid border-[rgba(169,169,169)] bg-white text-black hover:bg-[#5aab57ef] hover:text-white">Search</button>
-                    <button onClick={() => handleClear()} className="cancel-button w-full m-0 align-center h-auto rounded-full text-sm box-border font-normal text-black hover:bg-[#007bffef] hover:text-white hover:shadow-none">Clear</button>
-                </div>
+                            {addressSuggestions.map((suggestion, index) => (
+                            <li
+                                className="pb-[1px]"
+                                key={index}
+                                onClick={() => handleAddressSelect(suggestion)}
+                            >
+                                {suggestion.display_name}
+                            </li>
+                            ))}
+                        </ul>
+                        )}
+                    </label>
+                    <div className="button-box flex flex-row gap-[2px] justify-center items-center mt-[12px]">
+                        <button type="button" onClick={fetchAddressSuggestions} className="search-button w-full align-center h-auto rounded-full text-sm font-normal border box-border border-solid border-[rgba(169,169,169)] bg-white text-black hover:bg-[#5aab57ef] hover:text-white">Search</button>
+                        <button onClick={() => handleClear()} className="cancel-button w-full m-0 align-center h-auto rounded-full text-sm box-border font-normal text-black hover:bg-[#007bffef] hover:text-white hover:shadow-none">Clear</button>
+                    </div>
                 </div>
 
 
@@ -284,10 +248,11 @@ function UpdateProfilePage() {
                     {/* <span className="required-asterisk" style={{color:"red"}}> *</span> */}
                     <input
                     className="country-input-field font-medium"
-                        type="text"
-                        name="latitude"
+                        type="float"
+                        name="lat"
                         value={formData.lat}
                         onChange={handleChange}
+                        required
                         readOnly
                         />
                     </label>
@@ -298,8 +263,8 @@ function UpdateProfilePage() {
                     {/* <span className="required-asterisk" style={{color:"red"}}> *</span> */}
                     <input
                     className="country-input-field font-medium"
-                        type="text"
-                        name="longitude"
+                        type="float"
+                        name="lng"
                         value={formData.lng}
                         onChange={handleChange}
                         required
@@ -317,7 +282,6 @@ function UpdateProfilePage() {
                     name="profile_img"
                     value={formData.profile_img}
                     onChange={handleChange}
-                    required
                     />
                 </label>
                 {errors.profile_img && <p>{errors.profile_img}</p>}
@@ -326,7 +290,7 @@ function UpdateProfilePage() {
                     <button className="submit-button" type="submit">Save</button>
                     <button onClick={() => navigate("/profile")} className="cancel-button">Cancel</button>
                 </div>
-                <div className="delete-button-container">
+                <div className="delete-button-container mb-5">
                     {user.id !== 1? (
                         <button onClick={handleDelete} className="profile-delete-button">Delete User</button>
                     ): null}
