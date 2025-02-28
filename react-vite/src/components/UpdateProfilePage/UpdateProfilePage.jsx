@@ -73,6 +73,11 @@ function UpdateProfilePage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        if (user.id === 1) {
+            alert("The Demo User profile cannot be edited.");
+            return;
+        }
+        
         const serverResponse = await dispatch(thunkUpdateUserProfile(formData))
         if (serverResponse ) {
             setErrors(serverResponse);
@@ -210,7 +215,6 @@ function UpdateProfilePage() {
                         value={formData.city}
                         onChange={handleChange}
                         required
-                        readOnly
                         />
                     </label>
                     {errors.city && <p>{errors.city}</p>}
@@ -238,7 +242,6 @@ function UpdateProfilePage() {
                         value={formData.country}
                         onChange={handleChange}
                         required
-                        readOnly
                         />
                     </label>
                     {errors.country && <p>{errors.country}</p>}
