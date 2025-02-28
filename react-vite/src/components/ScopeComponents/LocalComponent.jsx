@@ -26,7 +26,7 @@ function LocalComponent() {
         : [];
 }, [user, locations]);
 
-  const [displayedLocations, setDisplayedLocations] = useState();
+  const [displayedLocations, setDisplayedLocations] = useState(filteredLocations);
 
   useEffect(() => {
     setDisplayedLocations(filteredLocations);
@@ -193,7 +193,7 @@ useEffect(() => {
         </div>
       </section>
       <section className="w-full h-full z-10">
-        <MapCard defaultView={defaultView} localLocations={filteredLocations}/>
+        <MapCard defaultView={defaultView} localLocations={displayedLocations}/>
       </section>
     </div>
   );
