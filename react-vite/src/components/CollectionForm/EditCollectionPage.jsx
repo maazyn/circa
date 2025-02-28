@@ -45,7 +45,7 @@ function EditCollectionPage() {
         setSavedLocations(currentLocations);
       }
     }, [collection]);
-    console.log("PRE:", savedLocations)
+    // console.log("PRE:", savedLocations)
 
     // setSavedLocations(formData.locations_ids)
 
@@ -71,7 +71,7 @@ function EditCollectionPage() {
     setSavedLocations((prev) =>
       checked ? [...prev, value] : prev.filter((id) => id !== value)
     );
-    console.log("CHECKBOX:", savedLocations)
+    // console.log("CHECKBOX:", savedLocations)
 
   };
 
@@ -104,7 +104,7 @@ function EditCollectionPage() {
       locations: savedLocations
     }));
 
-    console.log("POST:", locolResponse)
+    // console.log("POST:", locolResponse)
     // console.log("POST-REMOVE", locationsToRemove)
     // console.log(locolResponse)
 

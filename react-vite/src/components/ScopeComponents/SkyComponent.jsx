@@ -10,17 +10,17 @@ function SkyComponent() {
     // const [lat, setLat] = useState("23.09")
     // const [lng, setLng] = useState("113.17")
     const [skyData, setSkyData] = useState(null);
-    const [error, setError] = useState({});
+    // const [error, setError] = useState({});
 
 
-    function handleUpdateLocation(lt, lg, city) {
-        setLat(lt);
-        setLng(lg);
-        setCurrCity(city)
-    }
+    // function handleUpdateLocation(lt, lg, city) {
+    //     setLat(lt);
+    //     setLng(lg);
+    //     setCurrCity(city)
+    // }
 
     const fetchSkyData = async () => {
-        console.log("GEOLOC:", lat, lng)
+        // console.log("GEOLOC:", lat, lng)
         const url = `http://www.7timer.info/bin/astro.php?lon=${lng}&lat=${lat}&ac=0&lang=en&unit=metric&output=internal&tzshift=0`;
         try {
             const response = await fetch(url);

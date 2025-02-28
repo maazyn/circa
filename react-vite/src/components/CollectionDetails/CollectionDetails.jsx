@@ -23,7 +23,7 @@ function CollectionDetails({mode, setMode}) {
     let theCollection = (Object.values(collections).filter((collection) => collection.id === parseInt(collectionId)))[0];
     let collLocations = theCollection?.locations;
     // console.log(collLocations);
-    console.log(theCollection);
+    // console.log(theCollection);
 
     const handleEdit = () => {
         navigate(`/collections/${theCollection.id}/edit`);
