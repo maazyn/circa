@@ -71,7 +71,7 @@ def search_address():
 
 # Nominatim Api address coordinates
 @search_routes.route('/coordinates', methods=['GET'])
-@login_required
+# @login_required
 def search_coordinates():
     query = request.args.get('query')
     # if not query:
