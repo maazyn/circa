@@ -31,9 +31,12 @@ function PostLocationModal({ user }) {
   const fetchAddressSuggestions = async () => {
     const { title } = formData;
     if (title) {
-      const encodedInput = encodeURIComponent(title);
+      const query = encodeURIComponent(title);
       try {
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodedInput}&format=json&addressdetails=1`);
+        const response = await fetch(`/api/search/address?query=${query}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
         const data = await response.json();
         setAddressSuggestions(data);
         setDropdownVisible(true);
@@ -49,10 +52,15 @@ function PostLocationModal({ user }) {
 
   const fetchCoordinatesFromAddress = async () => {
     const { city, region, country } = formData;
-    if (city && country) {
-      const query = encodeURIComponent(`${city}, ${region}, ${country}`);
+    if (country) {
+      const query = encodeURIComponent(`${city} ${region} ${country}`);
+      console.log(`Fetching coordinates for query: ${query}`);
+
       try {
-        const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${query}&format=json&limit=1`);
+        const response = await fetch(`/api/search/coordinates?query=${query}`);
+        // if (!response.ok) {
+        //   throw new Error(`HTTP error! Status: ${response.status}`);
+        // }
         const data = await response.json();
         if (data.length > 0) {
           const { lat, lon } = data[0];
@@ -127,11 +135,11 @@ function PostLocationModal({ user }) {
   };
 
 
-  useEffect(() => {
-    if (manualEntry) {
-      fetchCoordinatesFromAddress();
-    }
-  }, [formData.city, formData.country]);
+  // useEffect(() => {
+  //   if (manualEntry) {
+  //     fetchCoordinatesFromAddress();
+  //   }
+  // }, [formData.city, formData.country]);
 
 
   useEffect(() => {
@@ -161,14 +169,17 @@ function PostLocationModal({ user }) {
         <div className="grid grid-cols-[4fr_1fr] gap-[10px] m-auto">
           <label className="relative font-light">
             Search an address or create a custom title:
-            <span className="required-asterisk" style={{color:"red"}}> *</span>
+            {/* <span className="required-asterisk" style={{color:"red"}}> *</span> */}
+            <br></br>
+            <small>To create a custom location, add a title and skip the search button.</small>
             <input
-              className="title-input-field font-semibold"
+              className="title-input-field font-light"
               type="text"
               name="title"
+              placeholder='Search or pick a custom title'
               value={formData.title}
               onChange={handleChange}
-              required
+              // required
             />
             {errors.title && <p className="error-message">{errors.title}</p>}
             {isDropdownVisible && addressSuggestions.length > 0 && (
@@ -188,9 +199,9 @@ function PostLocationModal({ user }) {
               </ul>
             )}
           </label>
-          <div className="button-box flex flex-row gap-[2px] justify-center items-center mt-[12px]">
-            <button type="button" onClick={fetchAddressSuggestions} className="search-button w-full align-center h-auto rounded-full text-sm font-normal border box-border border-solid border-[rgba(169,169,169)] bg-white text-black hover:bg-[#5aab57ef] hover:text-white">Search</button>
-            <button onClick={() => handleClear()} className="cancel-button w-full m-0 align-center h-auto rounded-full text-sm box-border font-normal text-black hover:bg-[#007bffef] hover:text-white hover:shadow-none">Clear</button>
+          <div className="button-box flex flex-row gap-[2px] justify-center items-center mt-[32px]">
+            <button type="button" onClick={fetchAddressSuggestions} className="search-button w-full align-center h-auto rounded-xl text-sm font-normal border box-border border-solid border-[rgba(169,169,169)] bg-white text-black hover:bg-[#5aab57ef] hover:text-white">Search</button>
+            <button onClick={() => handleClear()} className="cancel-button w-full m-0 align-center h-auto rounded-xl text-sm box-border font-normal text-black hover:bg-[#007bffef] hover:text-white hover:shadow-none">Clear</button>
           </div>
         </div>
 
@@ -234,9 +245,10 @@ function PostLocationModal({ user }) {
           </label>
         </div>
 
-        <div className="grid grid-cols-[1fr_1fr_3fr] gap-[10px] w-full flex-row justify-between">
+        <div className="grid grid-cols-[2fr_2fr_1fr_5fr]  gap-[10px] justify-between">
           <label id="input-label" className="font-light">
             Latitude
+            <span className="required-asterisk" style={{color:"red"}}> *</span>
             <input
               className="lat-input-field font-semibold"
               type="float"
@@ -249,6 +261,7 @@ function PostLocationModal({ user }) {
 
           <label id="lng-input-label" className="font-light">
             Longitude
+            <span className="required-asterisk" style={{color:"red"}}> *</span>
             <input
               className="input-field font-semibold"
               type="float"
@@ -258,26 +271,29 @@ function PostLocationModal({ user }) {
             />
             {errors.lng && <p className="error-message">{errors.lng}</p>}
           </label>
+          <div className="flex items-center gap-2 min-w-[50px] text-center h-full">
+            <button type="button" className="form-button text-center font-light text-sm rounded-full h-[22px] p-0" onClick={fetchCoordinatesFromAddress}>Get</button>
+          </div>
 
-          <label id="input-label" className="font-light">
-            Type
-            <span className="required-asterisk" style={{color:"red"}}> *</span>
-            <select
-              className="type-input-field font-medium text-[#475cc8]"
-              name="type"
-              value={formData.type}
-              onChange={handleChange}
-              required
-            >
-              <option value="" disabled>Select a location type</option>
-              <option value="city">City</option>
-              <option value="country">Country</option>
-              <option value="culture">Culture</option>
-              <option value="nature">Nature</option>
-            </select>
-            {errors.type && <p className="error-message">{errors.type}</p>}
-          </label>
         </div>
+            <label id="input-label" className="font-light w-[200px]">
+              Type
+              <span className="required-asterisk" style={{color:"red"}}> *</span>
+              <select
+                className="type-input-field font-medium text-[#475cc8]"
+                name="type"
+                value={formData.type}
+                onChange={handleChange}
+                required
+              >
+                <option value="" disabled>Select a location type</option>
+                <option value="city">City</option>
+                <option value="country">Country</option>
+                <option value="culture">Culture</option>
+                <option value="nature">Nature</option>
+              </select>
+              {errors.type && <p className="error-message">{errors.type}</p>}
+            </label>
 
         <label className="inline-flex items-center cursor-pointer relative font-light mt-[10px]">
           <input

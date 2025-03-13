@@ -104,7 +104,8 @@ function AuxiliaryNav() {
           ) : (
             <div className="border-black px-3 py-1 h-[27px] rounded-md flex flex-row gap-2 align-center items-center bg-[#AFC0F2]">
               <button className="weather-icons-rain text-xl mx-1" onClick={forecastToggle}><FaToggleOff /> </button>
-              <p className="gap-2 text-md  text-white font-normal">weather forecast</p>
+              <p className="gap-2 text-md  text-white font-normal">weather forecast</p> 
+              <title>Log in to enable this feature</title>
             </div>
           )}
           {/* <SearchBar className="axnav-search" onSearch={handleSearch} />

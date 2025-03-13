@@ -5,7 +5,7 @@ import "./ScopeComponents.css";
 function SkyComponent() {
     const user = useSelector((store) => store.session.user);
     const [currCity, setCurrCity] = useState(user?.city);
-    const [lat, setLat] = useState(user?.lat || "23.09")
+    const [lat, setLat] = useState(user?.lat || "35.67")
     const [lng, setLng] = useState(user?.lng || "113.17")
     // const [lat, setLat] = useState("23.09")
     // const [lng, setLng] = useState("113.17")
@@ -19,7 +19,7 @@ function SkyComponent() {
     //     setCurrCity(city)
     // }
 
-    const fetchSkyData = async () => {
+    const noUserFetchSkyData = async () => {
         // console.log("GEOLOC:", lat, lng)
         const url = `http://www.7timer.info/bin/astro.php?lon=${lng}&lat=${lat}&ac=0&lang=en&unit=metric&output=internal&tzshift=0`;
         try {
@@ -35,28 +35,45 @@ function SkyComponent() {
         }
     };
 
-    // const fetchSkyData = async () => {
-    //     try {
-    //         const response = await fetch('/api/weather/sky-conditions');
-    //         // console.log(response)
-    //         if (!response.ok) {
-    //             throw new Error(`HTTP error! Status: ${response.status}`);
-    //         }
-    //         setSkyData(response);
-    //     } catch (err) {
-    //         setError(err.message);
-    //         console.error('Fetch error:', err);
-    //     }
-    // };
-
+    const fetchSkyData = async () => {
+        try {
+            const response = await fetch('/api/weather/sky-conditions');
+            // console.log(response)
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            setSkyData(response);
+        } catch (err) {
+            setError(err.message);
+            console.error('Fetch error:', err);
+        }
+    };
 
     useEffect(()=> {
-        if (user && !skyData) {
+        if (user) {
+            setSkyData(null);
+            setCurrCity(null);
+            setLat(user.lat);
+            setLng(user.lng);
             fetchSkyData()
-        } else if (!user && !skyData) {
-            fetchSkyData()
+        } else {
+            setSkyData(null);
+            setCurrCity("Tokyo");
+            setLat("35.67");
+            setLng("113.17");
+            noUserFetchSkyData()
         }
-    }, [user, skyData]);
+    }, [user]);
+
+    useEffect(()=> {
+        if (!skyData) {
+            if (user) {
+                fetchSkyData()
+            } else {
+                noUserFetchSkyData()
+            }
+        }
+    }, [skyData, lat, lng]);
 
 
     // useEffect(() => {
@@ -86,7 +103,8 @@ function SkyComponent() {
                         </p>
                     ) : (
                         <p className="p-[10px] text-white">
-                            You are looking at demo data.
+                            You are looking at demo data for
+                            <span className="font-bold text-2xl text-blue-800" > Tokyo</span>
                             <br></br>
                             Sign up or log in to see data for your location.
                         </p>

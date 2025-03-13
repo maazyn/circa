@@ -43,19 +43,50 @@ function SignupFormModal() {
     }
   };
 
+  // const fetchCoordinates = async () => {
+  //   setFetchError("");
+  //   const { city } = formData;
+  //   if (!city.trim()) {
+  //     setFetchError("Please enter a city before fetching coordinates.");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await fetch(
+  //       `https://nominatim.openstreetmap.org/search?city=${encodeURIComponent(city)}&format=json&limit=1`);
+  //     const data = await response.json();
+
+  //     if (data.length > 0) {
+  //       const { lat, lon } = data[0];
+  //       setFormData((prevData) => ({
+  //         ...prevData,
+  //         lat: parseFloat(lat).toFixed(4),
+  //         lng: parseFloat(lon).toFixed(4),
+  //       }));
+  //       setCoordinatesFetched(true);
+  //     } else {
+  //       setFormData((prevData) => ({ ...prevData, lat: "", lng: "" }));
+  //       setFetchError("Coordinates not found for the provided city.");
+  //       setCoordinatesFetched(false);
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to fetch coordinates:", error);
+  //     setFetchError("Failed to fetch coordinates. Please try again.");
+  //     setCoordinatesFetched(false);
+  //   }
+  // };
+
   const fetchCoordinates = async () => {
-    setFetchError("");
     const { city } = formData;
     if (!city.trim()) {
       setFetchError("Please enter a city before fetching coordinates.");
       return;
     }
+    const query = encodeURIComponent(`${city}`);
 
     try {
-      const response = await fetch(
-        `https://nominatim.openstreetmap.org/search?city=${encodeURIComponent(city)}&format=json&limit=1`);
+      const response = await fetch(`/api/search/coordinates?query=${query}`);
       const data = await response.json();
-
       if (data.length > 0) {
         const { lat, lon } = data[0];
         setFormData((prevData) => ({
